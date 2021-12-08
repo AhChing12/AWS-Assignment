@@ -37,6 +37,14 @@ def home():
    
     return render_template('ManageEmp.html', data=data)
 
+@app.route("/deleteEmp", methods=['POST'])
+def deleteEmp():
+    print(request.form['delete'], file=sys.stderr)
+
+    if request.form['delete']:
+
+
+
 
 @app.route("/about", methods=['POST'])
 def about():
