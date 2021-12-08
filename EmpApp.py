@@ -1,7 +1,5 @@
 from flask import Flask, render_template, request
 from pymysql import connections
-from flask_mysqldb import MySQL
-import MySQLdb.cursors
 import os
 import boto3
 from config import *
@@ -26,7 +24,7 @@ table = 'employee'
 @app.route("/", methods=['GET', 'POST'])
 def home():
     #creating variable for connection
-    cursor=mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cursor=mysql.connection.cursor(pymysql.cursors.DictCursor)
 
     #executing query
     cursor.execute("select E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName from ((employee as E INNER JOIN position as P ON E.positionId = P.positionId) INNER JOIN department as D ON E.departmentId = D.departmentId")
