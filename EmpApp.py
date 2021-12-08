@@ -140,6 +140,8 @@ def AddEmp():
 
         print("all modification done...")
         return render_template('AddEmpOutput.html', name=emp_name)
+ 
+    return render_template('AddEmpOutput.html')
 
 
 if __name__ == '__main__':
