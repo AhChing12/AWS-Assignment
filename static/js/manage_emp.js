@@ -24,7 +24,7 @@ $(document).ready(function(){
 				// 1 - Deletion successful
 				// 2 - Error occured
 				success:function(data){
-					switch (data.data) {
+					switch (data.responses) {
 						case '0':
 							alert("Member does not exist");
 							break;
