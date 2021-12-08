@@ -91,7 +91,7 @@ def getEmpInfo():
         
     return render_template('GetEmpOutput.html', id=emp_id, fname=first_name, lname=last_name, interest=0, location=location)    
 
-@app.route("/addemp", methods=['POST'])
+@app.route("/addemp", methods=['GET', 'POST'])
 def AddEmp():
     emp_id = request.form['emp_id']
     first_name = request.form['first_name']
