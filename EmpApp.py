@@ -64,6 +64,7 @@ def userProfile():
 
     print(456)
     print(request.args.get("employee_id"))
+    print(data)
     return render_template('GetEmpOutput.html', data=data)
 
 @app.route("/about", methods=['POST'])
