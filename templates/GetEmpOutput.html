@@ -13,11 +13,37 @@
    
 </head>
 
-<section class="profile-section">
-	<h3 class="list-label">User Profile</h3>
-</section>
-
 <body>
+	<nav class="navbar sticky-top navbar-expand-md navbar-light bg-faded">
+		<div class="container-fluid">
+
+			<!-- Brand -->
+			<asp:HyperLink ID="brandLink" runat="server" class="navbar-brand" NavigateUrl="~/art_gallery.aspx">
+			<asp:Image ID="logo" runat="server" src="image/palette.svg" alt="" class="mr-2" Width="50" ClientIDMode="Static" />
+			GALERI
+		</asp:HyperLink>
+
+		<!-- Toggler/collapsibe Button -->
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" runat="server" clientidmode="Static">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="nav navbar-nav mx-auto">
+				<!-- menu -->
+				<li class="nav-item">
+					<a class="nav-link" href="#">Manage Employee</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Attendance</a>
+				</li>
+
+			</ul>
+
+			
+		</div>
+	</div>
+</nav>
 
 	<section class="profile-section">
 		<h3 class="list-label">User Profile</h3>
