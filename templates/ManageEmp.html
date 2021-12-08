@@ -187,22 +187,24 @@
             </tfoot>
 
       <tbody>
+        {% for item in data %}
         <tr>
-    <td id="emp_id">1</td>
-    <td id="position">Sales</td>
-    <td id="name">Joshua Yun</td>
-    <td id="department">IT</td>
-    <td id="gender">Male</td>
-    <td id="email">abc123@hotmail.com</td>
-    <td id="mobile_num">019-1234545</td>
-    <td id="address">Taman Hiburan 88100 kota kinabalu</td>
-    <td id="date_join">07/12/2021</td>
+    <td id="emp_id">{{ item.employeeId }}</td>
+    <td id="position">{{ item.positionName }}</td>
+    <td id="name">{{ item.firstName ~ " " ~ item.lastName }}</td>
+    <td id="department">{{ item.departmentName }}</td>
+    <td id="gender">{{ item.gender }}</td>
+    <td id="email">{{ item.email }}</td>
+    <td id="mobile_num">{{ item.phoneNo }}</td>
+    <td id="address">{{ item.location }}</td>
+    <td id="date_join">{{ item.hireDate }}</td>
     <td>
     <a id="profile-icon" class="edit-btn" href="member_profile.php?student_id='.$row['student_id'].'"><img src="{{ url_for('static',filename='images/profile-icon.png') }}" alt="edit button" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Member Profile"></a>
     <a class="edit-btn" href="edit_member.php?edit=true&student_id='.$row['student_id'].'"><img src="{{ url_for('static',filename='images/edit-btn.png') }}" alt="edit button" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Edit Member\'s Information"></a>
     <input type="image" src="{{ url_for('static',filename='images/delete-btn.png') }}" class="delete-btn" alt="delete" name="delete" value="'.$row['student_id'].'" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Delete Member">
     </td>
       </tr>
+      {% endfor %}
 </tbody>
 </table>
 
