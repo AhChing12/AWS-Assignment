@@ -48,7 +48,7 @@ def deleteEmp():
 
     return jsonify({ 'response': '1'}) 
 
-@app.route("/userProfile", methods=['POST'])
+@app.route("/userProfile", methods=['GET', 'POST'])
 def userProfile():
     return render_template('GetEmpOutput.html')
 
