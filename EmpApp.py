@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, flash
+from flask import Flask, render_template, request, jsonify
 from pymysql import connections
 import os
 import boto3
@@ -45,7 +45,6 @@ def deleteEmp():
         cursor.execute("DELETE FROM employee WHERE employeeId = %s", request.form['employee_id'])
         db_conn.commit()
         cursor.close()
-        flash("Successfully deleted.")
 
     return jsonify({ 'response': '1'}) 
 
