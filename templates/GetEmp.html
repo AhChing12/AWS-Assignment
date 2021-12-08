@@ -1,29 +1,96 @@
 	<!DOCTYPE html>
-<html>
-<head>
-	<title>Get Employee Information</title>
-</head>
-<center>
-	<font color="black" size="5" style="font-family: avenir">
+	<html>
+	<head>
+		<title>Get Employee Information</title>
 
-		<h1 style="color: DodgerBlue">Employee Information</h1>
+		<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="../static/css/global.css">
+		<!-- <link rel="stylesheet" type="text/css" href="static/css/GetEmp.css"> -->
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+		<style>
+
+			h2{ /*"Search Employee"*/
+				font-size: 36px;
+				color: black;
+				font-weight: 600;/* Semi-bold*/
+				display: flex;
+				justify-content: center;
+			} 
+			h5 { /*Input Titles*/
+				font-size: 18px;
+				color: black;
+				font-weight: 500;/* Medium*/
+				display:flex;
+				align-self: flex-start;
+			}
+
+			.row, .container {
+				display: flex;
+				justify-content: center;
+
+			}
+			.container {
+				height: 500px;
+				align-items:center;
+			}
+			.card-body {
+				display: flex;
+				flex-direction: column;
+				border-style: solid;
+				border-color: #CDCDCD;
+				border-width:2px;
+				justify-content: center; 
+				align-items:center;
+				width: 400px;
+			}
+			input {
+				height:40px;
+				font-size:16pt;
+				border-radius: 5px;
+				border-width: 1px;
+				border-color: #7E7E7E;
+				width: 320px;
+			}
+			button {
+				background: #5F27CD;
+			}
+		</style>
+	</head>
+
+	<font color="black" size="5" style="font-family: Montserrat">
+
+		
 
 		<body bgcolor="lightgrey">
+			<h1 style="color: DodgerBlue">Employee Management System (EMS)</h1>
 
 			<form action="/fetchdata" autocomplete="on" method="POST">
 
-				<h2 style="color: grey">Enter Employee ID</h2>
+				<h2>Search Employee</h2>
+				<div class="container">
+					<div class="row col-md-12">
+						<div class="card align-items-center">
+							<div class="card-body">
 
-		  		Employee ID:<br> <input style="height:25px;font-size:14pt;" type="number" name="emp_id" autofocus size="40"><br><br>
+							<h5 class="mt-4 ml-3">Employee ID</h5>
+							<input class="mb-4" type="number" name="emp_id" autofocus size="40">
 
+							<button class="mb-3" type="submit" style=" font-weight: 500; font-size: 20px; border-width: 0px; border-radius: 5px; height: 50px; width: 320px; color: white;">Search</button>
 
-		  		<button type="submit" style="background: grey; height: 45px; width: 200px; color: white; size: 5; font:oblique;">FETCH INFO</button><br><br>
+							<!-- 		  		<button type="submit" formaction="http://3.134.115.108:80/" style="background: white	; height: 45px; width: 200px; color: black; size: 5; font:oblique;" method="GET">GO TO UPDATE DATABASE PAGE</button> -->
 
-		  		<button type="submit" formaction="http://3.134.115.108:80/" style="background: white	; height: 45px; width: 200px; color: black; size: 5; font:oblique;" method="GET">GO TO UPDATE DATABASE PAGE</button>
-
+							</div>
+							
+						</div>
+					</div>
+				</div>
 			</form>
 
 		</body>
 	</font>
-</center>
-</html>
+
+	</html>
