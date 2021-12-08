@@ -11,6 +11,7 @@ $(document).ready(function(){
 
 		//get delete confirmation from user
 		var confirmDelete = confirm("Confirm to delete student? ID: "+employeeId);
+		event.preventDefault()
 		if(confirmDelete === true){
 			//send xml request to delete member
 			$.ajax({
