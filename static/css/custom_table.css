@@ -1,0 +1,69 @@
+﻿/* Content */
+.custom-container{
+	width: 100%;
+	margin:10px auto 30px auto;
+	padding:15px;
+    padding-bottom: 0px;
+	background-color: #feffff;
+	border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 5px;
+	overflow: auto;
+}
+.tablesorter-pager .btn-group-sm .btn {
+	font-size: 1.2em; /* make pager arrows more visible */
+}
+
+/* table width*/
+#activity-summary, #member-table{
+	min-width: 100%;
+	max-width: 100%;
+	padding:0px;
+}
+#activity-summary table,#member-table table{
+	margin: 0px;
+}
+
+#member-participation-history{
+	max-width: 	70%;
+}
+
+.page-title{
+    margin: auto;
+	width: 500px;
+	text-align: center;
+}
+
+/* table */
+.table-bordered{
+	border: 0px;
+}
+[type~=search]{
+	max-height: 25px;
+	font-size: 14px !important;
+}
+[type~=search] input{
+	font-size: 14px !important;
+}
+select{
+	max-height: 25px;
+	font-size: 14px !important;
+	padding: 0px !important;
+	min-width: 	100px;
+}
+table tbody td {
+	line-height: 15px;
+	font-size: 14px;
+	padding: 8px !important;
+}
+table{
+	text-align: center;
+}
+table{
+	border: none;
+}
+
+
+
+
+
+

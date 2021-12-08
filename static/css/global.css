@@ -1,0 +1,47 @@
+/* Navigation bar*/
+.navbar {
+    background-color: white;
+    border-color: rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-brand {
+    color: black;
+}
+
+.navbar-nav > li > a {
+    padding: 10px 15px;
+    color: black;
+}
+
+    .navbar-nav > li > a:hover {
+        text-decoration: none;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+.navbar-light .navbar-nav .nav-link:hover {
+	color: #5f27cd;
+}
+
+/* Submit & Cancel Buttons */
+#submit-button {
+	border: 1px solid #6610f2;
+	background-color: #6610f2;
+}
+#submit-button:hover {
+	border: 1px solid #5f27cd;
+	background-color: #5f27cd;
+	color: #feffff;
+}
+
+#cancel-button {
+	border: 1px solid #6610f2;
+	background-color: #fcfcfc;
+	color: #6610f2;
+}
+#cancel-button:hover {
+	border: 1px solid #5f27cd;
+	text-decoration: underline;
+	background-color: #fcfcfc;
+	color: #5f27cd;
+}
