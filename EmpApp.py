@@ -42,7 +42,7 @@ def home():
 def deleteEmp():
     print(request.form['delete'], file=sys.stderr)
     print(request.form['delete'])
-    return json.dumps({'success':True, "data": "1"}), 200, {'ContentType':'application/json'} 
+    return json.dumps({'success':True, 'response': '1'}), 200, {'ContentType':'application/json'} 
 
 
 
