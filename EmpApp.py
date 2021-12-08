@@ -40,7 +40,7 @@ def home():
 @app.route("/deleteEmp", methods=['POST'])
 def deleteEmp():
     print(request.form['delete'], file=sys.stderr)
-
+    return 1;
 
 
 
