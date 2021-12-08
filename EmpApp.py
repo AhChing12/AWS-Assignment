@@ -24,7 +24,7 @@ table = 'employee'
 @app.route("/", methods=['GET', 'POST'])
 def home():
     #creating variable for connection
-    cursor=mysql.connection.cursor(pymysql.cursors.DictCursor)
+    cursor=db_conn.cursor(pymysql.cursors.DictCursor)
 
     #executing query
     cursor.execute("select E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName from ((employee as E INNER JOIN position as P ON E.positionId = P.positionId) INNER JOIN department as D ON E.departmentId = D.departmentId")
