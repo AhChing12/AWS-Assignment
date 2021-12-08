@@ -41,8 +41,6 @@ def home():
 def deleteEmp():
     print(request.form['delete'], file=sys.stderr)
 
-    if request.form['delete']:
-
 
 
 
