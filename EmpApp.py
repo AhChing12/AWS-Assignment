@@ -39,7 +39,6 @@ def home():
 
 @app.route("/deleteEmp", methods=['POST'])
 def deleteEmp():
-    print(request.form['delete'])
     if request.form['delete']:
         cursor = db_conn.cursor()
         cursor.execute("DELETE FROM employee WHERE employeeId = %s", request.form['employee_id'])
@@ -51,6 +50,7 @@ def deleteEmp():
 @app.route("/userProfile", methods=['GET', 'POST'])
 def userProfile():
     if request.args.get("employee_id") is not None:
+        print(123)
         #creating variable for connection
         cursor=db_conn.cursor(pymysql.cursors.DictCursor)
 
@@ -61,7 +61,9 @@ def userProfile():
 
         #fetching all records from database
         data=cursor.fetchall()
-   
+
+    print(456)
+    print(request.args.get("employee_id"))
     return render_template('GetEmpOutput.html', data=data)
 
 @app.route("/about", methods=['POST'])
