@@ -9,6 +9,7 @@ $(document).ready(function(){
 		//get employee id
 		var employeeId = $(this).val();
 
+		event.preventDefault()
 		//get delete confirmation from user
 		$.confirm({
 			icon: 'fa fa-warning',
@@ -16,7 +17,6 @@ $(document).ready(function(){
 			content: "Confirm to delete student? ID: "+employeeId,
 			buttons: {
 				confirm: function () {
-					event.preventDefault()
 					//send xml request to delete member
 					$.ajax({
 						url:'/deleteEmp',
