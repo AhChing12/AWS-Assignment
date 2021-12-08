@@ -8,18 +8,24 @@ $(document).ready(function(){
 	$(document).on("click","input.delete-btn",function(){
 		//get employee id
 		var employeeId = $(this).val();
+		var confirmDelete = false;
 
 		//get delete confirmation from user
 		$.confirm({
-			icon: 'glyphicon glyphicon-heart',
-			title: 'glyphicon'
-		});
-		$.confirm({
 			icon: 'fa fa-warning',
-			title: 'font-awesome'
+			title: 'font-awesome',
+			content: "Confirm to delete student? ID: "+employeeId,
+			buttons: {
+				confirm: function () {
+					confirmDelete = true;
+				},
+				cancel: function () {
+					confirmDelete = false;
+				}
+			}
 		});
-		
-		var confirmDelete = confirm("Confirm to delete student? ID: "+employeeId);
+
+		// var confirmDelete = confirm("Confirm to delete student? ID: "+employeeId);
 		event.preventDefault()
 		if(confirmDelete === true){
 			//send xml request to delete member
