@@ -99,7 +99,7 @@
 												<label style="font-weight: bold;">Position</label>
 											</div>
 											<div class="col-md-8 col-6">
-												{{ item.position }}
+												{{ item.positionName }}
 											</div>
 										</div>
 										<hr />
@@ -108,7 +108,7 @@
 												<label style="font-weight: bold;">Department</label>
 											</div>
 											<div class="col-md-8 col-6">
-												{{ item.department}}
+												{{ item.departmentName}}
 											</div>
 										</div>
 										<hr />
@@ -117,7 +117,7 @@
 												<label style="font-weight: bold;">Salary</label>
 											</div>
 											<div class="col-md-8 col-6">
-												RM 120.00
+												{{ "RM " ~ "$%.2f"|format(item.salary) }}
 											</div>
 										</div>
 										<hr />
@@ -126,7 +126,7 @@
 												<label style="font-weight: bold;">Primary Interest</label>
 											</div>
 											<div class="col-md-8 col-6">
-												Coding
+												{{ item.primarySkill }}
 											</div>
 										</div>
 										<hr />
@@ -135,7 +135,7 @@
 												<label style="font-weight: bold;">Date Hired</label>
 											</div>
 											<div class="col-md-8 col-6">
-												08/12/2021
+												{{ item.hireDate.strftime('%d-%m-%Y') }}
 											</div>
 										</div>
 										<hr />
@@ -147,7 +147,7 @@
 												<label style="font-weight: bold;">Email</label>
 											</div>
 											<div class="col-md-7 col-6">
-												<%#Eval("email") %>
+												{{ item.email }}
 											</div>
 										</div>
 										<hr />
@@ -157,7 +157,7 @@
 												<label style="font-weight: bold;">Phone</label>
 											</div>
 											<div class="col-md-7 col-6">
-												<%#Eval("phone") %>
+												{{ item.phoneNo }}
 											</div>
 										</div>
 										<hr />
@@ -167,7 +167,7 @@
 												<label style="font-weight: bold;">Address</label>
 											</div>
 											<div class="col-md-7 col-6">
-												<%#Eval("address") %>
+												{{ item.location }}
 											</div>
 										</div>
 										<hr />
