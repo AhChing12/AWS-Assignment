@@ -93,7 +93,7 @@ def getEmpInfo():
 
 @app.route("/addemp", methods=['GET', 'POST'])
 def AddEmp():
-    if flask.request.method == 'POST':
+    if Flask.request.method == 'POST':
         emp_id = request.form['emp_id']
         first_name = request.form['first_name']
         last_name = request.form['last_name']
