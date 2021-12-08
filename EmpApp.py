@@ -42,7 +42,7 @@ def home():
 def deleteEmp():
     print(request.form['delete'], file=sys.stderr)
     print(request.form['delete'])
-    return jsonify({'data': 1})
+    return json.dumps({'data': 1})
 
 
 
