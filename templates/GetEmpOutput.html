@@ -64,7 +64,7 @@
 							</div>
 						</div>
 
-
+						{% if data %}
 						<div class="row">
 							<div class="col-12">
 								<ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
@@ -81,7 +81,7 @@
 											<div class="col-sm-3 col-md-4 col-5">
 												<label style="font-weight: bold;">Name</label>
 											</div>
-											<div id="student-id" class="col-md-8 col-6">{{ data.firstName ~ " " ~ data.lastName}}</div>
+											<div id="student-id" class="col-md-8 col-6">{{ data["firstName"] ~ " " ~ data["lastName"] }}</div>
 										</div>
 										<hr />
 										<div class="row">
@@ -187,7 +187,7 @@
 			</div>
 		</div>
 	</div>
-
+{% endif %}
 
 
 
