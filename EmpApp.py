@@ -40,6 +40,13 @@ def home():
 @app.route("/deleteEmp", methods=['POST'])
 def deleteEmp():
     print(request.form['delete'])
+    if request.form['delete']:
+        cursor = db_conn.cursor()
+        cursor.execute("DELETE FROM employee WHERE employeeId = %s", request.form['employee_id'])
+        db_conn.commit()
+        cursor.close()
+        flash("Successfully deleted.")
+
     return jsonify({ 'response': '1'}) 
 
 
