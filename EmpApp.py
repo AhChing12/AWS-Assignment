@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
 from pymysql import connections
+from flask_mysqldb import MySQL
+import MySQLdb.cursors
 import os
 import boto3
 from config import *
@@ -23,7 +25,16 @@ table = 'employee'
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
-    return render_template('ManageEmp.html')
+    #creating variable for connection
+    cursor=mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+
+    #executing query
+    cursor.execute("select E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName from ((employee as E INNER JOIN position as P ON E.positionId = P.positionId) INNER JOIN department as D ON E.departmentId = D.departmentId")
+
+    #fetching all records from database
+    data=cursor.fetchall()
+   
+    return render_template('ManageEmp.html', data=data)
 
 
 @app.route("/about", methods=['POST'])
@@ -47,10 +58,10 @@ def getEmpInfo():
     results = cursor.fetchall()
 
     for row in results:
-	    first_name = row[1]
-	    last_name = row[2]
-	    location = row[4]
-		
+        first_name = row[1]
+        last_name = row[2]
+        location = row[4]
+        
     return render_template('GetEmpOutput.html', id=emp_id, fname=first_name, lname=last_name, interest=0, location=location)    
 
 @app.route("/addemp", methods=['POST'])
