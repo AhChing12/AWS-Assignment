@@ -14,23 +14,23 @@ $(document).ready(function(){
 		$.confirm({
 			icon: 'fa fa-warning',
 			title: 'Delete',
-			content: "Confirm to delete student? ID: "+employeeId,
+			content: "Confirm to delete employee? ID: "+employeeId,
 			buttons: {
 				confirm: function () {
-					//send xml request to delete member
+					//send xml request to delete employee
 					$.ajax({
 						url:'/deleteEmp',
 						type: "POST",
 						data :{"delete":"true", "employee_id":employeeId},
 						/* display delete result after recieved xml response */
 						// [ Ajax responses ]
-						// 0 - Student_id does not exists
+						// 0 - employeeId does not exists
 						// 1 - Deletion successful
 						// 2 - Error occured
 					success:function(data){
 						switch (data.response) {
 							case '0':
-							alert("Member does not exist");
+							alert("Employee does not exist");
 							break;
 							case '1':
 							$("tr#"+employeeId).fadeOut(1000);
@@ -52,10 +52,6 @@ $(document).ready(function(){
 			}
 		});
 
-		// var confirmDelete = confirm("Confirm to delete student? ID: "+employeeId);
-		// if(confirmDelete === true){
-			
-		// }
 	});
 	
 
