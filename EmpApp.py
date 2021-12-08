@@ -23,7 +23,7 @@ table = 'employee'
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
-    return render_template('AddEmp.html')
+    return render_template('ManageEmp.html')
 
 
 @app.route("/about", methods=['POST'])
@@ -35,19 +35,22 @@ def getEmp():
     return render_template('GetEmp.html')
 
 @app.route("/fetchdata", methods=['POST'])
-def getEmp():
-	emp_id = request.form['emp_id']
+def getEmpInfo():
+    emp_id = request.form['emp_id']
+    first_name = ""
+    last_name = ""
+    location = ""
 
-	cursor = db_conn.cursor()
-	read_sql = "SELECT * FROM employee WHERE emp_id = %s"
-	cursor.execute(read_sql, (emp_id))
-	results = cursor.fetchall()
-	
-   	for row in results:
-		first_name = row["firstName"]
-		last_name = row["lastName"]
-   		location = row["location"]
+    cursor = db_conn.cursor()
+    read_sql = "SELECT * FROM employee WHERE emp_id = %s"
+    cursor.execute(read_sql, (emp_id))
+    results = cursor.fetchall()
 
+    for row in results:
+	    first_name = row[1]
+	    last_name = row[2]
+	    location = row[4]
+		
     return render_template('GetEmpOutput.html', id=emp_id, fname=first_name, lname=last_name, interest=0, location=location)    
 
 @app.route("/addemp", methods=['POST'])
