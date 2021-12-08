@@ -3,7 +3,11 @@ from pymysql import connections
 import os
 import boto3
 import pymysql
+import logging
+import sys
 from config import *
+
+logging.basicConfig(level=logging.DEBUG)
 
 app = Flask(__name__)
 
@@ -39,7 +43,7 @@ def home():
 
 @app.route("/deleteEmp", methods=['POST'])
 def deleteEmp():
-    print(request.form['delete'], flush=True)
+    print(request.form['delete'], file=sys.stderr)
     print(request.form['delete'])
     return jsonify({ 'response': '1'}) 
 
