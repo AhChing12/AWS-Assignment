@@ -30,6 +30,14 @@
     margin: 10px;
     margin-right: 30px;
     margin-bottom: 0;
+    border: 1px solid #6610f2;
+    background-color: #6610f2;
+}
+
+#btnUpdate:hover {
+    border: 1px solid #5f27cd;
+    background-color: #5f27cd;
+    color: #feffff;
 }
 
 #back-button {
@@ -37,10 +45,16 @@
     margin: 10px;
     margin-bottom: 0;
     float: left;
+    border: 1px solid #6610f2;
+    background-color: #fcfcfc;
+    color: #6610f2;
 }
 
 #back-button:hover {
     text-decoration: underline;
+    border: 1px solid #5f27cd;
+    background-color: #fcfcfc;
+    color: #5f27cd;
 }
 
 #buttons {
