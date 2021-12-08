@@ -109,12 +109,11 @@ def AddEmp():
             return "Please select a file"
 
         try:
-
-            cursor.execute(insert_sql, (emp_id, 1, 1, first_name, last_name, value, value, value, value, pri_skill, location, value, value, value))
+            emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file"
+            cursor.execute(insert_sql, (emp_id, 1, 1, first_name, last_name, value, value, value, value, pri_skill, location, emp_image_file_name_in_s3, value, value))
             db_conn.commit()
             emp_name = "" + first_name + " " + last_name
             # Uplaod image file in S3 #
-            emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file"
             s3 = boto3.resource('s3')
 
             try:
