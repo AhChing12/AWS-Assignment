@@ -61,8 +61,8 @@ def userProfile():
 
         #fetching all records from database
         data=cursor.fetchall()
-        
-    return render_template('GetEmpOutput.html', data=data)
+
+    return render_template('GetEmpOutput.html', result=data)
 
 @app.route("/about", methods=['POST'])
 def about():
