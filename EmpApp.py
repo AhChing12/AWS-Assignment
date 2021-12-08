@@ -28,7 +28,7 @@ def home():
     cursor=db_conn.cursor(pymysql.cursors.DictCursor)
 
     #executing query
-    cursor.execute("select E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName from ((employee E INNER JOIN position P ON E.positionId = P.positionId) INNER JOIN department D ON E.departmentId = D.departmentId")
+    cursor.execute("SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName from ((employee E INNER JOIN position P ON E.positionId = P.positionId) INNER JOIN department D ON E.departmentId = D.departmentId")
 
     #fetching all records from database
     data=cursor.fetchall()
