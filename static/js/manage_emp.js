@@ -10,6 +10,15 @@ $(document).ready(function(){
 		var employeeId = $(this).val();
 
 		//get delete confirmation from user
+		$.confirm({
+			icon: 'glyphicon glyphicon-heart',
+			title: 'glyphicon'
+		});
+		$.confirm({
+			icon: 'fa fa-warning',
+			title: 'font-awesome'
+		});
+		
 		var confirmDelete = confirm("Confirm to delete student? ID: "+employeeId);
 		event.preventDefault()
 		if(confirmDelete === true){
