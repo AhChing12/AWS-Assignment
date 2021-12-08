@@ -6,30 +6,52 @@
 <center>
 	<font color="black" size="4" style="font-family: avenir">
 
-		<h1 style="color: DodgerBlue">Employee Database</h1>
+		<h1 style="color: DodgerBlue">Employee Management System (EMS)</h1>
 
 		<body bgcolor="lightgrey">
 
 			<form action="/addemp" autocomplete="on" method = "POST" enctype="multipart/form-data">
+				Add Employee<br><br>
+				<!-- <button type="submit" formaction="/getemp" style="background: grey; height: 45px; width: 200px; color:white; font:oblique;">Add Employee</button><br><br> -->
 
-				<button type="submit" formaction="/getemp" style="background: grey; height: 45px; width: 200px; color:white; font:oblique;">GET EMPLOYEE INFORMATION</button><br><br>
-
-		  		Employee ID:<br> <input style="height:25px;font-size:14pt; color:grey;" type="number" name="emp_id" autofocus size="40"><br><br>
+		  		<!-- Employee ID:<br> <input style="height:25px;font-size:14pt; color:grey;" type="number" name="emp_id" autofocus size="40"><br><br> -->
 
 		  		First Name:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="first_name" ><br><br>
 
 		  		Last Name:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="last_name"><br><br>
 
+		  		Age:<br> <input style="height:25px;font-size:14pt; color:grey;" type="number" name="age"><br><br>
+
+		  		Phone Number:<br> <input style="height:25px;font-size:14pt; color:grey;" type="tel" name="phone_number"><br><br>
+
+		  		Gender:<br> 
+		  		<input type="radio" id="male" name="gender_choice" checked="true" value="Male">
+  				<label for="male">Male</label>
+  				<input type="radio" id="female" name="gender_choice" value="Female">
+  				<label for="female">Female</label><br>
+
+		  		Email:<br> <input style="height:25px;font-size:14pt;color:grey;" type="email" name="email"><br><br>
+
+		  		Address:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="address"><br><br>
+
 		  		Primary Skills:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="pri_skill"><br><br>
 
-		  		Location:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="location"><br><br>
+		  		Department:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="department"><br><br>
+
+		  		Position:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="position"><br><br>
+
+		  		Date Hired:<br> <input style="height:25px;font-size:14pt;color:grey;" type="date" name="date_hired"><br><br>
+
+		  		Salary:<br> <input style="height:25px;font-size:14pt; color:grey;" type="number" name="age"><br><br>
 
 		  		Image: <input type=file name="emp_image_file" style="height:25px;font-size:14pt;color:grey;"> <br><br>
 
-		  		<button type="submit" style="background: grey; height: 45px; width: 200px; color: white; size: 5; font:oblique;">UPDATE DATABASE</button>
+		  		<button type="button" onclick="" style="background: grey; height: 45px; width: 200px; color: white; size: 5; font:oblique;">Cancel</button>
+
+		  		<button type="submit" style="background: grey; height: 45px; width: 200px; color: white; size: 5; font:oblique;">Add</button>
 
 			</form>
-<a href="/about">About Us</a>
+<!-- <a href="/about">About Us</a> -->
 		</body>
 
 	</font>
