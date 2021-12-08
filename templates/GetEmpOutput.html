@@ -64,7 +64,7 @@
 							</div>
 						</div>
 
-						<!-- {% if data %} -->
+					
 						{% for item in data %}
 						<div class="row">
 							<div class="col-12">
@@ -177,7 +177,7 @@
 								</div>
 							</div>
 						</div>
-
+						{% endfor %}
 						<div id="buttons" class="row my-2 mt-4">
 							<input class="btn btn-outline-primary" id="back-button" onclick="history.go(-1);" type="button" value="Back">
 							<button id="btnUpdate" onclick="location.href = 'www.yoursite.com';" class="btn btn-primary">Edit Info</button>
@@ -188,7 +188,7 @@
 			</div>
 		</div>
 	</div>
-{% endfor %}
+
 
 
 
