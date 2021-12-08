@@ -61,10 +61,7 @@ def userProfile():
 
         #fetching all records from database
         data=cursor.fetchall()
-
-    print(456)
-    print(request.args.get("employee_id"))
-    print(data)
+        
     return render_template('GetEmpOutput.html', data=data)
 
 @app.route("/about", methods=['POST'])
