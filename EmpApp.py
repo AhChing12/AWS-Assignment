@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, json
+from flask import Flask, render_template, request, jsonify
 from pymysql import connections
 import os
 import boto3
@@ -42,7 +42,7 @@ def home():
 def deleteEmp():
     print(request.form['delete'], file=sys.stderr)
     print(request.form['delete'])
-    return json.dumps({'success':True, 'response': '1'}), 200, {'ContentType':'application/json'} 
+    return jsonify({ 'response': '1'}) 
 
 
 
