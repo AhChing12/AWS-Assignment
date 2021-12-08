@@ -64,7 +64,8 @@
 							</div>
 						</div>
 
-						{% if data %}
+						<!-- {% if data %} -->
+						{% for item in data %}
 						<div class="row">
 							<div class="col-12">
 								<ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
@@ -81,7 +82,7 @@
 											<div class="col-sm-3 col-md-4 col-5">
 												<label style="font-weight: bold;">Name</label>
 											</div>
-											<div id="student-id" class="col-md-8 col-6">{{ data["firstName"] ~ " " ~ data["lastName"] }}</div>
+											<div id="student-id" class="col-md-8 col-6">{{ item.firstName ~ " " ~ item.lastName }}</div>
 										</div>
 										<hr />
 										<div class="row">
@@ -89,7 +90,7 @@
 												<label style="font-weight: bold;">Gender</label>
 											</div>
 											<div class="col-md-8 col-6">
-												{{ data["gender"] }}
+												{{ item.gender }}
 											</div>
 										</div>
 										<hr />
@@ -98,7 +99,7 @@
 												<label style="font-weight: bold;">Position</label>
 											</div>
 											<div class="col-md-8 col-6">
-												{{ data }}
+												{{ item.position }}
 											</div>
 										</div>
 										<hr />
@@ -107,7 +108,7 @@
 												<label style="font-weight: bold;">Department</label>
 											</div>
 											<div class="col-md-8 col-6">
-												{{ data.department}}
+												{{ item.department}}
 											</div>
 										</div>
 										<hr />
@@ -187,7 +188,8 @@
 			</div>
 		</div>
 	</div>
-{% endif %}
+<!-- {% endif %} -->
+{% endfor %}
 
 
 
