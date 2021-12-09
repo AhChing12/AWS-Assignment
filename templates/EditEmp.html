@@ -201,7 +201,7 @@
 								<div class="col-md-4">
 									<h5>Employee Image</h5>
 									<div id="uploaded_image">
-										<img class="img-thumbnail img-fluid" alt="Employee Image" src='<%# "data:image/png;base64," + Convert.ToBase64String((byte[])Eval("profileImg")) %>'>
+										<img class="img-thumbnail img-fluid" alt="Employee Image" src='{{ url_for('static',filename='images/default-profile-img.png') }}'>
 									</div>
 									<div class="custom-file">
 										<input class="custom-file-input" type="file" name="upload_image" id="upload_image" accept="image/*"/>
