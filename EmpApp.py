@@ -50,15 +50,16 @@ def deleteEmp():
         #fetching all records from database
         data=cursor.fetchall()
 
-        imageUrl = ""
+        if data != None:       
+            imageUrl = ""
 
-        for item in data:
-            imageUrl = item["imageUrl"]        
+            for item in data:
+                imageUrl = item["imageUrl"]        
 
-        #delete profile image from S3 bucket
-        imageUrl = imageUrl.split("/")
-        s3 = boto3.client('s3')
-        s3.delete_object(Bucket=custombucket, Key=imageUrl[3])
+            #delete profile image from S3 bucket
+            imageUrl = imageUrl.split("/")
+            s3 = boto3.client('s3')
+            s3.delete_object(Bucket=custombucket, Key=imageUrl[3])
 
         cursor.execute("DELETE FROM employee WHERE employeeId = %s", employeeId)
         db_conn.commit()
