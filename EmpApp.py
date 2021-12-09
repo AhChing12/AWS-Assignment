@@ -73,19 +73,53 @@ def getEmp():
 
 @app.route("/editEmp", methods=['GET','POST'])
 def editEmp():
-    if request.args.get("employee_id") is not None:
-        #creating variable for connection
-        cursor=db_conn.cursor(pymysql.cursors.DictCursor)
+    if request.method == 'GET':
+        if request.args.get("employee_id") is not None:
+            #creating variable for connection
+            cursor=db_conn.cursor(pymysql.cursors.DictCursor)
 
-        sql = "SELECT E.employeeId, E.firstName, E.lastName, E.age, E.gender, E.email, E.phoneNo, E.location, E.hireDate, E.salary, E.primarySkill, E.imageUrl, P.positionName, D.departmentName from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId WHERE E.employeeId = %s"
+            sql = "SELECT E.employeeId, E.firstName, E.lastName, E.age, E.gender, E.email, E.phoneNo, E.location, E.hireDate, E.salary, E.primarySkill, E.imageUrl, P.positionName, D.departmentName from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId WHERE E.employeeId = %s"
 
-        #executing query
-        cursor.execute(sql, (request.args.get("employee_id")))
+            #executing query
+            cursor.execute(sql, (request.args.get("employee_id")))
 
-        #fetching all records from database
-        data=cursor.fetchall()
+            #fetching all records from database
+            data=cursor.fetchall()
 
-    return render_template('EditEmp.html', data=data)
+            return render_template('EditEmp.html', data=data)
+    else
+        employeeId = request.args.get("employee_id")
+        firstName = request.form['firstName']
+        lastName = request.form['lastName']
+        age = request.form['age']
+        phoneNo = request.form['phoneNo']
+        gender = request.form['gender_choice']
+        email = request.form['email']
+        address = request.form['address']
+        primarySkill = request.form['primarySkill']
+        department = request.form['department']
+        position = request.form['position']
+        dateHired = request.form['dateHired']
+        salary = request.form['salary']
+        profileImage = request.form['upload_image']
+
+        print(employeeId)
+        print(firstName)
+        print(lastName)
+        print(age)
+        print(phoneNo)
+        print(gender)
+        print(email)
+        print(address)
+        print(primarySkill)
+        print(department)
+        print(position)
+        print(dateHired)
+        print(salary)
+        print(profileImage)
+
+        return render_template('ManageEmp.html')
+            
 
 @app.route("/deleteImg", methods=['GET','POST'])
 def deleteImg():
