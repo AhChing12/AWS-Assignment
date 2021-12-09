@@ -177,7 +177,8 @@ def addEmpBackup():
         read_sql = "SELECT employeeId FROM employee ORDER BY employeeId DESC LIMIT 1"
         # cursor.execute(read_sql, (args=None))
         cursor.execute(read_sql)
-        emp_id = cursor.fetchall() + 1
+        emp_id = cursor.fetchall()
+        emp_id += 1
         #       End - Get last row's employeeId
 
 
