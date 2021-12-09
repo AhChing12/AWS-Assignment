@@ -174,15 +174,12 @@ def addEmpBackup():
         #       Begin - Get last row's employeeId
         cursor = db_conn.cursor(pymysql.cursors.DictCursor)
         #gets the last row's employeeId
-        read_sql = "SELECT employeeId FROM employee ORDER BY employeeId DESC LIMIT 1"
+        read_sql = "SELECT * FROM employee ORDER BY employeeId DESC LIMIT 1"
         # cursor.execute(read_sql, (args=None))
         cursor.execute(read_sql)
         data = cursor.fetchall()
         for item in data:
-            print("1" + item)
-            print("2" + item.employeeId)
-            print("3" + {{item.employeeId}})
-            emp_id = {{item}} + 1
+            emp_id = item.employeeId + 1
         #       End - Get last row's employeeId
 
 
