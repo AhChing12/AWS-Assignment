@@ -73,7 +73,7 @@ def getEmp():
 
 @app.route("/editEmp", methods=['GET','POST'])
 def editEmp():
-    return render_template('editEmp.html')
+    return render_template('EditEmp.html')
 
 @app.route("/deleteImg", methods=['GET','POST'])
 def deleteImg():
