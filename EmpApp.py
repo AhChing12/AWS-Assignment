@@ -50,7 +50,6 @@ def deleteEmp():
 @app.route("/userProfile", methods=['GET', 'POST'])
 def userProfile():
     if request.args.get("employee_id") is not None:
-        print(123)
         #creating variable for connection
         cursor=db_conn.cursor(pymysql.cursors.DictCursor)
 
@@ -102,8 +101,8 @@ def AddEmp():
         emp_image_file = request.files['emp_image_file']
         value = None
 
-        insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-        cursor = db_conn.cursor()
+        # insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        # cursor = db_conn.cursor()
 
         if emp_image_file.filename == "":
             return "Please select a file"
@@ -131,6 +130,7 @@ def AddEmp():
                     s3_location,
                     custombucket,
                     emp_image_file_name_in_s3)
+                print(object_url)
 
             except Exception as e:
                 return str(e)
