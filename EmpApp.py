@@ -101,7 +101,7 @@ def editEmp():
         position = request.form['position']
         dateHired = request.form['date_hired']
         salary = request.form['salary']
-        profileImage = request.form['upload_image']
+        profileImage = request.files['upload_image']
 
         print(employeeId)
         print(firstName)
