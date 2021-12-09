@@ -88,7 +88,7 @@ def editEmp():
 
             return render_template('EditEmp.html', data=data)
     else:
-        employeeId = request.args.get("employee_id")
+        employeeId = request.form['employee_id']
         firstName = request.form['first_name']
         lastName = request.form['last_name']
         age = request.form['age']
