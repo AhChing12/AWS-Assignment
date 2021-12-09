@@ -49,6 +49,7 @@
 		<h3 class="list-label">User Profile</h3>
 	</section>
 
+	{% for item in data %}
 	<div class="container">
 		<div class="row">
 			<div class="col-5" id="custom-column">
@@ -58,14 +59,13 @@
 							<div class="d-flex justify-content-center">
 								<div class="image-container">
 									<div id="uploaded_image" data-auto-update="true">
-										<img class="img-thumbnail img-fluid" src='https://simonchenyiheng-employee.s3.amazonaws.com/emp-id-4_image_file.jpg' />
+										<img class="img-thumbnail img-fluid" src='{{ item.imageUrl }}' />
 									</div>
 								</div>
 							</div>
 						</div>
 
 					
-						{% for item in data %}
 						<div class="row">
 							<div class="col-12">
 								<ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
