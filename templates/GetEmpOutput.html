@@ -116,9 +116,11 @@
 											<div class="col-sm-3 col-md-4 col-5">
 												<label style="font-weight: bold;">Salary</label>
 											</div>
+											{% if item.salary is not None %}
 											<div class="col-md-8 col-6">
 												{{ "RM " ~ "%.2f"|format(item.salary) }}
 											</div>
+											{% endif %}
 										</div>
 										<hr />
 										<div class="row">
