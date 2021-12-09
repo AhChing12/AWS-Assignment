@@ -185,9 +185,12 @@
 											{% if item.gender == 'Male' %}
 											<div class="gender">
 												<input class="mr-2" type="radio" id="male" name="gender_choice" checked="true" value="Male">
-
 												<label class="mr-5 custom-label" for="male">Male</label>
+												<input class="mr-2" type="radio" id="female" name="gender_choice" value="Female">
+												<label class="custom-label" for="female">Female</label>
 											{% else %}
+												<input class="mr-2" type="radio" id="male" name="gender_choice" value="Male">
+												<label class="mr-5 custom-label" for="male">Male</label>
 												<input class="mr-2" type="radio" id="female" name="gender_choice" checked="true" value="Female">
 												<label class="custom-label" for="female">Female</label> 
 											</div>
@@ -226,7 +229,7 @@
 								<div class="col-md-8">
 									<!-- <h5>Address</h5> -->
 									<label class="" for="address">Address</label>
-									<textarea class="form-control" id="address" name="address" style="width: 300px;" rows="3" maxlength="255" value="{{ item.location }}"></textarea>  
+									<textarea class="form-control" id="address" name="address" style="width: 300px;" rows="3" maxlength="255">{{ item.location }}</textarea>  
 								</div>
 							</div>
 
@@ -258,7 +261,7 @@
 								<div class="col-md-4">
 									<!-- <h5>Date Hired</h5> -->
 									<label class="" for="date_hired">Date Hired</label>
-									<input class="shortInput form-control" style="font-size:16px;" value="{{ item.hireDate}}" type="date" name="date_hired"> 
+									<input class="shortInput form-control" style="font-size:16px;" value="{{ item.hireDate.strftime('%d-%m-%Y') }}" type="date" name="date_hired"> 
 								</div> 
 
 								<div class="col-md-4">
