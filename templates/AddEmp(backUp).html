@@ -32,25 +32,34 @@
 			font-size: 24px; 
 			font-weight:500;
 		}
-		h2{ /*"Search Employee"*/
+/* 	h2{ 
 		font-size: 28px;
 		color: black;
-		font-weight: 600;/* Semi-bold*/
+		font-weight: 600;
 		display: flex;
-		justify-content: center;
-	} 
-	h5 { /*Input Titles*/
+		justify-content: center; 
+	}  */
+/* 	h5 { 
 		font-size: 14px;
 		color: black;
-		font-weight: 500;/* Medium*/
+		font-weight: 500;
 		display:flex;
 		align-self: flex-start;
 		margin-bottom: 2px;
-	}
+	} */
 
-	input {
+/*   	input {
 		height:35px;
 		font-size:14px;
+		border-radius: 5px;
+		border-width: 1px;
+		border-color: #7E7E7E;
+		margin-bottom: 10px;
+
+	}  */
+	input {
+		height:40px;
+		font-size:16px;
 		border-radius: 5px;
 		border-width: 1px;
 		border-color: #7E7E7E;
@@ -61,11 +70,21 @@
 		display: flex;
 		align-content: center;
 	}
-	.card {
+/* 	.card {
 		width:708px;
 		border-style: none;
+	} */
+	.card {
+		width:781px;
 	}
-	.card-body {
+	.custom-label {
+		display: flex;
+		align-items: center;
+		font-size:18px;
+		color: #353535;
+	}
+		
+/* 	.card-body {
 		border-style: solid;
 		border-color: #CDCDCD;
 		border-width:2px;
@@ -74,25 +93,27 @@
 		display: flex;
 		align-items: center;
 		font-size:14px;
-		color: #353535;
-	}
+		color: #353535; 
+	}*/
 	.container > .row {
 		display: flex;
 		justify-content: center;
 	}
 	.shortInput {
-		width:173px;
+/* 		width:173px; */
+		width:193px
 	}
 	.longInput {
-		width: 374px;
+/* 		width: 374px; */
+		width: 300px;
 	}
-	img{
+/* 	img{
 		min-width:120px;
 		max-width:140px; 
 		min-height:140px;
 		max-height:160px;
-	}
-	button {
+	} */
+/* 	button {
 		
 		font-weight: 500; 
 		font-size: 16px; 
@@ -101,6 +122,16 @@
 		height: 40px; 
 		width: 280px; 
 		color: white;
+	} */
+	button {
+		
+		font-weight: 500; 
+		font-size: 20px; 
+		border-width: 0px; 
+		border-radius: 5px; 
+		height: 50px; 
+		width: 320px; 
+		color: white;
 	}
 	.btnGroup {
 		display: flex;
@@ -108,16 +139,26 @@
 	}
 	.cancelButton{
 		margin-right: 70px;
-		background: black;
 	}
-	.addButton {
+/* 	.addButton {
 		background: #5F27CD;
+	} */
+	.editEmp-section{
+		margin: auto;
+		margin-top: 30px;
+		width: 500px;
+		text-align: center;
+	}
+	/* image container */
+	.image-container {
+		position: relative;
+		width: 250px;
 	}
 </style>
 
 </head>
 
-<font color="black" size="4" style="font-family: Montserrat">
+
 
 	<body>
 
@@ -156,63 +197,70 @@
 
 			<h1 class="mb-4">Employee Management System (EMS)</h1>
 
-			<h2>Add Employee</h2>
+			<section class="editEmp-section mb-3">
+				<h3 class="list-label">Employee Information</h3>
+			</section>
 			<!-- <button type="submit" formaction="/getemp" style="background: grey; height: 45px; width: 200px; color:white; font:oblique;">Add Employee</button>   -->
 
 			<!-- Employee ID:  <input style="height:25px;font-size:14pt; color:grey;" type="number" name="emp_id" autofocus size="40">   -->
 
 			<div class="container">
 				<div class="row col-md-12">
-					<div class="card align-items-center mb-5">
+					<div class="card align-items-center mb-5" style="box-shadow: 1px 1px 1px 1px #CDCDCD;">
 						<div class="card-body">
 							<div class="row">
 								<div class="col-md-8">
-									<div class="row col-md-12">
+									<div class="row col-md-12 mt-1 mb-3">
 										<div class="col-md-6">
-											<h5>First Name</h5>
-											<input class="shortInput" type="text" name="first_name" >
+											<!-- <h5>First Name</h5> -->
+											<label class="" for="first_name">First Name</label>
+											<input class="shortInput form-control" type="text" name="first_name" >
 										</div>
 										<div class="col-md-6">
-											<h5>Last Name</h5>
-											<input class="shortInput" type="text" name="last_name">
+											<!-- <h5>Last Name</h5> -->
+											<label class="" for="last_name">Last Name</label>
+											<input class="shortInput form-control" type="text" name="last_name">
 										</div>
 									</div>  
 
 									<div class="row col-md-12">
 										<div class="col-md-6">
-											<h5>Age</h5>
-											<input class="shortInput" type="number" name="age">  
+											<!-- <h5>Age</h5> -->
+											<label class="" for="age">Age</label>
+											<input class="shortInput form-control" type="number" name="age">    
 										</div>
 										<div class="col-md-6">
-											<h5>Phone Number</h5>
-											<input class="shortInput" type="tel" name="phone_number">  
+											<!-- <h5>Phone Number</h5> -->
+											<label class="" for="phone_no">Phone Number</label>
+											<input class="shortInput form-control" type="tel" name="phone_number"> 
 										</div>
 									</div>
 
 									<div class="row col-md-12">
 										<div class="col-md-5">
-											<h5>Gender</h5>
+											<!-- <h5>Gender</h5> -->
+											<label class="" for="gender">Gender</label>
 											<div class="gender">
-												<input class="mr-2 " type="radio" id="male" name="gender_choice" checked="true" value="Male">
-												<label class="mr-5 " for="male">Male</label>
-												<input class="mr-2 " type="radio" id="female" name="gender_choice" value="Female">
-												<label for="female">Female</label> 
+												<input class="mr-2" type="radio" id="male" name="gender_choice" checked="true" value="Male">
+												<label class="mr-5 custom-label" for="male">Male</label>
+												<input class="mr-2" type="radio" id="female" name="gender_choice" value="Female">
+												<label class="custom-label" for="female">Female</label>
 											</div>
 										</div>
 									</div>
-
-									<div class="row col-md-12">
-										<div class="col-md-8">
-											<h5>Email</h5>
-											<input class="longInput"  type="email" name="email">  
-										</div>
-									</div>
-								</div>
+								</div>	
 
 								<div class="col-md-4">
-									<h5>Employee Image</h5>
-									<img id="output" class="mb-2" src="../static/images/image_placeholder.jpg"  alt="Employee Image">
-									<input class="mb-0" type=file name="emp_image_file" onchange="loadFile(event)"> 
+									<!-- <h5>Employee Image</h5> -->
+									<label class="" for="employee_image">Employee Image</label>
+									<div id="uploaded_image">
+										<img id="output" class="img-thumbnail img-fluid" src="../static/images/image_placeholder.jpg"  alt="Employee Image">
+									</div>
+									
+									<div class="custom-file">
+										<input class="custom-file-input" type="file" name="upload_image" id="upload_image" accept="image/*"onchange="loadFile(event)"> 
+										<label class="custom-file-label" for="upload_image">Choose file</label>
+									</div>
 									<input id="imageSrc" name="img_src" type="hidden">
 									<script>
   									var loadFile = function(event) {
@@ -226,56 +274,79 @@
 									</script>
 								</div>
 							</div>
+							
+							<div class="row col-md-12">
+								<div class="col-md-8">
+									<!-- <h5>Email</h5> -->
+									<label class="" for="email">Email</label>
+									<input class="longInput form-control"  type="email" name="email">  
+								</div>
+							</div>
 
 							
 
-							<div class="row col-md-12">
+							<div class="row col-md-12  mb-3">
 								<div class="col-md-8">
-									<h5>Address</h5>
-									<input class="longInput"  type="text" name="address">  
+									<!-- <h5>Address</h5> -->
+									<label class="" for="address">Address</label>
+									<textarea class="form-control" id="address" name="address" style="width: 300px;" rows="3" maxlength="255" value='<%#Eval("address") %>'></textarea> 
 								</div>
 							</div>
 
 							<div class="row col-md-12">
 								<div class="col-md-8">
-									<h5>Primary Skill</h5>
-									<input class="longInput"  type="text" name="pri_skill">  
+									<!-- <h5>Primary Skill</h5> -->
+									<label class="" for="primary_skill">Primary Skill</label>
+									<input class="longInput form-control"  type="text" name="pri_skill">  
 								</div>
 							</div>
 
 							<div class="row col-md-12">
 								<div class="col-md-8">
-									<h5>Department</h5>
-									<input class="longInput" type="text" name="department">  
+									<!-- <h5>Department</h5> -->
+									<label class="" for="department">Department</label>
+									<input class="longInput form-control" type="text" name="department">   
 								</div>
 							</div>
 
 							<div class="row col-md-12">
 								<div class="col-md-8">
-									<h5>Position</h5>
-									<input class="longInput" type="text" name="position">  
+									<!-- <h5>Position</h5> -->
+									<label class="" for="position">Position</label>
+									<input class="longInput form-control" type="text" name="position">   
 								</div>
 							</div>
 
 							<div class="row col-md-12">
 								<div class="col-md-4">
-									<h5>Date Hired</h5>
-									<input class="shortInput" type="date" name="date_hired"> 
+									<!-- <h5>Date Hired</h5> -->
+									<label class="" for="date_hired">Date Hired</label>
+									<input class="shortInput form-control" style="font-size:16px;" type="date" name="date_hired"> 
 								</div> 
 
 								<div class="col-md-4">
-									<h5>Salary</h5>
-									<input class="shortInput"  type="number" name="salary">  
+									<!-- <h5>Salary</h5> -->
+									<label class="" for="salary">Salary</label>
+									<input class="shortInput form-control"  type="number" name="salary">  
 								</div>
 							</div>
+							
+							<script>
+								$(".custom-file-input").on("change", function () {
+									var fileName = $(this).val().split("\\").pop();
+									$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+								});
+							</script>
 
 									<!-- 							<h5>Employee Image</h5>
 									<input type=file name="emp_image_file" style="">   --> 
-							<div class="btnGroup mt-3">
-								<button class="cancelButton" type="button" onclick="" >Cancel</button>
+							<div class="btnGroup mt-4">
+								<button id="cancel-button" class="cancelButton btn btn-outline-primary" type="button" onclick="history.go(-1);" >Cancel</button>
 
-								<button class="addButton" type="submit" >Add</button>
+								<button id="submit-button" class="addButton btn btn-primary" type="submit" >Add</button>
 							</div>
+						</div>
+	</div>
 						</div>
 					</div>
 				</div>
@@ -284,5 +355,4 @@
 <!-- <a href="/about">About Us</a> -->
 </body>
 
-</font>
 </html>
