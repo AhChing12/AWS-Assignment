@@ -97,6 +97,17 @@
 	.cancelButton{
 		margin-right: 70px;
 	}
+	.editEmp-section{
+		margin: auto;
+		margin-top: 30px;
+		width: 500px;
+		text-align: center;
+	}
+	/* image container */
+	.image-container {
+		position: relative;
+		width: 250px;
+	}
 </style>
 
 </head>
@@ -139,7 +150,9 @@
 		</nav>
 			<h1 class="mb-4">Employee Management System (EMS)</h1>
 
-			<h2>Edit Employee</h2>
+			<section class="editEmp-section">
+				<h3 class="list-label">User Profile</h3>
+			</section>
 			<!-- <button type="submit" formaction="/getemp" style="background: grey; height: 45px; width: 200px; color:white; font:oblique;">Add Employee</button>   -->
 
 			<!-- Employee ID:  <input style="height:25px;font-size:14pt; color:grey;" type="number" name="emp_id" autofocus size="40">   -->
@@ -187,8 +200,14 @@
 
 								<div class="col-md-4">
 									<h5>Employee Image</h5>
-									<img class="mb-2" src="../static/images/image_placeholder.jpg"  alt="Employee Image">
-									<input class="mb-0" type=file name="emp_image_file" style=""> 
+									<div id="uploaded_image">
+										<img class="img-thumbnail img-fluid" alt="Employee Image" src='<%# "data:image/png;base64," + Convert.ToBase64String((byte[])Eval("profileImg")) %>'>
+									</div>
+									<div class="custom-file">
+										<input class="custom-file-input" type="file" name="upload_image" id="upload_image" accept="image/*"/>
+										<label class="custom-file-label" for="upload_image">Choose file</label>
+									</div>
+
 								</div>
 							</div>
 
@@ -251,6 +270,14 @@
 </div>
 </div>
 </form>
+
+   <script>
+      $(".custom-file-input").on("change", function () {
+         var fileName = $(this).val().split("\\").pop();
+         $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+      });
+   </script>
+
 <!-- <a href="/about">About Us</a> -->
 </body>
 
