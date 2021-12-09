@@ -45,11 +45,10 @@ def deleteEmp():
 
         cursor = db_conn.cursor(pymysql.cursors.DictCursor)
 
-        cursor.execute("SELECT imageUrl from employee WHERE employeeId = %s", (employeeId))
+        cursor.execute("SELECT imageUrl from employee WHERE employeeId = %s", employeeId)
 
         #fetching all records from database
         data=cursor.fetchall()
-        print(data)
 
         imageUrl = ""
 
@@ -57,12 +56,9 @@ def deleteEmp():
             imageUrl = item["imageUrl"]        
 
         #delete profile image from S3 bucket
-        print(imageUrl)
         imageUrl = imageUrl.split("/")
-        print(imageUrl)
-        print(imageUrl[3])
-        # s3 = boto3.client('s3')
-        # s3.delete_object(Bucket=custombucket, Key=imageUrl[3])
+        s3 = boto3.client('s3')
+        s3.delete_object(Bucket=custombucket, Key=imageUrl[3])
 
         cursor.execute("DELETE FROM employee WHERE employeeId = %s", employeeId)
         db_conn.commit()
