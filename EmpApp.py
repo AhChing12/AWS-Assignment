@@ -89,7 +89,7 @@ def deleteImg():
     for item in data:
         imageUrl = item["imageUrl"]
 
-    imageUrl.split("/")
+    imageUrl = imageUrl.split("/")
     print(imageUrl)
     print(imageUrl[3])
     s3 = boto3.client('s3')
