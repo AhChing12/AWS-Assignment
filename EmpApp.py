@@ -108,7 +108,8 @@ def editEmp():
                 departmentId = request.form['department_id']
                 positionId = request.form['position_id']
 
-                print(datetime.datetime.strptime(dateHired, '%Y-%m-%d %H:%M:%S'))
+                dateHired = datetime.strptime(dateHired, '%Y-%m-%d %H:%M:%S') 
+                print(dateHired)
                 # #creating variable for connection
                 # cursor=db_conn.cursor(pymysql.cursors.DictCursor)
 
