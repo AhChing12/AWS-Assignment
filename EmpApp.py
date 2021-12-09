@@ -146,3 +146,20 @@ def AddEmp():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
+
+
+
+
+
+    #            BELOW IS ADDED CODE
+@app.route("/addemp(backup)", methods=['GET', 'POST'])
+def AddEmpBackup():
+    return render_template('AddEmp(backUp).html')
+    # if request.method == 'POST':
+    #     emp_id = request.form['emp_id']
+    #     first_name = request.form['first_name']
+    #     last_name = request.form['last_name']
+    #     pri_skill = request.form['pri_skill']
+    #     location = request.form['location']
+    #     emp_image_file = request.files['emp_image_file']
+    #     value = None
