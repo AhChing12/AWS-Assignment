@@ -187,10 +187,10 @@ def addEmpBackup():
         if upload_image.filename == "":
             return "Please select a file"
 
-        if(department == "IT")
+        if(department == "IT"):
             departmentId = 1
 
-        if(position == "Programmer")
+        if(position == "Programmer"):
             positionId = 1
 
         try:
