@@ -146,7 +146,7 @@ def AddEmp():
 #            BELOW IS ADDED CODE
 
 @app.route("/addempoutput", methods=['GET', 'POST'])
-def getEmp():
+def addEmpOutput():
     return render_template('AddEmpOutput.html')
 
 
@@ -178,10 +178,6 @@ def AddEmpBackup():
 
 
 #            END OF ADDED CODE
-
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, debug=True)
 
 
 
