@@ -10,6 +10,8 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+	<script type="text/javascript" src="js/jquery-3.4.1.js" defer></script>
+	<script type="text/javascript" src="js/bootstrap.js" defer></script>
 
 	<style>
 		h1 {
@@ -106,7 +108,6 @@
 
 <script>
 	$(".custom-file-input").on("change", function () {
-		console.log(123)
 		var fileName = $(this).val().split("\\").pop();
 		$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
 	});
