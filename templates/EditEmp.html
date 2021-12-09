@@ -182,8 +182,8 @@
 										<div class="col-md-5">
 											<!-- <h5>Gender</h5> -->
 											<label class="" for="gender">Gender</label>
-											{% if item.gender == 'Male' %}
 											<div class="gender">
+											{% if item.gender == 'Male' %}
 												<input class="mr-2" type="radio" id="male" name="gender_choice" checked="true" value="Male">
 												<label class="mr-5 custom-label" for="male">Male</label>
 												<input class="mr-2" type="radio" id="female" name="gender_choice" value="Female">
@@ -193,8 +193,8 @@
 												<label class="mr-5 custom-label" for="male">Male</label>
 												<input class="mr-2" type="radio" id="female" name="gender_choice" checked="true" value="Female">
 												<label class="custom-label" for="female">Female</label> 
-											</div>
 											{% endif %}
+										    </div>
 										</div>
 									</div>
 								</div>
@@ -203,11 +203,11 @@
 									<!-- <h5>Employee Image</h5> -->
 									<label class="" for="employee_image">Employee Image</label>
 									<div id="uploaded_image">
-						<!-- 				{% if item.imageUrl != None %}
+										{% if item.imageUrl != None %}
 										<img class="img-thumbnail img-fluid" alt="Employee Image" src='{{ item.imageUrl }}'>
-										{% else %} -->
+										{% else %}
 										<img class="img-thumbnail img-fluid" alt="Employee Image" src='{{ url_for('static',filename='images/default-profile-img.png') }}'>
-									<!-- 	{% endif %} -->
+										{% endif %}
 									</div>
 									<div class="custom-file">
 										<input class="custom-file-input" type="file" name="upload_image" id="upload_image" accept="image/*"/>
