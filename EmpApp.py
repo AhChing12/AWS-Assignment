@@ -87,7 +87,7 @@ def editEmp():
             data=cursor.fetchall()
 
             return render_template('EditEmp.html', data=data)
-    else
+    else:
         employeeId = request.args.get("employee_id")
         firstName = request.form['firstName']
         lastName = request.form['lastName']
