@@ -146,12 +146,12 @@ def editEmp():
                     except Exception as e:
                         return str(e)
 
-                sql = "UPDATE department SET departmentName = %s WHERE departmentId = %s"
-                cursor.execute(sql, (department, departmentId))
+                sql2 = "UPDATE department SET departmentName = %s WHERE departmentId = %s"
+                cursor.execute(sql2, (department, departmentId))
                 db_conn.commit()
 
-                sql = "UPDATE position SET positionName = %s WHERE positionId = %s"
-                cursor.execute(sql, (position, positionId))
+                sql3 = "UPDATE position SET positionName = %s WHERE positionId = %s"
+                cursor.execute(sql3, (position, positionId))
                 db_conn.commit()
                             
                 cursor.close()
