@@ -56,6 +56,7 @@ def deleteEmp():
             imageUrl = item["imageUrl"]
 
         #delete profile image from S3 bucket
+        print(imageUrl)
         imageUrl = imageUrl.split("/")
         print(imageUrl)
         print(imageUrl[3])
