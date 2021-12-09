@@ -205,7 +205,7 @@
 									<label class="" for="employee_image">Employee Image</label>
 									<div id="uploaded_image">
 										{% if item.imageUrl != None %}
-										<img class="img-thumbnail img-fluid" name="old_image" alt="Employee Image" src='{{ item.imageUrl }}'>
+										<img class="img-thumbnail img-fluid" name="old_profile" alt="Employee Image" src='{{ item.imageUrl }}'>
 										<input type="hidden" name="profile_image" value="yes_profile_image">
 										{% else %}
 										<img class="img-thumbnail img-fluid" alt="Employee Image" src='{{ url_for('static',filename='images/default-profile-img.png') }}'>
