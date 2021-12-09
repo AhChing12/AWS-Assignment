@@ -118,7 +118,7 @@ def editEmp():
                 sql = "UPDATE employee SET firstName = %s, lastName = %s, age = %s, gender = %s, email = %s, phoneNo = %s, location = %s, hireDate = %s, salary = %s, primarySkill = %s, imageUrl = %s WHERE employeeId = %s"
 
                 try:
-                    emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file.jpg"
+                    emp_image_file_name_in_s3 = "emp-id-" + str(employeeId) + "_image_file.jpg"
 
                     # Uplaod image file in S3 #
                     s3 = boto3.resource('s3')
