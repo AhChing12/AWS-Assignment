@@ -155,12 +155,12 @@
 									<div class="row col-md-12 mt-1 mb-3">
 										<div class="col-md-6">
 											<!-- <h5>First Name</h5> -->
-											<label class="" for="student_id">First Name</label>
+											<label class="" for="first_name">First Name</label>
 											<input class="shortInput form-control" type="text" name="first_name" >
 										</div>
 										<div class="col-md-6">
 											<!-- <h5>Last Name</h5> -->
-											<label class="" for="student_id">Last Name</label>
+											<label class="" for="last_name">Last Name</label>
 											<input class="shortInput form-control" type="text" name="last_name">
 										</div>
 									</div>  
@@ -168,12 +168,12 @@
 									<div class="row col-md-12 mb-3">
 										<div class="col-md-6">
 											<!-- <h5>Age</h5> -->
-											<label class="" for="student_id">Age</label>
+											<label class="" for="age">Age</label>
 											<input class="shortInput form-control" type="number" name="age">  
 										</div>
 										<div class="col-md-6">
 											<!-- <h5>Phone Number</h5> -->
-											<label class="" for="student_id">Phone Number</label>
+											<label class="" for="phone_no">Phone Number</label>
 											<input class="shortInput form-control" type="tel" name="phone_number">  
 										</div>
 									</div>
@@ -181,7 +181,7 @@
 									<div class="row col-md-12">
 										<div class="col-md-5">
 											<!-- <h5>Gender</h5> -->
-											<label class="" for="student_id">Gender</label>
+											<label class="" for="gender">Gender</label>
 											<div class="gender">
 												<input class="mr-2 form-control" type="radio" id="male" name="gender_choice" checked="true" value="Male">
 												<label class="mr-5 custom-label" for="male">Male</label>
@@ -194,7 +194,7 @@
 
 								<div class="col-md-4">
 									<!-- <h5>Employee Image</h5> -->
-									<label class="" for="student_id">Employee Image</label>
+									<label class="" for="employee_image">Employee Image</label>
 									<div id="uploaded_image">
 										<img class="img-thumbnail img-fluid" alt="Employee Image" src='{{ url_for('static',filename='images/default-profile-img.png') }}'>
 									</div>
@@ -209,7 +209,7 @@
 							<div class="row col-md-12">
 								<div class="col-md-8">
 									<!-- <h5>Email</h5> -->
-									<label class="" for="student_id">Email</label>
+									<label class="" for="email">Email</label>
 									<input class="longInput form-control"  type="email" name="email">  
 								</div>
 							</div>
@@ -217,7 +217,7 @@
 							<div class="row col-md-12 mb-3">
 								<div class="col-md-8">
 									<!-- <h5>Address</h5> -->
-									<label class="" for="student_id">Address</label>
+									<label class="" for="address">Address</label>
 									<textarea class="form-control" id="address" name="address" style="width: 300px;" rows="3" maxlength="255" value='<%#Eval("address") %>'></textarea>  
 								</div>
 							</div>
@@ -225,7 +225,7 @@
 							<div class="row col-md-12">
 								<div class="col-md-8">
 									<!-- <h5>Primary Skill</h5> -->
-									<label class="" for="student_id">Primary Skill</label>
+									<label class="" for="primary_skill">Primary Skill</label>
 									<input class="longInput form-control"  type="text" name="pri_skill">  
 								</div>
 							</div>
@@ -233,7 +233,7 @@
 							<div class="row col-md-12">
 								<div class="col-md-8">
 									<!-- <h5>Department</h5> -->
-									<label class="" for="student_id">Department</label>
+									<label class="" for="department">Department</label>
 									<input class="longInput form-control" type="text" name="department">  
 								</div>
 							</div>
@@ -241,7 +241,7 @@
 							<div class="row col-md-12">
 								<div class="col-md-8">
 									<!-- <h5>Position</h5> -->
-									<label class="" for="student_id">Position</label>
+									<label class="" for="position">Position</label>
 									<input class="longInput form-control" type="text" name="position">  
 								</div>
 							</div>
@@ -249,13 +249,13 @@
 							<div class="row col-md-12">
 								<div class="col-md-4">
 									<!-- <h5>Date Hired</h5> -->
-									<label class="" for="student_id">Date Hired</label>
+									<label class="" for="date_hired">Date Hired</label>
 									<input class="shortInput form-control" style="font-size:16px;" type="date" name="date_hired"> 
 								</div> 
 
 								<div class="col-md-4">
 									<!-- <h5>Salary</h5> -->
-									<label class="" for="student_id">Salary</label>
+									<label class="" for="salary">Salary</label>
 									<input class="shortInput form-control"  type="number" name="salary">  
 								</div>
 							</div>
