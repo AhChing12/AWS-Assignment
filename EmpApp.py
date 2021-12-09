@@ -71,6 +71,25 @@ def about():
 def getEmp():
     return render_template('GetEmp.html')
 
+@app.route("/deleteImg", methods=['GET','POST'])
+def deleteImg():
+    #creating variable for connection
+    cursor=db_conn.cursor(pymysql.cursors.DictCursor)
+
+    sql = "SELECT imageUrl from employee WHERE employeeId = %s"
+
+    #executing query
+    cursor.execute(sql, 4)
+
+    #fetching all records from database
+    data=cursor.fetchall()
+
+    print(data["imageUrl"])
+    # s3 = boto3.client('s3')
+    # s3.delete_object(Bucket=custombucket, )
+
+    return render_template('ManageEmp.html')
+
 @app.route("/fetchdata", methods=['POST'])
 def getEmpInfo():
     emp_id = request.form['emp_id']
