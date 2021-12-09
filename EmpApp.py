@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from pymysql import connections
+from datetime import datetime
 import os
 import boto3
 import pymysql
@@ -101,7 +102,7 @@ def editEmp():
                 primarySkill = request.form['pri_skill']
                 department = request.form['department']
                 position = request.form['position']
-                dateHired = request.form['date_hired']
+                dateHired = datetime(request.form['date_hired'])
                 salary = request.form['salary']
                 profileImage = request.files['upload_image']
                 departmentId = request.form['department_id']
