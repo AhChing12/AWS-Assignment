@@ -136,9 +136,11 @@
 											<div class="col-sm-3 col-md-4 col-5">
 												<label style="font-weight: bold;">Date Hired</label>
 											</div>
+											{% if item.hireDate is not None %}
 											<div class="col-md-8 col-6">
 												{{ item.hireDate.strftime('%d-%m-%Y') }}
 											</div>
+											{% endif %}
 										</div>
 										<hr />
 									</div>
