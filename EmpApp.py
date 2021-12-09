@@ -84,7 +84,9 @@ def deleteImg():
     #fetching all records from database
     data=cursor.fetchall()
 
-    print(data["imageUrl"])
+    for item in data:
+        print(item.imageUrl)
+
     # s3 = boto3.client('s3')
     # s3.delete_object(Bucket=custombucket, )
 
