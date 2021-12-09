@@ -89,17 +89,17 @@ def editEmp():
             return render_template('EditEmp.html', data=data)
     else:
         employeeId = request.args.get("employee_id")
-        firstName = request.form['firstName']
-        lastName = request.form['lastName']
+        firstName = request.form['first_name']
+        lastName = request.form['last_name']
         age = request.form['age']
-        phoneNo = request.form['phoneNo']
+        phoneNo = request.form['phone_number']
         gender = request.form['gender_choice']
         email = request.form['email']
         address = request.form['address']
-        primarySkill = request.form['primarySkill']
+        primarySkill = request.form['pri_skill']
         department = request.form['department']
         position = request.form['position']
-        dateHired = request.form['dateHired']
+        dateHired = request.form['date_hired']
         salary = request.form['salary']
         profileImage = request.form['upload_image']
 
