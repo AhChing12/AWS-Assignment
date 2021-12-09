@@ -52,10 +52,12 @@ def deleteEmp():
         #fetching all records from database
         data=cursor.fetchall()
 
+        print(data)
+
         imageUrl = ""
 
         for item in data:
-            imageUrl = item["imageUrl"]
+            imageUrl = item["imageUrl"]        
 
         #delete profile image from S3 bucket
         print(imageUrl)
