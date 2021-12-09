@@ -203,6 +203,8 @@
           <td id="address">{{ item.location }}</td>
           {% if item.hireDate != None %}
           <td id="date_join">{{ item.hireDate.strftime('%d-%m-%Y') }}</td>
+          {% else %}
+          <td id="date_join">00-00-0000</td>
           {% endif %}
           <td>
             <a id="profile-icon" class="edit-btn" href="/userProfile?employee_id={{ item.employeeId }}"><img src="{{ url_for('static',filename='images/profile-icon.png') }}" alt="edit button" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Member Profile"></a>
