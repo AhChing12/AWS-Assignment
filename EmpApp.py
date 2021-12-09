@@ -179,7 +179,7 @@ def addEmpBackup():
         cursor.execute(read_sql)
         data = cursor.fetchall()
         for item in data:
-            emp_id = item.employeeId + 1
+            emp_id = item + 1
         #       End - Get last row's employeeId
 
 
