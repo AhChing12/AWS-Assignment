@@ -11,6 +11,16 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
 
+	<script type="text/javascript" src="{{ url_for('static',filename='js/jquery-3.3.1.js') }}"></script>
+   <script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.js') }}" defer></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+   <script type="text/javascript" src="{{ url_for('static',filename='js/table_script.js') }}" defer></script>
+   <script type="text/javascript" src="{{ url_for('static',filename='js/manage_emp.js') }}" defer></script>
+   <script type="text/javascript" src="{{ url_for('static',filename='js/popper.min.js') }}" defer></script>
+   <script type="text/javascript" src="{{ url_for('static',filename='js/jquery.tablesorter.js') }}" defer></script>
+   <script type="text/javascript" src="{{ url_for('static',filename='js/jquery.tablesorter.widgets.js') }}" defer></script>
+   <script type="text/javascript" src="{{ url_for('static',filename='js/jquery.tablesorter.pager.js') }}" defer></script>
+
 	<style>
 		h1 {
 			color: white; 
@@ -192,8 +202,17 @@
 
 								<div class="col-md-4">
 									<h5>Employee Image</h5>
-									<img class="mb-2" src="../static/images/image_placeholder.jpg"  alt="Employee Image">
-									<input class="mb-0" type=file name="emp_image_file" style=""> 
+									<img id="output" class="mb-2" src="../static/images/image_placeholder.jpg"  alt="Employee Image">
+									<input class="mb-0" type=file name="emp_image_file" onchange="loadFile(event)"> 
+									<script>
+  									var loadFile = function(event) {
+    									var output = document.getElementById('output');
+    									output.src = URL.createObjectURL(event.target.files[0]);
+    									output.onload = function() {
+      									URL.revokeObjectURL(output.src) // free memory
+    									}
+  									};
+									</script>
 								</div>
 							</div>
 
