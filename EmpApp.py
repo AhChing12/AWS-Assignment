@@ -143,8 +143,8 @@ def editEmp():
                             cursor.execute(sql, (firstName, lastName, age, gender, email, phoneNo, address, dateHired.strftime('%Y-%m-%d %H:%M:%S'), salary, primarySkill, object_url, employeeId))
                             db_conn.commit()
 
-                        except Exception as e:
-                            return str(e)
+                    except Exception as e:
+                        return str(e)
 
                 sql = "UPDATE department SET departmentName = %s WHERE departmentId = %s"
                 cursor.execute(sql, (department, departmentId))
