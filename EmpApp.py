@@ -71,6 +71,10 @@ def about():
 def getEmp():
     return render_template('GetEmp.html')
 
+@app.route("/editEmp", methods=['GET','POST'])
+def editEmp():
+    return render_template('editEmp.html')
+
 @app.route("/deleteImg", methods=['GET','POST'])
 def deleteImg():
     #creating variable for connection
