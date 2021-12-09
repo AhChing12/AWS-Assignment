@@ -56,7 +56,7 @@ def deleteEmp():
             imageUrl = item["imageUrl"]        
 
         #delete profile image from S3 bucket
-        if imageUrl != None
+        if imageUrl is not None
             imageUrl = imageUrl.split("/")
             s3 = boto3.client('s3')
             s3.delete_object(Bucket=custombucket, Key=imageUrl[3])
