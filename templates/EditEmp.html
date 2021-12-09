@@ -72,7 +72,7 @@
 		width:193px;
 	}
 	.longInput {
-		width: 423px;
+		width: 300px;
 	}
 	button {
 		
@@ -103,6 +103,13 @@
 		width: 250px;
 	}
 </style>
+
+<script>
+	$(".custom-file-input").on("change", function () {
+		var fileName = $(this).val().split("\\").pop();
+		$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+	});
+</script>
 
 </head>
 
@@ -155,31 +162,36 @@
 						<div class="card-body">
 							<div class="row">
 								<div class="col-md-8">
-									<div class="row col-md-12 mb-3">
+									<div class="row col-md-12 mt-1 mb-3">
 										<div class="col-md-6">
-											<h5>First Name</h5>
+											<!-- <h5>First Name</h5> -->
+											<label class="" for="student_id">First Name</label>
 											<input class="shortInput form-control" type="text" name="first_name" >
 										</div>
 										<div class="col-md-6">
-											<h5>Last Name</h5>
+											<!-- <h5>Last Name</h5> -->
+											<label class="" for="student_id">Last Name</label>
 											<input class="shortInput form-control" type="text" name="last_name">
 										</div>
 									</div>  
 
 									<div class="row col-md-12 mb-3">
 										<div class="col-md-6">
-											<h5>Age</h5>
+											<!-- <h5>Age</h5> -->
+											<label class="" for="student_id">Age</label>
 											<input class="shortInput form-control" type="number" name="age">  
 										</div>
 										<div class="col-md-6">
-											<h5>Phone Number</h5>
+											<!-- <h5>Phone Number</h5> -->
+											<label class="" for="student_id">Phone Number</label>
 											<input class="shortInput form-control" type="tel" name="phone_number">  
 										</div>
 									</div>
 
 									<div class="row col-md-12">
 										<div class="col-md-5">
-											<h5>Gender</h5>
+											<!-- <h5>Gender</h5> -->
+											<label class="" for="student_id">Gender</label>
 											<div class="gender">
 												<input class="mr-2 form-control" type="radio" id="male" name="gender_choice" checked="true" value="Male">
 												<label class="mr-5 custom-label" for="male">Male</label>
@@ -191,7 +203,8 @@
 								</div>
 
 								<div class="col-md-4">
-									<h5>Employee Image</h5>
+									<!-- <h5>Employee Image</h5> -->
+									<label class="" for="student_id">Employee Image</label>
 									<div id="uploaded_image">
 										<img class="img-thumbnail img-fluid" alt="Employee Image" src='{{ url_for('static',filename='images/default-profile-img.png') }}'>
 									</div>
@@ -205,47 +218,54 @@
 
 							<div class="row col-md-12">
 								<div class="col-md-8">
-									<h5>Email</h5>
+									<!-- <h5>Email</h5> -->
+									<label class="" for="student_id">Email</label>
 									<input class="longInput form-control"  type="email" name="email">  
 								</div>
 							</div>
 
 							<div class="row col-md-12">
 								<div class="col-md-8">
-									<h5>Address</h5>
-									<input class="longInput form-control"  type="text" name="address">  
+									<!-- <h5>Address</h5> -->
+									<label class="" for="student_id">Address</label>
+									<textarea class="form-control" id="address" name="address" rows="3" maxlength="255" value='<%#Eval("address") %>'></textarea>  
 								</div>
 							</div>
 
 							<div class="row col-md-12">
 								<div class="col-md-8">
-									<h5>Primary Skill</h5>
+									<!-- <h5>Primary Skill</h5> -->
+									<label class="" for="student_id">Primary Skill</label>
 									<input class="longInput form-control"  type="text" name="pri_skill">  
 								</div>
 							</div>
 
 							<div class="row col-md-12">
 								<div class="col-md-8">
-									<h5>Department</h5>
+									<!-- <h5>Department</h5> -->
+									<label class="" for="student_id">Department</label>
 									<input class="longInput form-control" type="text" name="department">  
 								</div>
 							</div>
 
 							<div class="row col-md-12">
 								<div class="col-md-8">
-									<h5>Position</h5>
+									<!-- <h5>Position</h5> -->
+									<label class="" for="student_id">Position</label>
 									<input class="longInput form-control" type="text" name="position">  
 								</div>
 							</div>
 
 							<div class="row col-md-12">
 								<div class="col-md-4">
-									<h5>Date Hired</h5>
+									<!-- <h5>Date Hired</h5> -->
+									<label class="" for="student_id">Date Hired</label>
 									<input class="shortInput form-control" style="font-size:16px;" type="date" name="date_hired"> 
 								</div> 
 
 								<div class="col-md-4">
-									<h5>Salary</h5>
+									<!-- <h5>Salary</h5> -->
+									<label class="" for="student_id">Salary</label>
 									<input class="shortInput form-control"  type="number" name="salary">  
 								</div>
 							</div>
@@ -262,13 +282,6 @@
 </div>
 </div>
 </form>
-
-   <script>
-      $(".custom-file-input").on("change", function () {
-         var fileName = $(this).val().split("\\").pop();
-         $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-      });
-   </script>
 
 <!-- <a href="/about">About Us</a> -->
 </body>
