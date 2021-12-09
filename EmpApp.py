@@ -108,7 +108,7 @@ def AddEmp():
             return "Please select a file"
 
         try:
-            emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file"
+            emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file.jpg"
             # cursor.execute(insert_sql, (emp_id, 1, 1, first_name, last_name, value, value, value, value, pri_skill, location, emp_image_file_name_in_s3, value, value))
             # db_conn.commit()
             emp_name = "" + first_name + " " + last_name
@@ -126,7 +126,7 @@ def AddEmp():
                 else:
                     s3_location = '-' + s3_location
 
-                object_url = "https://s3{0}.amazonaws.com/{1}/{2}".format(
+                object_url = "https://{1}.s3{0}.amazonaws.com/{2}".format(
                     s3_location,
                     custombucket,
                     emp_image_file_name_in_s3)
