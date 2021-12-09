@@ -41,9 +41,25 @@ def home():
 @app.route("/deleteEmp", methods=['POST'])
 def deleteEmp():
     if request.form['delete']:
-        cursor = db_conn.cursor()
+        cursor = db_conn.cursor(pymysql.cursors.DictCursor)
         cursor.execute("DELETE FROM employee WHERE employeeId = %s", request.form['employee_id'])
         db_conn.commit()
+
+        cursor.execute("SELECT imageUrl from employee WHERE employeeId = %s", request.form['employee_id'])
+
+        #fetching all records from database
+        data=cursor.fetchall()
+
+        imageUrl = ""
+
+        for item in data:
+            imageUrl = item["imageUrl"]
+
+        #delete profile image from S3 bucket
+        imageUrl = imageUrl.split("/")
+        s3 = boto3.client('s3')
+        s3.delete_object(Bucket=custombucket, Key=imageUrl[3])
+
         cursor.close()
 
     return jsonify({ 'response': '1'}) 
@@ -109,7 +125,6 @@ def editEmp():
                 positionId = request.form['position_id']
 
                 dateHired = datetime.strptime(dateHired, '%Y-%m-%d') 
-                print(dateHired)
                 #creating variable for connection
                 cursor=db_conn.cursor(pymysql.cursors.DictCursor)
 
@@ -361,6 +376,7 @@ def addEmpBackup():
 
 
 #            END OF Ching ADDED CODE
+
 
 
 if __name__ == '__main__':
