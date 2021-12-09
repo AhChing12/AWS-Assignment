@@ -108,59 +108,59 @@ def editEmp():
                 departmentId = request.form['department_id']
                 positionId = request.form['position_id']
 
-                dateHired = datetime.strptime(dateHired, '%Y-%m-%d %H:%M:%S') 
+                dateHired = datetime.strptime(dateHired, '%Y-%m-%d') 
                 print(dateHired)
-                # #creating variable for connection
-                # cursor=db_conn.cursor(pymysql.cursors.DictCursor)
+                #creating variable for connection
+                cursor=db_conn.cursor(pymysql.cursors.DictCursor)
 
-                # #delete old profile image from S3 bucket
-                # imageUrl = request.form['old_image'].split("/")
-                # s3 = boto3.client('s3')
-                # s3.delete_object(Bucket=custombucket, Key=imageUrl[3])
+                #delete old profile image from S3 bucket
+                imageUrl = request.form['old_image'].split("/")
+                s3 = boto3.client('s3')
+                s3.delete_object(Bucket=custombucket, Key=imageUrl[3])
 
-                # sql = "UPDATE employee SET firstName = %s, lastName = %s, age = %s, gender = %s, email = %s, phoneNo = %s, location = %s, hireDate = %s, salary = %s, primarySkill = %s, imageUrl = %s WHERE employeeId = %s"
+                sql = "UPDATE employee SET firstName = %s, lastName = %s, age = %s, gender = %s, email = %s, phoneNo = %s, location = %s, hireDate = %s, salary = %s, primarySkill = %s, imageUrl = %s WHERE employeeId = %s"
 
-                # try:
-                #     emp_image_file_name_in_s3 = "emp-id-" + str(employeeId) + "_image_file.jpg"
+                try:
+                    emp_image_file_name_in_s3 = "emp-id-" + str(employeeId) + "_image_file.jpg"
 
-                #     # Uplaod image file in S3 #
-                #     s3 = boto3.resource('s3')
+                    # Uplaod image file in S3 #
+                    s3 = boto3.resource('s3')
 
-                #     try:
-                #         print("Data inserted in MySQL RDS... uploading image to S3...")
-                #         s3.Bucket(custombucket).put_object(Key=emp_image_file_name_in_s3, Body=profileImage)
-                #         bucket_location = boto3.client('s3').get_bucket_location(Bucket=custombucket)
-                #         s3_location = (bucket_location['LocationConstraint'])
+                    try:
+                        print("Data inserted in MySQL RDS... uploading image to S3...")
+                        s3.Bucket(custombucket).put_object(Key=emp_image_file_name_in_s3, Body=profileImage)
+                        bucket_location = boto3.client('s3').get_bucket_location(Bucket=custombucket)
+                        s3_location = (bucket_location['LocationConstraint'])
 
-                #         if s3_location is None:
-                #             s3_location = ''
-                #         else:
-                #             s3_location = '-' + s3_location
+                        if s3_location is None:
+                            s3_location = ''
+                        else:
+                            s3_location = '-' + s3_location
 
-                #         object_url = "https://{1}.s3{0}.amazonaws.com/{2}".format(
-                #             s3_location,
-                #             custombucket,
-                #             emp_image_file_name_in_s3)
+                        object_url = "https://{1}.s3{0}.amazonaws.com/{2}".format(
+                            s3_location,
+                            custombucket,
+                            emp_image_file_name_in_s3)
 
-                #         print(object_url)
-                #         cursor.execute(sql, (firstName, lastName, age, gender, email, phoneNo, address, dateHired.strftime('%Y-%m-%d %H:%M:%S'), salary, primarySkill, object_url, employeeId))
-                #         db_conn.commit()
+                        print(object_url)
+                        cursor.execute(sql, (firstName, lastName, age, gender, email, phoneNo, address, dateHired, salary, primarySkill, object_url, employeeId))
+                        db_conn.commit()
 
-                #     except Exception as e:
-                #         return str(e)
+                    except Exception as e:
+                        return str(e)
 
-                # except Exception as e:
-                #     return str(e)        
+                except Exception as e:
+                    return str(e)        
 
-                # sql2 = "UPDATE department SET departmentName = %s WHERE departmentId = %s"
-                # cursor.execute(sql2, (department, departmentId))
-                # db_conn.commit()
+                sql2 = "UPDATE department SET departmentName = %s WHERE departmentId = %s"
+                cursor.execute(sql2, (department, departmentId))
+                db_conn.commit()
 
-                # sql3 = "UPDATE position SET positionName = %s WHERE positionId = %s"
-                # cursor.execute(sql3, (position, positionId))
-                # db_conn.commit()
+                sql3 = "UPDATE position SET positionName = %s WHERE positionId = %s"
+                cursor.execute(sql3, (position, positionId))
+                db_conn.commit()
                             
-                # cursor.close()
+                cursor.close()
 
 
         return render_template('ManageEmp.html')
