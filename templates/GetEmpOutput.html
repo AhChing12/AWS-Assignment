@@ -140,6 +140,10 @@
 											<div class="col-md-8 col-6">
 												{{ item.hireDate.strftime('%d-%m-%Y') }}
 											</div>
+											{% else %}
+											<div class="col-md-8 col-6">
+												00-00-0000
+											</div>
 											{% endif %}
 										</div>
 										<hr />
