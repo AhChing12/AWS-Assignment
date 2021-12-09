@@ -106,13 +106,12 @@ def editEmp():
                 profileImage = request.files['upload_image']
                 departmentId = request.form['department_id']
                 positionId = request.form['position_id']
-                oldImage = request.form['old_profile']
 
                 #creating variable for connection
                 cursor=db_conn.cursor(pymysql.cursors.DictCursor)
 
                 #delete old profile image from S3 bucket
-                imageUrl = oldImage.split("/")
+                imageUrl = request.form['old_image'].split("/")
                 s3 = boto3.client('s3')
                 s3.delete_object(Bucket=custombucket, Key=imageUrl[3])
 
