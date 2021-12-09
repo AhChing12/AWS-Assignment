@@ -152,7 +152,7 @@ if __name__ == '__main__':
 
 
     #            BELOW IS ADDED CODE
-@app.route("/addemp(backup)", methods=['GET', 'POST'])
+@app.route("/addempbackup", methods=['GET', 'POST'])
 def AddEmpBackup():
     return render_template('AddEmp(backUp).html')
     # if request.method == 'POST':
