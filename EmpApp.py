@@ -158,7 +158,7 @@ def addEmpBackup():
         age = request.form['age']
         phone_no = request.form['phone_number']
         gender = request.form['gender_choice']
-        img_src = request.form['imageSrc']
+        img_src = request.form['img_src']
         email = request.form['email']
         address = request.form['address']
         pri_skill = request.form['pri_skill']
