@@ -220,6 +220,43 @@ def AddEmp():
  
     return render_template('AddEmp.html')
 
+#            BELOW IS Ching ADDED CODE
+
+@app.route("/addempoutput", methods=['GET', 'POST'])
+def addEmpOutput():
+    return render_template('AddEmpOutput.html')
+
+
+@app.route("/addempbackup", methods=['GET', 'POST'])
+def addEmpBackup():
+    if request.method == 'POST':
+        first_name = request.form['first_name']
+        last_name = request.form['last_name']
+        age = request.form['age']
+        phone_no = request.form['phone_number']
+        gender = request.form['gender_choice']
+        img_src = request.form['img_src']
+        email = request.form['email']
+        address = request.form['address']
+        pri_skill = request.form['pri_skill']
+        department = request.form['department']
+        position = request.form['position']
+        date_hired = request.form['date_hired']
+        salary = request.form['salary']
+
+
+        return render_template('AddEmpOutput.html', first_name=first_name, last_name=last_name, age=age, 
+            phone_no=phone_no, gender=gender, img_src=img_src, email=email, address=address, pri_skill=pri_skill, 
+            department=department, position=position, date_hired=date_hired, salary=salary)
+
+    #if not POST or submit(Add) button
+    
+    return render_template('AddEmp(backUp).html')
+
+
+
+#            END OF Ching ADDED CODE
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
