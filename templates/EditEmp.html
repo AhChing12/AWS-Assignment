@@ -105,8 +105,6 @@
 
 	<body>
 
-		<form action="/editEmp" autocomplete="on" method = "POST" enctype="multipart/form-data">
-
 			<nav class="navbar sticky-top navbar-expand-md navbar-light bg-faded">
 				<div class="container-fluid">
 
@@ -137,6 +135,7 @@
 				</div>
 			</div>
 		</nav>
+
 			<h1 class="mb-4">Employee Management System (EMS)</h1>
 
 			<section class="editEmp-section mb-3">
@@ -145,6 +144,7 @@
 			<!-- <button type="submit" formaction="/getemp" style="background: grey; height: 45px; width: 200px; color:white; font:oblique;">Add Employee</button>   -->
 
 			<!-- Employee ID:  <input style="height:25px;font-size:14pt; color:grey;" type="number" name="emp_id" autofocus size="40">   -->
+			<form action="/editEmp" autocomplete="on" method = "POST" enctype="multipart/form-data">
 			{% for item in data %}
 			<div class="container">
 				<div class="row col-md-12">
