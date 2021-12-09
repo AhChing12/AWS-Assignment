@@ -32,7 +32,7 @@
 			<ul class="nav navbar-nav mx-auto">
 				<!-- menu -->
 				<li class="nav-item">
-					<a class="nav-link" href="#">Manage Employee</a>
+					<a class="nav-link" href="/manageEmp">Manage Employee</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">Attendance</a>
@@ -189,11 +189,11 @@
 								</div>
 							</div>
 						</div>
-						{% endfor %}
 						<div id="buttons" class="row my-2 mt-4">
 							<input class="btn btn-outline-primary" id="back-button" onclick="history.go(-1);" type="button" value="Back">
-							<button id="btnUpdate" onclick="location.href = 'www.yoursite.com';" class="btn btn-primary">Edit Info</button>
+							<button id="btnUpdate" onclick="location.href = '/editEmp?employee_id={{ item.employeeId }}';" class="btn btn-primary">Edit Info</button>
 						</div>
+						{% endfor %}
 
 					</div>
 				</div>
