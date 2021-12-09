@@ -33,23 +33,24 @@
 			font-weight:500;
 		}
 		h2{ /*"Search Employee"*/
-		font-size: 36px;
+		font-size: 28px;
 		color: black;
 		font-weight: 600;/* Semi-bold*/
 		display: flex;
 		justify-content: center;
 	} 
 	h5 { /*Input Titles*/
-		font-size: 18px;
+		font-size: 14px;
 		color: black;
 		font-weight: 500;/* Medium*/
 		display:flex;
 		align-self: flex-start;
+		margin-bottom: 2px;
 	}
 
 	input {
-		height:40px;
-		font-size:16px;
+		height:35px;
+		font-size:14px;
 		border-radius: 5px;
 		border-width: 1px;
 		border-color: #7E7E7E;
@@ -61,7 +62,8 @@
 		align-content: center;
 	}
 	.card {
-		width:781px;
+		width:708px;
+		border-style: none;
 	}
 	.card-body {
 		border-style: solid;
@@ -71,7 +73,7 @@
 	label {
 		display: flex;
 		align-items: center;
-		font-size:20px;
+		font-size:14px;
 		color: #353535;
 	}
 	.container > .row {
@@ -79,10 +81,10 @@
 		justify-content: center;
 	}
 	.shortInput {
-		width:193px;
+		width:173px;
 	}
 	.longInput {
-		width: 423px;
+		width: 374px;
 	}
 	img{
 		min-width:120px;
@@ -93,11 +95,11 @@
 	button {
 		
 		font-weight: 500; 
-		font-size: 20px; 
+		font-size: 16px; 
 		border-width: 0px; 
 		border-radius: 5px; 
-		height: 50px; 
-		width: 320px; 
+		height: 40px; 
+		width: 280px; 
 		color: white;
 	}
 	.btnGroup {
@@ -191,11 +193,18 @@
 										<div class="col-md-5">
 											<h5>Gender</h5>
 											<div class="gender">
-												<input class="mr-2" type="radio" id="male" name="gender_choice" checked="true" value="Male">
-												<label class="mr-5" for="male">Male</label>
-												<input class="mr-2" type="radio" id="female" name="gender_choice" value="Female">
-												<label  for="female">Female</label> 
+												<input class="mr-2 " type="radio" id="male" name="gender_choice" checked="true" value="Male">
+												<label class="mr-5 " for="male">Male</label>
+												<input class="mr-2 " type="radio" id="female" name="gender_choice" value="Female">
+												<label for="female">Female</label> 
 											</div>
+										</div>
+									</div>
+
+									<div class="row col-md-12">
+										<div class="col-md-8">
+											<h5>Email</h5>
+											<input class="longInput"  type="email" name="email">  
 										</div>
 									</div>
 								</div>
@@ -210,20 +219,15 @@
     									var output = document.getElementById('output');
     									output.src = URL.createObjectURL(event.target.files[0]);
     									document.getElementById('imageSrc').value = output.src
-//     									output.onload = function() {
-//       									URL.revokeObjectURL(output.src) // free memory
-//     									}
+    									// output.onload = function() {
+      							// 		URL.revokeObjectURL(output.src) // free memory
+    									// }
   									};
 									</script>
 								</div>
 							</div>
 
-							<div class="row col-md-12">
-								<div class="col-md-8">
-									<h5>Email</h5>
-									<input class="longInput"  type="email" name="email">  
-								</div>
-							</div>
+							
 
 							<div class="row col-md-12">
 								<div class="col-md-8">
