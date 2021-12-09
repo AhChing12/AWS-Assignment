@@ -201,7 +201,7 @@
           <td id="email">{{ item.email }}</td>
           <td id="mobile_num">{{ item.phoneNo }}</td>
           <td id="address">{{ item.location }}</td>
-          {% if item.hireDate is not "" %}
+          {% if item.hireDate is not null %}
           <td id="date_join">{{ item.hireDate.strftime('%d-%m-%Y') }}</td>
           {% endif %}
           <td>
