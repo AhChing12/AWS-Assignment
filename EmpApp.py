@@ -134,14 +134,14 @@ def editEmp():
                         else:
                             s3_location = '-' + s3_location
 
-                            object_url = "https://{1}.s3{0}.amazonaws.com/{2}".format(
-                                s3_location,
-                                custombucket,
-                                emp_image_file_name_in_s3)
+                        object_url = "https://{1}.s3{0}.amazonaws.com/{2}".format(
+                            s3_location,
+                            custombucket,
+                            emp_image_file_name_in_s3)
 
-                            print(object_url)
-                            cursor.execute(sql, (firstName, lastName, age, gender, email, phoneNo, address, dateHired.strftime('%Y-%m-%d %H:%M:%S'), salary, primarySkill, object_url, employeeId))
-                            db_conn.commit()
+                        print(object_url)
+                        cursor.execute(sql, (firstName, lastName, age, gender, email, phoneNo, address, dateHired.strftime('%Y-%m-%d %H:%M:%S'), salary, primarySkill, object_url, employeeId))
+                        db_conn.commit()
 
                     except Exception as e:
                         return str(e)
