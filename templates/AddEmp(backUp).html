@@ -204,7 +204,7 @@
 									<h5>Employee Image</h5>
 									<img id="output" class="mb-2" src="../static/images/image_placeholder.jpg"  alt="Employee Image">
 									<input class="mb-0" type=file name="emp_image_file" onchange="loadFile(event)"> 
-									<input id="imageSrc" type="text">
+									<input id="imageSrc" type="hidden">
 									<script>
   									var loadFile = function(event) {
     									var output = document.getElementById('output');
