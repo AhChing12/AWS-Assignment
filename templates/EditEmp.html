@@ -96,10 +96,6 @@
 	}
 	.cancelButton{
 		margin-right: 70px;
-		background: black;
-	}
-	.editButton {
-		background: #5F27CD;
 	}
 </style>
 
@@ -157,22 +153,22 @@
 									<div class="row col-md-12">
 										<div class="col-md-6">
 											<h5>First Name</h5>
-											<input class="shortInput" type="text" name="first_name" >
+											<input class="shortInput form-control" type="text" name="first_name" >
 										</div>
 										<div class="col-md-6">
 											<h5>Last Name</h5>
-											<input class="shortInput" type="text" name="last_name">
+											<input class="shortInput form-control" type="text" name="last_name">
 										</div>
 									</div>  
 
 									<div class="row col-md-12">
 										<div class="col-md-6">
 											<h5>Age</h5>
-											<input class="shortInput" type="number" name="age">  
+											<input class="shortInput form-control" type="number" name="age">  
 										</div>
 										<div class="col-md-6">
 											<h5>Phone Number</h5>
-											<input class="shortInput" type="tel" name="phone_number">  
+											<input class="shortInput form-control" type="tel" name="phone_number">  
 										</div>
 									</div>
 
@@ -180,9 +176,9 @@
 										<div class="col-md-5">
 											<h5>Gender</h5>
 											<div class="gender">
-												<input class="mr-2" type="radio" id="male" name="gender_choice" checked="true" value="Male">
+												<input class="mr-2 form-control" type="radio" id="male" name="gender_choice" checked="true" value="Male">
 												<label class="mr-5" for="male">Male</label>
-												<input class="mr-2" type="radio" id="female" name="gender_choice" value="Female">
+												<input class="mr-2 form-control" type="radio" id="female" name="gender_choice" value="Female">
 												<label  for="female">Female</label> 
 											</div>
 										</div>
@@ -199,56 +195,56 @@
 							<div class="row col-md-12">
 								<div class="col-md-8">
 									<h5>Email</h5>
-									<input class="longInput"  type="email" name="email">  
+									<input class="longInput form-control"  type="email" name="email">  
 								</div>
 							</div>
 
 							<div class="row col-md-12">
 								<div class="col-md-8">
 									<h5>Address</h5>
-									<input class="longInput"  type="text" name="address">  
+									<input class="longInput form-control"  type="text" name="address">  
 								</div>
 							</div>
 
 							<div class="row col-md-12">
 								<div class="col-md-8">
 									<h5>Primary Skill</h5>
-									<input class="longInput"  type="text" name="pri_skill">  
+									<input class="longInput form-control"  type="text" name="pri_skill">  
 								</div>
 							</div>
 
 							<div class="row col-md-12">
 								<div class="col-md-8">
 									<h5>Department</h5>
-									<input class="longInput" type="text" name="department">  
+									<input class="longInput form-control" type="text" name="department">  
 								</div>
 							</div>
 
 							<div class="row col-md-12">
 								<div class="col-md-8">
 									<h5>Position</h5>
-									<input class="longInput" type="text" name="position">  
+									<input class="longInput form-control" type="text" name="position">  
 								</div>
 							</div>
 
 							<div class="row col-md-12">
 								<div class="col-md-4">
 									<h5>Date Hired</h5>
-									<input class="shortInput" style="font-size:16px;" type="date" name="date_hired"> 
+									<input class="shortInput form-control" style="font-size:16px;" type="date" name="date_hired"> 
 								</div> 
 
 								<div class="col-md-4">
 									<h5>Salary</h5>
-									<input class="shortInput"  type="number" name="salary">  
+									<input class="shortInput form-control"  type="number" name="salary">  
 								</div>
 							</div>
 
 <!-- 							<h5>Employee Image</h5>
 	<input type=file name="emp_image_file" style="">   --> 
 	<div class="btnGroup mt-3">
-		<button class="cancelButton" type="button" onclick="" >Cancel</button>
+		<button id="cancel-button" class="cancelButton btn btn-outline-primary" type="button" onclick="" >Cancel</button>
 
-		<button class="editButton" type="submit" >Edit</button>
+		<button id="submit-button" class="editButton btn btn-primary" type="submit" >Edit</button>
 		<div>
 		</div>
 	</div>
