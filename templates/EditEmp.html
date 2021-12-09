@@ -205,9 +205,11 @@
 									<label class="" for="employee_image">Employee Image</label>
 									<div id="uploaded_image">
 										{% if item.imageUrl != None %}
-										<img class="img-thumbnail img-fluid" alt="Employee Image" src='{{ item.imageUrl }}'>
+										<img class="img-thumbnail img-fluid" name="old_image" alt="Employee Image" src='{{ item.imageUrl }}'>
+										<input type="hidden" name="profile_image" value="yes_profile_image">
 										{% else %}
 										<img class="img-thumbnail img-fluid" alt="Employee Image" src='{{ url_for('static',filename='images/default-profile-img.png') }}'>
+										<input type="hidden" name="profile_image" value="no_profile_image">
 										{% endif %}
 									</div>
 									<div class="custom-file">
@@ -246,7 +248,8 @@
 								<div class="col-md-8">
 									<!-- <h5>Department</h5> -->
 									<label class="" for="department">Department</label>
-									<input id="department" class="longInput form-control" value="{{ item.departmentName }}" type="text" name="department">  
+									<input id="department" class="longInput form-control" value="{{ item.departmentName }}" type="text" name="department">
+									<input type="hidden" name="department_id" value="{{ item.departmentId }}">  
 								</div>
 							</div>
 
@@ -254,7 +257,8 @@
 								<div class="col-md-8">
 									<!-- <h5>Position</h5> -->
 									<label class="" for="position">Position</label>
-									<input id="position" class="longInput form-control" value="{{ item.positionName }}" type="text" name="position">  
+									<input id="position" class="longInput form-control" value="{{ item.positionName }}" type="text" name="position">
+									<input type="hidden" name="position_id" value="{{ item.positionId }}">  
 								</div>
 							</div>
 
