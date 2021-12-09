@@ -61,7 +61,7 @@
 	.custom-label {
 		display: flex;
 		align-items: center;
-		font-size:20px;
+		font-size:18px;
 		color: #353535;
 	}
 	.container > .row {
@@ -224,11 +224,11 @@
 								</div>
 							</div>
 
-							<div class="row col-md-12">
+							<div class="row col-md-12 mb-3">
 								<div class="col-md-8">
 									<!-- <h5>Address</h5> -->
 									<label class="" for="student_id">Address</label>
-									<textarea class="form-control" id="address" name="address" rows="3" maxlength="255" value='<%#Eval("address") %>'></textarea>  
+									<textarea class="form-control" id="address" name="address" style="width: 300px;"> rows="3" maxlength="255" value='<%#Eval("address") %>'></textarea>  
 								</div>
 							</div>
 
@@ -272,7 +272,7 @@
 
 <!-- 							<h5>Employee Image</h5>
 	<input type=file name="emp_image_file" style="">   --> 
-	<div class="btnGroup mt-3">
+	<div class="btnGroup mt-4">
 		<button id="cancel-button" class="cancelButton btn btn-outline-primary" type="button" onclick="" >Cancel</button>
 
 		<button id="submit-button" class="editButton btn btn-primary" type="submit" >Edit</button>
