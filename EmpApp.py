@@ -47,11 +47,11 @@ def deleteEmp():
         cursor.execute("DELETE FROM employee WHERE employeeId = %s", employeeId)
         db_conn.commit()
 
-        cursor.execute("SELECT imageUrl from employee WHERE employeeId = %s", employeeId)
+        cursor.execute("SELECT imageUrl from employee WHERE employeeId = %s", (employeeId))
 
         #fetching all records from database
         data=cursor.fetchall()
-
+        print(employeeId)
         print(data)
 
         imageUrl = ""
