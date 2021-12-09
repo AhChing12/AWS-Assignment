@@ -145,7 +145,7 @@
 			<!-- <button type="submit" formaction="/getemp" style="background: grey; height: 45px; width: 200px; color:white; font:oblique;">Add Employee</button>   -->
 
 			<!-- Employee ID:  <input style="height:25px;font-size:14pt; color:grey;" type="number" name="emp_id" autofocus size="40">   -->
-
+			{% for item in data %}
 			<div class="container">
 				<div class="row col-md-12">
 					<div class="card align-items-center mb-5" style="box-shadow: 1px 1px 1px 1px #CDCDCD;">
@@ -156,12 +156,12 @@
 										<div class="col-md-6">
 											<!-- <h5>First Name</h5> -->
 											<label class="" for="first_name">First Name</label>
-											<input class="shortInput form-control" type="text" name="first_name" >
+											<input class="shortInput form-control" type="text" value="{{ item.firstName }}" name="first_name" >
 										</div>
 										<div class="col-md-6">
 											<!-- <h5>Last Name</h5> -->
 											<label class="" for="last_name">Last Name</label>
-											<input class="shortInput form-control" type="text" name="last_name">
+											<input class="shortInput form-control" type="text" value="{{ item.lastName }}" name="last_name">
 										</div>
 									</div>  
 
@@ -169,12 +169,12 @@
 										<div class="col-md-6">
 											<!-- <h5>Age</h5> -->
 											<label class="" for="age">Age</label>
-											<input class="shortInput form-control" type="number" name="age">  
+											<input class="shortInput form-control" type="number" value="{{ item.age }}" name="age">  
 										</div>
 										<div class="col-md-6">
 											<!-- <h5>Phone Number</h5> -->
 											<label class="" for="phone_no">Phone Number</label>
-											<input class="shortInput form-control" type="tel" name="phone_number">  
+											<input class="shortInput form-control" type="tel" value="{{ item.phoneNo }}" name="phone_number">  
 										</div>
 									</div>
 
@@ -182,12 +182,16 @@
 										<div class="col-md-5">
 											<!-- <h5>Gender</h5> -->
 											<label class="" for="gender">Gender</label>
+											{% if item.gender == 'Male' %}
 											<div class="gender">
 												<input class="mr-2" type="radio" id="male" name="gender_choice" checked="true" value="Male">
+
 												<label class="mr-5 custom-label" for="male">Male</label>
-												<input class="mr-2" type="radio" id="female" name="gender_choice" value="Female">
+											{% else %}
+												<input class="mr-2" type="radio" id="female" name="gender_choice" checked="true" value="Female">
 												<label class="custom-label" for="female">Female</label> 
 											</div>
+											{% endif %}
 										</div>
 									</div>
 								</div>
@@ -196,7 +200,11 @@
 									<!-- <h5>Employee Image</h5> -->
 									<label class="" for="employee_image">Employee Image</label>
 									<div id="uploaded_image">
+										{% if item.imageUrl != None %}
+										<img class="img-thumbnail img-fluid" alt="Employee Image" src='{{ item.imageUrl }}'>
+										{% else %}
 										<img class="img-thumbnail img-fluid" alt="Employee Image" src='{{ url_for('static',filename='images/default-profile-img.png') }}'>
+										{% endif %}
 									</div>
 									<div class="custom-file">
 										<input class="custom-file-input" type="file" name="upload_image" id="upload_image" accept="image/*"/>
@@ -210,7 +218,7 @@
 								<div class="col-md-8">
 									<!-- <h5>Email</h5> -->
 									<label class="" for="email">Email</label>
-									<input class="longInput form-control"  type="email" name="email">  
+									<input class="longInput form-control" value="{{ item.email }}" type="email" name="email">  
 								</div>
 							</div>
 
@@ -218,7 +226,7 @@
 								<div class="col-md-8">
 									<!-- <h5>Address</h5> -->
 									<label class="" for="address">Address</label>
-									<textarea class="form-control" id="address" name="address" style="width: 300px;" rows="3" maxlength="255" value='<%#Eval("address") %>'></textarea>  
+									<textarea class="form-control" id="address" name="address" style="width: 300px;" rows="3" maxlength="255" value="{{ item.location }}"></textarea>  
 								</div>
 							</div>
 
@@ -226,7 +234,7 @@
 								<div class="col-md-8">
 									<!-- <h5>Primary Skill</h5> -->
 									<label class="" for="primary_skill">Primary Skill</label>
-									<input class="longInput form-control"  type="text" name="pri_skill">  
+									<input class="longInput form-control" value="{{ item.primarySkill }}" type="text" name="pri_skill">  
 								</div>
 							</div>
 
@@ -234,7 +242,7 @@
 								<div class="col-md-8">
 									<!-- <h5>Department</h5> -->
 									<label class="" for="department">Department</label>
-									<input class="longInput form-control" type="text" name="department">  
+									<input class="longInput form-control" value="{{ item.departmentName }}" type="text" name="department">  
 								</div>
 							</div>
 
@@ -242,7 +250,7 @@
 								<div class="col-md-8">
 									<!-- <h5>Position</h5> -->
 									<label class="" for="position">Position</label>
-									<input class="longInput form-control" type="text" name="position">  
+									<input class="longInput form-control" value="{{ item.positionName }}" type="text" name="position">  
 								</div>
 							</div>
 
@@ -250,13 +258,13 @@
 								<div class="col-md-4">
 									<!-- <h5>Date Hired</h5> -->
 									<label class="" for="date_hired">Date Hired</label>
-									<input class="shortInput form-control" style="font-size:16px;" type="date" name="date_hired"> 
+									<input class="shortInput form-control" style="font-size:16px;" value="{{ item.hireDate}}" type="date" name="date_hired"> 
 								</div> 
 
 								<div class="col-md-4">
 									<!-- <h5>Salary</h5> -->
 									<label class="" for="salary">Salary</label>
-									<input class="shortInput form-control"  type="number" name="salary">  
+									<input class="shortInput form-control" value="{{ item.salary }}"  type="number" name="salary">  
 								</div>
 							</div>
 
@@ -276,6 +284,8 @@
 		<div>
 		</div>
 	</div>
+	{% endfor %}
+
 </div>
 </div>
 </form>
