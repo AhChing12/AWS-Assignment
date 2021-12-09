@@ -153,6 +153,7 @@ def addEmpOutput():
 @app.route("/addempbackup", methods=['GET', 'POST'])
 def addEmpBackup():
     if request.method == 'POST':
+        return render_template('AddEmpOutput.html')
         first_name = request.form['first_name']
         last_name = request.form['last_name']
         age = request.form['age']
@@ -172,8 +173,8 @@ def addEmpBackup():
             department=department, position=position, date_hired=date_hired, salary=salary)
 
     #if not POST or submit(Add) button
-    return render_template('AddEmpOutput.html')
-#     return render_template('AddEmp(backUp).html')
+    
+    return render_template('AddEmp(backUp).html')
 
 
 
