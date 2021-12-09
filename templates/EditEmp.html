@@ -205,11 +205,11 @@
 									<label class="" for="employee_image">Employee Image</label>
 									<div id="uploaded_image">
 										{% if item.imageUrl != None %}
-										<img class="img-thumbnail img-fluid" alt="Employee Image" src='{{ item.imageUrl }}'>
+										<img id="profileImg" class="img-thumbnail img-fluid" alt="Employee Image" src='{{ item.imageUrl }}'>
 										<input type="hidden" name="old_image" value="{{ item.imageUrl }}">
 										<input type="hidden" name="profile_image" value="yes_profile_image">
 										{% else %}
-										<img class="img-thumbnail img-fluid" alt="Employee Image" src='{{ url_for('static',filename='images/default-profile-img.png') }}'>
+										<img id="profileImg" class="img-thumbnail img-fluid" alt="Employee Image" src='{{ url_for('static',filename='images/default-profile-img.png') }}'>
 										<input type="hidden" name="profile_image" value="no_profile_image">
 										{% endif %}
 									</div>
@@ -217,6 +217,13 @@
 										<input class="custom-file-input" type="file" name="upload_image" id="upload_image" accept="image/*"/>
 										<label class="custom-file-label" for="upload_image">Choose file</label>
 									</div>
+
+								<script>
+									var loadFile = function(event) {
+										var output = document.getElementById('profileImg');
+										output.src = URL.createObjectURL(event.target.files[0]);
+    								};
+    							</script>
 
 								</div>
 							</div>
