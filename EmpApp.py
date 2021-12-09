@@ -92,6 +92,21 @@ def about():
 def getEmp():
     return render_template('GetEmp.html')
 
+@app.route("/manageEmp", methods=['GET', 'POST'])
+def manageEmp():
+    #creating variable for connection
+    cursor=db_conn.cursor(pymysql.cursors.DictCursor)
+
+    sql = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId"
+
+    #executing query
+    cursor.execute(sql)
+
+    #fetching all records from database
+    data=cursor.fetchall()
+   
+    return render_template('ManageEmp.html', data=data)    
+
 @app.route("/editEmp", methods=['GET','POST'])
 def editEmp():
     if request.method == 'GET':
@@ -217,7 +232,7 @@ def editEmp():
                             
             cursor.close()
 
-    return render_template('ManageEmp.html')
+    return redirect("/manageEmp")
 
 @app.route("/deleteImg", methods=['GET','POST'])
 def deleteImg():
