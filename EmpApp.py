@@ -419,8 +419,8 @@ def addEmpBackup():
 
         print("all modification done...")
         return render_template('AddEmpOutput.html', first_name=first_name, last_name=last_name, age=age, 
-            phone_no=phone_no, gender=gender, img_src=img_src, email=email, address=address, pri_skill=pri_skill, 
-            department=department, position=position, date_hired=date_hired, salary=salary)
+            phone_no=phone_no, gender=gender, img_src=object_url, email=email, address=address, pri_skill=pri_skill, 
+            department=department, position=position, date_hired=date_hired, salary=salary, employeeId=emp_id)
 
     #if not POST or submit(Add) button
     
