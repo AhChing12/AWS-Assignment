@@ -102,7 +102,7 @@ def editEmp():
                 primarySkill = request.form['pri_skill']
                 department = request.form['department']
                 position = request.form['position']
-                dateHired = datetime(int(request.form['date_hired']))
+                dateHired = request.form['date_hired']
                 salary = request.form['salary']
                 profileImage = request.files['upload_image']
                 departmentId = request.form['department_id']
