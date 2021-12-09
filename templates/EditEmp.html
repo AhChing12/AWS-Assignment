@@ -105,7 +105,7 @@
 
 	<body>
 
-		<form action="/addemp" autocomplete="on" method = "POST" enctype="multipart/form-data">
+		<form action="/editEmp" autocomplete="on" method = "POST" enctype="multipart/form-data">
 
 			<nav class="navbar sticky-top navbar-expand-md navbar-light bg-faded">
 				<div class="container-fluid">
@@ -156,12 +156,12 @@
 										<div class="col-md-6">
 											<!-- <h5>First Name</h5> -->
 											<label class="" for="first_name">First Name</label>
-											<input class="shortInput form-control" type="text" value="{{ item.firstName }}" name="first_name" >
+											<input id="firstName" class="shortInput form-control" type="text" value="{{ item.firstName }}" name="first_name" >
 										</div>
 										<div class="col-md-6">
 											<!-- <h5>Last Name</h5> -->
 											<label class="" for="last_name">Last Name</label>
-											<input class="shortInput form-control" type="text" value="{{ item.lastName }}" name="last_name">
+											<input id="lastName" class="shortInput form-control" type="text" value="{{ item.lastName }}" name="last_name">
 										</div>
 									</div>  
 
@@ -169,12 +169,12 @@
 										<div class="col-md-6">
 											<!-- <h5>Age</h5> -->
 											<label class="" for="age">Age</label>
-											<input class="shortInput form-control" type="number" value="{{ item.age }}" name="age">  
+											<input id="age" class="shortInput form-control" type="number" value="{{ item.age }}" name="age">  
 										</div>
 										<div class="col-md-6">
 											<!-- <h5>Phone Number</h5> -->
 											<label class="" for="phone_no">Phone Number</label>
-											<input class="shortInput form-control" type="tel" value="{{ item.phoneNo }}" name="phone_number">  
+											<input id="phoneNo" class="shortInput form-control" type="tel" value="{{ item.phoneNo }}" name="phone_number">  
 										</div>
 									</div>
 
@@ -221,7 +221,7 @@
 								<div class="col-md-8">
 									<!-- <h5>Email</h5> -->
 									<label class="" for="email">Email</label>
-									<input class="longInput form-control" value="{{ item.email }}" type="email" name="email">  
+									<input id="email" class="longInput form-control" value="{{ item.email }}" type="email" name="email">  
 								</div>
 							</div>
 
@@ -237,7 +237,7 @@
 								<div class="col-md-8">
 									<!-- <h5>Primary Skill</h5> -->
 									<label class="" for="primary_skill">Primary Skill</label>
-									<input class="longInput form-control" value="{{ item.primarySkill }}" type="text" name="pri_skill">  
+									<input id="primarySkill" class="longInput form-control" value="{{ item.primarySkill }}" type="text" name="pri_skill">  
 								</div>
 							</div>
 
@@ -245,7 +245,7 @@
 								<div class="col-md-8">
 									<!-- <h5>Department</h5> -->
 									<label class="" for="department">Department</label>
-									<input class="longInput form-control" value="{{ item.departmentName }}" type="text" name="department">  
+									<input id="department" class="longInput form-control" value="{{ item.departmentName }}" type="text" name="department">  
 								</div>
 							</div>
 
@@ -253,7 +253,7 @@
 								<div class="col-md-8">
 									<!-- <h5>Position</h5> -->
 									<label class="" for="position">Position</label>
-									<input class="longInput form-control" value="{{ item.positionName }}" type="text" name="position">  
+									<input id="position" class="longInput form-control" value="{{ item.positionName }}" type="text" name="position">  
 								</div>
 							</div>
 
@@ -261,13 +261,13 @@
 								<div class="col-md-4">
 									<!-- <h5>Date Hired</h5> -->
 									<label class="" for="date_hired">Date Hired</label>
-									<input class="shortInput form-control" style="font-size:16px;" value="{{ item.hireDate.strftime('%Y-%m-%d') }}" type="date" name="date_hired"> 
+									<input id="dateHired" class="shortInput form-control" style="font-size:16px;" value="{{ item.hireDate.strftime('%Y-%m-%d') }}" type="date" name="date_hired"> 
 								</div> 
 
 								<div class="col-md-4">
 									<!-- <h5>Salary</h5> -->
 									<label class="" for="salary">Salary</label>
-									<input class="shortInput form-control" value="{{ item.salary }}"  type="number" name="salary">  
+									<input id="salary" class="shortInput form-control" value="{{ item.salary }}"  type="number" name="salary">  
 								</div>
 							</div>
 
