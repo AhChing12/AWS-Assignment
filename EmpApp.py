@@ -151,8 +151,7 @@ def addEmpOutput():
 
 
 @app.route("/addempbackup", methods=['GET', 'POST'])
-def AddEmpBackup():
-
+def addEmpBackup():
     if request.method == 'POST':
         first_name = request.form['first_name']
         last_name = request.form['last_name']
