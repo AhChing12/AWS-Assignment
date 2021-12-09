@@ -73,7 +73,19 @@ def getEmp():
 
 @app.route("/editEmp", methods=['GET','POST'])
 def editEmp():
-    return render_template('EditEmp.html')
+    if request.args.get("employee_id") is not None:
+        #creating variable for connection
+        cursor=db_conn.cursor(pymysql.cursors.DictCursor)
+
+        sql = "SELECT E.employeeId, E.firstName, E.lastName, E.age, E.gender, E.email, E.phoneNo, E.location, E.hireDate, E.salary, E.primarySkill, E.imageUrl, P.positionName, D.departmentName from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId WHERE E.employeeId = %s"
+
+        #executing query
+        cursor.execute(sql, (request.args.get("employee_id")))
+
+        #fetching all records from database
+        data=cursor.fetchall()
+
+    return render_template('EditEmp.html', data=data)
 
 @app.route("/deleteImg", methods=['GET','POST'])
 def deleteImg():
@@ -119,43 +131,6 @@ def getEmpInfo():
         location = row[4]
         
     return render_template('GetEmpOutput.html', id=emp_id, fname=first_name, lname=last_name, interest=0, location=location)    
-
-#            BELOW IS Ching ADDED CODE
-
-@app.route("/addempoutput", methods=['GET', 'POST'])
-def addEmpOutput():
-    return render_template('AddEmpOutput.html')
-
-
-@app.route("/addempbackup", methods=['GET', 'POST'])
-def addEmpBackup():
-    if request.method == 'POST':
-        first_name = request.form['first_name']
-        last_name = request.form['last_name']
-        age = request.form['age']
-        phone_no = request.form['phone_number']
-        gender = request.form['gender_choice']
-        img_src = request.form['img_src']
-        email = request.form['email']
-        address = request.form['address']
-        pri_skill = request.form['pri_skill']
-        department = request.form['department']
-        position = request.form['position']
-        date_hired = request.form['date_hired']
-        salary = request.form['salary']
-
-
-        return render_template('AddEmpOutput.html', first_name=first_name, last_name=last_name, age=age, 
-            phone_no=phone_no, gender=gender, img_src=img_src, email=email, address=address, pri_skill=pri_skill, 
-            department=department, position=position, date_hired=date_hired, salary=salary)
-
-    #if not POST or submit(Add) button
-    
-    return render_template('AddEmp(backUp).html')
-
-
-
-#            END OF ADDED CODE
 
 @app.route("/addemp", methods=['GET', 'POST'])
 def AddEmp():
