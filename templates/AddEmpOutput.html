@@ -11,6 +11,16 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
 	<style>
+		h1 {
+			color: white; 
+			background: black; 
+			height: 55px; 
+			display:flex; 
+			justify-content: center; 
+			align-items: center; 
+			font-size: 24px; 
+			font-weight:500;
+		}
 		h2{ /*"Search Employee"*/
 		font-size: 36px;
 		color: black;
@@ -73,13 +83,45 @@
 </head>
 
 <font style="font-family: Montserrat">
-	<h1 style="color: DodgerBlue">Employee Management System (EMS)</h1>
 
 	<body>
 			<!-- <h1>SAVE SUCCESSFUL</h1> 
 			<h2>Following Employee has been added to the database</h2> 
 			<h2>{{ name }}</h2>  -->
 			<form action="http://3.134.115.108:80/" autocomplete="on" method = "GET">
+
+				<nav class="navbar sticky-top navbar-expand-md navbar-light bg-faded">
+				<div class="container-fluid">
+
+					<!-- Brand -->
+					<asp:HyperLink ID="brandLink" runat="server" class="navbar-brand" NavigateUrl="~/art_gallery.aspx">
+					<asp:Image ID="logo" runat="server" src="image/palette.svg" alt="" class="mr-2" Width="50" ClientIDMode="Static" />
+					EMS
+				</asp:HyperLink>
+
+				<!-- Toggler/collapsibe Button -->
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" runat="server" clientidmode="Static">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="collapsibleNavbar">
+					<ul class="nav navbar-nav mx-auto">
+						<!-- menu -->
+						<li class="nav-item">
+							<a class="nav-link" href="#">Manage Employee</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Attendance</a>
+						</li>
+
+					</ul>
+
+
+				</div>
+			</div>
+		</nav>
+
+				<h1 class="mb-4">Employee Management System (EMS)</h1>
 
 				<h2>Employee Added Successfully</h2>
 				<!-- <button type="submit" formaction="/getemp" style="background: grey; height: 45px; width: 200px; color:white; font:oblique;">Add Employee</button>   -->
