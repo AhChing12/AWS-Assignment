@@ -50,7 +50,7 @@ def deleteEmp():
         #fetching all records from database
         data=cursor.fetchall()
 
-        if data > 0:       
+        if len(cursor.fetchall()):       
             imageUrl = ""
 
             for item in data:
