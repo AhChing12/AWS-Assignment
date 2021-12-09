@@ -41,11 +41,13 @@ def home():
 @app.route("/deleteEmp", methods=['POST'])
 def deleteEmp():
     if request.form['delete']:
+        employeeId = request.form['employee_id']
+
         cursor = db_conn.cursor(pymysql.cursors.DictCursor)
-        cursor.execute("DELETE FROM employee WHERE employeeId = %s", request.form['employee_id'])
+        cursor.execute("DELETE FROM employee WHERE employeeId = %s", employeeId)
         db_conn.commit()
 
-        cursor.execute("SELECT imageUrl from employee WHERE employeeId = %s", request.form['employee_id'])
+        cursor.execute("SELECT imageUrl from employee WHERE employeeId = %s", employeeId)
 
         #fetching all records from database
         data=cursor.fetchall()
