@@ -91,7 +91,7 @@ def deleteImg():
 
     imageUrl.split("/")
     s3 = boto3.client('s3')
-    s3.delete_object(Bucket=custombucket, imageUrl[3])
+    s3.delete_object(Bucket=custombucket, Key=imageUrl[3])
 
     return render_template('ManageEmp.html')
 
