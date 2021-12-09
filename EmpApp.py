@@ -78,7 +78,7 @@ def editEmp():
             #creating variable for connection
             cursor=db_conn.cursor(pymysql.cursors.DictCursor)
 
-            sql = "SELECT E.employeeId, E.firstName, E.lastName, E.age, E.gender, E.email, E.phoneNo, E.location, E.hireDate, E.salary, E.primarySkill, E.imageUrl, P.positionName, D.departmentName from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId WHERE E.employeeId = %s"
+            sql = "SELECT E.employeeId, E.firstName, E.lastName, E.age, E.gender, E.email, E.phoneNo, E.location, E.hireDate, E.salary, E.primarySkill, E.imageUrl, P.positionName, P.positionId, D.departmentName, D.departmentId from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId WHERE E.employeeId = %s"
 
             #executing query
             cursor.execute(sql, (request.args.get("employee_id")))
@@ -88,35 +88,74 @@ def editEmp():
 
             return render_template('EditEmp.html', data=data)
     else:
-        employeeId = request.form['employee_id']
-        firstName = request.form['first_name']
-        lastName = request.form['last_name']
-        age = request.form['age']
-        phoneNo = request.form['phone_number']
-        gender = request.form['gender_choice']
-        email = request.form['email']
-        address = request.form['address']
-        primarySkill = request.form['pri_skill']
-        department = request.form['department']
-        position = request.form['position']
-        dateHired = request.form['date_hired']
-        salary = request.form['salary']
-        profileImage = request.files['upload_image']
+        if request.files['upload_image'].filename != '':
+            if request.form['profile_image'] == 'yes_profile_image':
+                employeeId = request.form['employee_id']
+                firstName = request.form['first_name']
+                lastName = request.form['last_name']
+                age = request.form['age']
+                phoneNo = request.form['phone_number']
+                gender = request.form['gender_choice']
+                email = request.form['email']
+                address = request.form['address']
+                primarySkill = request.form['pri_skill']
+                department = request.form['department']
+                position = request.form['position']
+                dateHired = request.form['date_hired']
+                salary = request.form['salary']
+                profileImage = request.files['upload_image']
+                departmentId = request.form['department_id']
+                positionId = request.form['position_id']
 
-        print(employeeId)
-        print(firstName)
-        print(lastName)
-        print(age)
-        print(phoneNo)
-        print(gender)
-        print(email)
-        print(address)
-        print(primarySkill)
-        print(department)
-        print(position)
-        print(dateHired)
-        print(salary)
-        print(profileImage)
+                #creating variable for connection
+                cursor=db_conn.cursor(pymysql.cursors.DictCursor)
+
+                #delete old profile image from S3 bucket
+                imageUrl = request.form['old_image'].split("/")
+                s3 = boto3.client('s3')
+                s3.delete_object(Bucket=custombucket, Key=imageUrl[3])
+
+                sql = "UPDATE employee SET firstName = %s, lastName = %s, age = %s, gender = %s, email = %s, phoneNo = %s, location = %s, hireDate = %s, salary = %s, primarySkill = %s, imageUrl = %s WHERE employeeId = %s"
+
+                try:
+                    emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file.jpg"
+
+                    # Uplaod image file in S3 #
+                    s3 = boto3.resource('s3')
+
+                    try:
+                        print("Data inserted in MySQL RDS... uploading image to S3...")
+                        s3.Bucket(custombucket).put_object(Key=emp_image_file_name_in_s3, Body=profileImage)
+                        bucket_location = boto3.client('s3').get_bucket_location(Bucket=custombucket)
+                        s3_location = (bucket_location['LocationConstraint'])
+
+                        if s3_location is None:
+                            s3_location = ''
+                        else:
+                            s3_location = '-' + s3_location
+
+                            object_url = "https://{1}.s3{0}.amazonaws.com/{2}".format(
+                                s3_location,
+                                custombucket,
+                                emp_image_file_name_in_s3)
+
+                            print(object_url)
+                            cursor.execute(sql, (firstName, lastName, age, gender, email, phoneNo, address, dateHired.strftime('%Y-%m-%d %H:%M:%S'), salary, primarySkill, object_url, employeeId))
+                            db_conn.commit()
+
+                        except Exception as e:
+                            return str(e)
+
+                sql = "UPDATE department SET departmentName = %s WHERE departmentId = %s"
+                cursor.execute(sql, (department, departmentId))
+                db_conn.commit()
+
+                sql = "UPDATE position SET positionName = %s WHERE positionId = %s"
+                cursor.execute(sql, (position, positionId))
+                db_conn.commit()
+                            
+                cursor.close()
+
 
         return render_template('ManageEmp.html')
             
@@ -219,6 +258,7 @@ def AddEmp():
         return render_template('AddEmpOutput.html', name=emp_name)
  
     return render_template('AddEmp.html')
+
 
 #            BELOW IS Ching ADDED CODE
 
