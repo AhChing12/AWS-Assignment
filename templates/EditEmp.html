@@ -106,6 +106,7 @@
 
 <script>
 	$(".custom-file-input").on("change", function () {
+		console.log(123)
 		var fileName = $(this).val().split("\\").pop();
 		$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
 	});
@@ -228,7 +229,7 @@
 								<div class="col-md-8">
 									<!-- <h5>Address</h5> -->
 									<label class="" for="student_id">Address</label>
-									<textarea class="form-control" id="address" name="address" style="width: 300px;"> rows="3" maxlength="255" value='<%#Eval("address") %>'></textarea>  
+									<textarea class="form-control" id="address" name="address" style="width: 300px;" rows="3" maxlength="255" value='<%#Eval("address") %>'></textarea>  
 								</div>
 							</div>
 
