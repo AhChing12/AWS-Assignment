@@ -101,16 +101,14 @@ def AddEmp():
         emp_image_file = request.files['emp_image_file']
         value = None
 
-        # insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-        # cursor = db_conn.cursor()
+        insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        cursor = db_conn.cursor()
 
         if emp_image_file.filename == "":
             return "Please select a file"
 
         try:
             emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file.jpg"
-            # cursor.execute(insert_sql, (emp_id, 1, 1, first_name, last_name, value, value, value, value, pri_skill, location, emp_image_file_name_in_s3, value, value))
-            # db_conn.commit()
             emp_name = "" + first_name + " " + last_name
             # Uplaod image file in S3 #
             s3 = boto3.resource('s3')
@@ -130,7 +128,10 @@ def AddEmp():
                     s3_location,
                     custombucket,
                     emp_image_file_name_in_s3)
+                
                 print(object_url)
+                cursor.execute(insert_sql, (emp_id, 1, 1, first_name, last_name, value, value, value, value, pri_skill, location, object_url, value, value))
+                db_conn.commit()
 
             except Exception as e:
                 return str(e)
