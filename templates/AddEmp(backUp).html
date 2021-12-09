@@ -204,10 +204,12 @@
 									<h5>Employee Image</h5>
 									<img id="output" class="mb-2" src="../static/images/image_placeholder.jpg"  alt="Employee Image">
 									<input class="mb-0" type=file name="emp_image_file" onchange="loadFile(event)"> 
+									<input id="imageSrc" type="text">
 									<script>
   									var loadFile = function(event) {
     									var output = document.getElementById('output');
     									output.src = URL.createObjectURL(event.target.files[0]);
+    									document.getElementById('imageSrc').value = output.src
     									output.onload = function() {
       									URL.revokeObjectURL(output.src) // free memory
     									}
