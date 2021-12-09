@@ -203,11 +203,11 @@
 									<!-- <h5>Employee Image</h5> -->
 									<label class="" for="employee_image">Employee Image</label>
 									<div id="uploaded_image">
-										{% if item.imageUrl != None %}
+						<!-- 				{% if item.imageUrl != None %}
 										<img class="img-thumbnail img-fluid" alt="Employee Image" src='{{ item.imageUrl }}'>
-										{% else %}
+										{% else %} -->
 										<img class="img-thumbnail img-fluid" alt="Employee Image" src='{{ url_for('static',filename='images/default-profile-img.png') }}'>
-										{% endif %}
+									<!-- 	{% endif %} -->
 									</div>
 									<div class="custom-file">
 										<input class="custom-file-input" type="file" name="upload_image" id="upload_image" accept="image/*"/>
