@@ -282,6 +282,7 @@ def addEmpBackup():
         phone_no = request.form['phone_number']
         gender = request.form['gender_choice']
         img_src = request.form['img_src']
+        upload_image = request.files['upload_image']
         email = request.form['email']
         address = request.form['address']
         pri_skill = request.form['pri_skill']
@@ -291,6 +292,64 @@ def addEmpBackup():
         salary = request.form['salary']
 
 
+        #       Begin - Get last row's employeeId
+        cursor = db_conn.cursor(pymysql.cursors.DictCursor)
+        #gets the last row's employeeId
+        read_sql = "SELECT employeeId FROM employee ORDER BY employeeId DESC LIMIT 1"
+        # cursor.execute(read_sql, (args=None))
+        cursor.execute(read_sql)
+        data = cursor.fetchall()
+        for item in data:
+            emp_id = item["employeeId"] + 1
+        #       End - Get last row's employeeId
+
+
+        insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        cursor = db_conn.cursor()
+
+        if upload_image.filename == "":
+            return "Please select a file"
+
+        if(department == "IT"):
+            departmentId = 1
+
+        if(position == "Programmer"):
+            positionId = 1
+
+        try:
+            emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file.jpg"
+            # emp_name = "" + first_name + " " + last_name
+            # Uplaod image file in S3 #
+            s3 = boto3.resource('s3')
+
+            try:
+                print("Data inserted in MySQL RDS... uploading image to S3...")
+                s3.Bucket(custombucket).put_object(Key=emp_image_file_name_in_s3, Body=upload_image)
+                bucket_location = boto3.client('s3').get_bucket_location(Bucket=custombucket)
+                s3_location = (bucket_location['LocationConstraint'])
+
+                if s3_location is None:
+                    s3_location = ''
+                else:
+                    s3_location = '-' + s3_location
+
+                object_url = "https://{1}.s3{0}.amazonaws.com/{2}".format(
+                    s3_location,
+                    custombucket,
+                    emp_image_file_name_in_s3)
+
+                print(object_url)
+                cursor.execute(insert_sql, (None, departmentId, positionId, first_name, last_name, age, gender, 
+                    email, phone_no, pri_skill, address, object_url, date_hired, salary))
+                db_conn.commit()
+
+            except Exception as e:
+                return str(e)
+
+        finally:
+            cursor.close()
+
+        print("all modification done...")
         return render_template('AddEmpOutput.html', first_name=first_name, last_name=last_name, age=age, 
             phone_no=phone_no, gender=gender, img_src=img_src, email=email, address=address, pri_skill=pri_skill, 
             department=department, position=position, date_hired=date_hired, salary=salary)
