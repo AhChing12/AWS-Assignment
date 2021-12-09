@@ -145,6 +145,10 @@ def AddEmp():
 
 #            BELOW IS ADDED CODE
 
+@app.route("/addempoutput", methods=['GET', 'POST'])
+def getEmp():
+    return render_template('AddEmpOutput.html')
+
 
 @app.route("/addempbackup", methods=['GET', 'POST'])
 def AddEmpBackup():
