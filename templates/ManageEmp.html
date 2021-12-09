@@ -208,7 +208,7 @@
           {% endif %}
           <td>
             <a id="profile-icon" class="edit-btn" href="/userProfile?employee_id={{ item.employeeId }}"><img src="{{ url_for('static',filename='images/profile-icon.png') }}" alt="edit button" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Member Profile"></a>
-            <a class="edit-btn" href="edit_member.php?edit=true&student_id='.$row['student_id'].'"><img src="{{ url_for('static',filename='images/edit-btn.png') }}" alt="edit button" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Edit Member\'s Information"></a>
+            <a class="edit-btn" href="/editEmp?employee_id={{ item.employeeId }}"><img src="{{ url_for('static',filename='images/edit-btn.png') }}" alt="edit button" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Edit Member\'s Information"></a>
             <input type="image" src="{{ url_for('static',filename='images/delete-btn.png') }}" class="delete-btn" alt="delete" name="delete" value="{{ item.employeeId }}" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Delete Member">
           </td>
         </tr>
