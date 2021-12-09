@@ -57,8 +57,10 @@ def deleteEmp():
 
         #delete profile image from S3 bucket
         imageUrl = imageUrl.split("/")
-        s3 = boto3.client('s3')
-        s3.delete_object(Bucket=custombucket, Key=imageUrl[3])
+        print(imageUrl)
+        print(imageUrl[3])
+        # s3 = boto3.client('s3')
+        # s3.delete_object(Bucket=custombucket, Key=imageUrl[3])
 
         cursor.close()
 
