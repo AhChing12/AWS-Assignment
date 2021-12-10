@@ -133,7 +133,7 @@
 
         <hr />
 
-        <input type="checkbox" id="check_all2">
+        <input type="checkbox" onclick="loadFile()" id="check_all2">
 
          <div class="bootstrap_buttons">
           <button class="reset btn btn-primary shadow" id="submit-button" type="button" data-column="0" data-filter="">Reset search filters</button>
@@ -155,7 +155,11 @@
                 <th>Address</th>
                 <th>Date Hired</th>
                 <th>Present</th>
-                <th id="edit-delete-head" data-sorter="false"><input type="checkbox" id="check_all" onclick="loadFile()"></th>
+                <th id="edit-delete-head" data-sorter="false">
+                  <div>
+                  <input type="checkbox" id="check_all" onclick="loadFile()">
+                  </div>
+                </th>
               </tr>
             </thead>
        
@@ -225,10 +229,10 @@
        $(document).ready(function() { 
         console.log(456)
 
-        $('#check_all2').click(function () {    
-         console.log(123)
-         $('input:checkbox.checkItem').prop('checked', this.checked);    
-       });
+       //  $('#check_all2').click(function () {    
+       //   console.log(123)
+       //   $('input:checkbox.checkItem').prop('checked', this.checked);    
+       // });
 
         $('#check_all').bind('click',function() {
           console.log(1234)
@@ -237,7 +241,7 @@
         });
 
 
-         $('#check_all').change(function() {    
+         $('#check_all').click(function() {    
            console.log(123)
            $('input:checkbox.checkItem').prop('checked', this.checked);    
          });
