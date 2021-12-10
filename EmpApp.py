@@ -102,13 +102,14 @@ def attendance():
     # sql = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId"
 
     #executing query
-    cursor.execute(sql, datetime.now())
+    cursor.execute(sql, datetime.strptime(datetime.now(), '%Y-%m-%d'))
 
     #fetching all records from database
     data=cursor.fetchall()
 
     print(data)
-    print(datetime.now())
+
+    print(datetime.strptime(datetime.now(), '%Y-%m-%d'))
 
     return render_template('Attendance.html', data=data)
 
