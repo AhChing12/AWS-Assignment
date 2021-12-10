@@ -233,14 +233,14 @@
           {% endif %}
 
           {% if item.present == 0 %}
-          <td>Absent</td>
+          <td><img alt="Absent" src='{{ url_for('static',filename='images/red-error.png') }}'>Absent</td>
+          <td id="checkItem">
+            <input type="checkbox" name="check" value="{{ item.employeeId }}" class="checkItem">
+          </td>
           {% else %}
-          <td>Present</td>
+          <td><img alt="Present" src='{{ url_for('static',filename='images/green-check-mark.png') }}'>Present</td>
           {% endif %}
 
-          <td id="checkItem">
-          <input type="checkbox" name="check" value="{{ item.employeeId }}" class="checkItem">
-          </td>
         </tr>
         {% endfor %}
       </tbody>
@@ -254,9 +254,8 @@
 
        });     
       </script>
-        <button id="submit-button" class="btn btn-primary" style="float: right;" type="submit" >Mark as Present</button>
         </div>
-       
+       <button id="submit-button" class="btn btn-primary" style="float: right;" type="submit" >Mark as Present</button>
       </div>
    </form>
 </body>
