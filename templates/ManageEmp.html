@@ -33,16 +33,17 @@
     /* style for edit & delete buttons */
     tbody>tr>td:last-child{
       width: 7%;
+      white-space: nowrap;
     }
     tbody>tr>td:last-child a{
       display: inline;
-      float: left;
+      /*float: left;*/
       text-decoration: none;
       margin: 0px;
     }
     tbody>tr>td:last-child a:last-child{
       margin:0px 7px 0px 8px;
-      float: right;
+      /*float: right;*/
     }
     tbody>tr>td:last-child>a img{
       max-width: 20px;
@@ -53,7 +54,7 @@
       max-height: 20px;
     } 
     #profile-icon{
-      margin-right: 14px;
+      margin-right: 12px;
     }
     .search-section{
       margin: auto;
@@ -112,7 +113,7 @@
              <ul class="nav navbar-nav mx-auto">
               <!-- menu -->
               <li class="nav-item">
-                <a class="nav-link" href="#">Manage Employee</a>
+                <a class="nav-link" href="/manageEmp">Manage Employee</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Attendance</a>
@@ -212,7 +213,11 @@
           <td>
             <a id="profile-icon" class="edit-btn" href="/userProfile?employee_id={{ item.employeeId }}"><img src="{{ url_for('static',filename='images/profile-icon.png') }}" alt="edit button" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Member Profile"></a>
             <a class="edit-btn" href="/editEmp?employee_id={{ item.employeeId }}"><img src="{{ url_for('static',filename='images/edit-btn.png') }}" alt="edit button" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Edit Member\'s Information"></a>
-            <input type="image" src="{{ url_for('static',filename='images/delete-btn.png') }}" class="delete-btn" alt="delete" name="delete" value="{{ item.employeeId }}" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Delete Member">
+
+            <a class="delete-btn" href="#" data-value="{{ item.employeeId }}"><img src="{{ url_for('static',filename='images/delete-btn.png') }}" alt="delete button" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Delete Member"></a>
+
+<!--             <input type="image" src="{{ url_for('static',filename='images/delete-btn.png') }}" class="delete-btn" alt="delete" name="delete" value="{{ item.employeeId }}" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Delete Member"> -->
+
           </td>
         </tr>
         {% endfor %}
