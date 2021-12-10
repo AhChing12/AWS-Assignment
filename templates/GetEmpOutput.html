@@ -35,7 +35,7 @@
 			<ul class="nav navbar-nav mx-auto">
 				<!-- menu -->
 				<li class="nav-item">
-					<a class="nav-link" href="#">Manage Employee</a>
+					<a class="nav-link" href="/manageEmp">Manage Employee</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">Attendance</a>
@@ -52,6 +52,7 @@
 		<h3 class="list-label">User Profile</h3>
 	</section>
 
+	{% for item in data %}
 	<div class="container">
 		<div class="row">
 			<div class="col-5" id="custom-column">
@@ -61,14 +62,17 @@
 							<div class="d-flex justify-content-center">
 								<div class="image-container">
 									<div id="uploaded_image" data-auto-update="true">
-										<img class="img-thumbnail img-fluid" src='<%# "data:image/png;base64," + Convert.ToBase64String((byte[])Eval("profileImg")) %>' />
+										{% if item.imageUrl != None %}
+										<img class="img-thumbnail img-fluid" src='{{ item.imageUrl }}' />
+										{% else %}
+										<img class="img-thumbnail img-fluid" src='{{ url_for('static',filename='images/default-profile-img.png') }}' />
+										{% endif %}
 									</div>
 								</div>
 							</div>
 						</div>
 
 					
-						{% for item in data %}
 						<div class="row">
 							<div class="col-12">
 								<ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
@@ -119,9 +123,11 @@
 											<div class="col-sm-3 col-md-4 col-5">
 												<label style="font-weight: bold;">Salary</label>
 											</div>
+											{% if item.salary != None %}
 											<div class="col-md-8 col-6">
 												{{ "RM " ~ "%.2f"|format(item.salary) }}
 											</div>
+											{% endif %}
 										</div>
 										<hr />
 										<div class="row">
@@ -137,9 +143,15 @@
 											<div class="col-sm-3 col-md-4 col-5">
 												<label style="font-weight: bold;">Date Hired</label>
 											</div>
+											{% if item.hireDate != None %}
 											<div class="col-md-8 col-6">
 												{{ item.hireDate.strftime('%d-%m-%Y') }}
 											</div>
+											{% else %}
+											<div class="col-md-8 col-6">
+												00-00-0000
+											</div>
+											{% endif %}
 										</div>
 										<hr />
 									</div>
@@ -180,11 +192,11 @@
 								</div>
 							</div>
 						</div>
-						{% endfor %}
 						<div id="buttons" class="row my-2 mt-4">
 							<input class="btn btn-outline-primary" id="back-button" onclick="history.go(-1);" type="button" value="Back">
-							<button id="btnUpdate" onclick="location.href = 'www.yoursite.com';" class="btn btn-primary">Edit Info</button>
+							<button id="btnUpdate" onclick="location.href = '/editEmp?employee_id={{ item.employeeId }}';" class="btn btn-primary">Edit Info</button>
 						</div>
+						{% endfor %}
 
 					</div>
 				</div>
