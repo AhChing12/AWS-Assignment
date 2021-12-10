@@ -366,59 +366,59 @@ def getEmpInfo():
         
     return render_template('GetEmpOutput.html', id=emp_id, fname=first_name, lname=last_name, interest=0, location=location)    
 
-@app.route("/addemp", methods=['GET', 'POST'])
-def AddEmp():
-    if request.method == 'POST':
-        emp_id = request.form['emp_id']
-        first_name = request.form['first_name']
-        last_name = request.form['last_name']
-        pri_skill = request.form['pri_skill']
-        location = request.form['location']
-        emp_image_file = request.files['emp_image_file']
-        value = None
+# @app.route("/addemp", methods=['GET', 'POST'])
+# def AddEmp():
+#     if request.method == 'POST':
+#         emp_id = request.form['emp_id']
+#         first_name = request.form['first_name']
+#         last_name = request.form['last_name']
+#         pri_skill = request.form['pri_skill']
+#         location = request.form['location']
+#         emp_image_file = request.files['emp_image_file']
+#         value = None
 
-        insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-        cursor = db_conn.cursor()
+#         insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+#         cursor = db_conn.cursor()
 
-        if emp_image_file.filename == "":
-            return "Please select a file"
+#         if emp_image_file.filename == "":
+#             return "Please select a file"
 
-        try:
-            emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file.jpg"
-            emp_name = "" + first_name + " " + last_name
-            # Uplaod image file in S3 #
-            s3 = boto3.resource('s3')
+#         try:
+#             emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file.jpg"
+#             emp_name = "" + first_name + " " + last_name
+#             # Uplaod image file in S3 #
+#             s3 = boto3.resource('s3')
 
-            try:
-                print("Data inserted in MySQL RDS... uploading image to S3...")
-                s3.Bucket(custombucket).put_object(Key=emp_image_file_name_in_s3, Body=emp_image_file)
-                bucket_location = boto3.client('s3').get_bucket_location(Bucket=custombucket)
-                s3_location = (bucket_location['LocationConstraint'])
+#             try:
+#                 print("Data inserted in MySQL RDS... uploading image to S3...")
+#                 s3.Bucket(custombucket).put_object(Key=emp_image_file_name_in_s3, Body=emp_image_file)
+#                 bucket_location = boto3.client('s3').get_bucket_location(Bucket=custombucket)
+#                 s3_location = (bucket_location['LocationConstraint'])
 
-                if s3_location is None:
-                    s3_location = ''
-                else:
-                    s3_location = '-' + s3_location
+#                 if s3_location is None:
+#                     s3_location = ''
+#                 else:
+#                     s3_location = '-' + s3_location
 
-                object_url = "https://{1}.s3{0}.amazonaws.com/{2}".format(
-                    s3_location,
-                    custombucket,
-                    emp_image_file_name_in_s3)
+#                 object_url = "https://{1}.s3{0}.amazonaws.com/{2}".format(
+#                     s3_location,
+#                     custombucket,
+#                     emp_image_file_name_in_s3)
 
-                print(object_url)
-                cursor.execute(insert_sql, (emp_id, 1, 1, first_name, last_name, value, value, value, value, pri_skill, location, object_url, value, value))
-                db_conn.commit()
+#                 print(object_url)
+#                 cursor.execute(insert_sql, (emp_id, 1, 1, first_name, last_name, value, value, value, value, pri_skill, location, object_url, value, value))
+#                 db_conn.commit()
 
-            except Exception as e:
-                return str(e)
+#             except Exception as e:
+#                 return str(e)
 
-        finally:
-            cursor.close()
+#         finally:
+#             cursor.close()
 
-        print("all modification done...")
-        return render_template('AddEmpOutput.html', name=emp_name)
+#         print("all modification done...")
+#         return render_template('AddEmpOutput.html', name=emp_name)
  
-    return render_template('AddEmp.html')
+#     return render_template('AddEmp.html')
 
 
 #            BELOW IS Ching ADDED CODE
@@ -428,8 +428,8 @@ def addEmpOutput():
     return render_template('AddEmpOutput.html')
 
 
-@app.route("/addempbackup", methods=['GET', 'POST'])
-def addEmpBackup():
+@app.route("/addemp", methods=['GET', 'POST'])
+def AddEmp():
     if request.method == 'POST':
         first_name = request.form['first_name']
         last_name = request.form['last_name']
@@ -511,7 +511,7 @@ def addEmpBackup():
 
     #if not POST or submit(Add) button
     
-    return render_template('AddEmp(backUp).html')
+    return render_template('AddEmp.html')
 
 
 
