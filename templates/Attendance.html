@@ -233,7 +233,7 @@
           {% endif %}
 
           {% if item.present == 0 %}
-          <td><img alt="Absent" width="12px" src='{{ url_for('static',filename='images/red-error.png') }}'>Absent</td>
+          <td><img alt="Absent" class="mr-1" width="25px" src='{{ url_for('static',filename='images/red-error.png') }}'>Absent</td>
           <td id="checkItem">
             <input type="checkbox" name="check" value="{{ item.employeeId }}" class="checkItem">
           </td>
