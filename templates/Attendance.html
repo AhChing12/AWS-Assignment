@@ -86,11 +86,6 @@
 
          //    remove default click redirect effect           
          $('dropdown-toggle').attr('onclick', '').off('click');
-        
-         $('#checkAll').click(function () {    
-           console.log(123)
-           $('input:checkbox.checkItem').prop('checked', this.checked);    
-         });
               
       });
    </script>
@@ -221,9 +216,17 @@
           </td>
         </tr>
         {% endfor %}
-</tbody>
+      </tbody>
 </table>
-
+      <script type="text/javascript">
+       $(document).ready(function() { 
+        console.log(456)
+         $('#checkAll').click(function () {    
+           console.log(123)
+           $('input:checkbox.checkItem').prop('checked', this.checked);    
+         });
+       });     
+      </script>
 
         </div>
        
