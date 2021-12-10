@@ -94,6 +94,8 @@ def getEmp():
 
 @app.route("/attendance", methods=['GET','POST'])
 def attendance():
+    date_string = '2021-12-09'
+
     #creating variable for connection
     cursor=db_conn.cursor(pymysql.cursors.DictCursor)
 
@@ -102,7 +104,7 @@ def attendance():
     # sql = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId"
 
     #executing query
-    cursor.execute(sql, datetime.now().strftime('%Y-%m-%d'))
+    cursor.execute(sql, date_string.strftime('%Y-%m-%d'))
 
     #fetching all records from database
     data=cursor.fetchall()
