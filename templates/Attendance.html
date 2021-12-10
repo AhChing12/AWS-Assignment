@@ -15,7 +15,6 @@
    <script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.js') }}" defer></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
    <script type="text/javascript" src="{{ url_for('static',filename='js/table_script.js') }}" defer></script>
-   <script type="text/javascript" src="{{ url_for('static',filename='js/attendance.js') }}" defer></script>
    <script type="text/javascript" src="{{ url_for('static',filename='js/manage_emp.js') }}" defer></script>
    <script type="text/javascript" src="{{ url_for('static',filename='js/popper.min.js') }}" defer></script>
    <script type="text/javascript" src="{{ url_for('static',filename='js/jquery.tablesorter.js') }}" defer></script>
@@ -92,7 +91,7 @@
    </script>
 </head>
 <body>
-   <form id="form1" runat="server">
+   <form id="form1" action="/editEmp" method = "POST" enctype="multipart/form-data">
 
       <nav class="navbar sticky-top navbar-expand-md navbar-light bg-faded">
          <div class="container-fluid">
@@ -133,11 +132,11 @@
 
         <hr />
 
-        <input type="checkbox" onclick="loadFile()" id="check_all2">
-
          <div class="bootstrap_buttons">
           <button class="reset btn btn-primary shadow" id="submit-button" type="button" data-column="0" data-filter="">Reset search filters</button>
-          <button class="btn btn-primary justify-content-end" id="submit-button" onclick="location.href = '/addemp';" style="float: right;" type="button">New Employee</button>
+          <label class="" for="date">Date</label>
+          <input id="date" class="form-control" type="date" name="date">
+          <button class="btn btn-primary justify-content-end" id="submit-button" style="float: right;" type="submit">Search</button>
           <br>
         </div>  
         <div class="custom-container" id="member-table">
@@ -161,14 +160,7 @@
                   <script type="text/javascript">
                    $(document).ready(function() { 
 
-                  //  $('#check_all').bind('click',function() {
-                  //   console.log(1234)
-                  //   var checked = $(this).attr('checked');
-                  //   $('input:checkbox.checkItem').attr('checked', checked);
-                  // });
-
                    $('#check_all').click(function() {    
-                     console.log(123)
                      $('input:checkbox.checkItem').prop('checked', this.checked);    
                    });
 
