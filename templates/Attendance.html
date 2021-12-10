@@ -248,13 +248,13 @@
           </td>
 
         </tr>
-        
+
         {{ count }}
         {% if count is sameas false %}
         <input type="hidden" name="attendance_date" value="{{ item.date }}">
+        {% set count = true %}
         {% endif %}
 
-        {% set count = true %}
         {{ count }}
         {% endfor %}
       </tbody>
