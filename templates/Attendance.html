@@ -157,26 +157,20 @@
                 <th>Present</th>
                 <th id="edit-delete-head" data-sorter="false">
                   <div>
-                  <input type="checkbox" id="check_all" onclick="loadFile()">
+                  <input type="checkbox" id="check_all">
                   <script type="text/javascript">
                    $(document).ready(function() { 
-                    console.log(456)
 
-                   $('#check_all').bind('click',function() {
-                    console.log(1234)
-                    var checked = $(this).attr('checked');
-                    $('input:checkbox.checkItem').attr('checked', checked);
-                  });
-
+                  //  $('#check_all').bind('click',function() {
+                  //   console.log(1234)
+                  //   var checked = $(this).attr('checked');
+                  //   $('input:checkbox.checkItem').attr('checked', checked);
+                  // });
 
                    $('#check_all').click(function() {    
                      console.log(123)
                      $('input:checkbox.checkItem').prop('checked', this.checked);    
                    });
-
-                   function loadFile() {
-                    $('input:checkbox.checkItem').prop('checked', this.checked);
-                  }
 
                 });     
               </script>
@@ -249,28 +243,10 @@
 </table>
       <script type="text/javascript">
        $(document).ready(function() { 
-        console.log(456)
-
        //  $('#check_all2').click(function () {    
        //   console.log(123)
        //   $('input:checkbox.checkItem').prop('checked', this.checked);    
        // });
-
-        $('#check_all').bind('click',function() {
-          console.log(1234)
-          var checked = $(this).attr('checked');
-          $('input:checkbox.checkItem').attr('checked', checked);
-        });
-
-
-         $('#check_all').click(function() {    
-           console.log(123)
-           $('input:checkbox.checkItem').prop('checked', this.checked);    
-         });
-
-        function loadFile() {
-          $('input:checkbox.checkItem').prop('checked', this.checked);
-        }
 
        });     
       </script>
