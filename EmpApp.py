@@ -120,13 +120,21 @@ def attendance():
         sql2 = "SELECT employeeId from employee"
 
         cursor.execute(sql2)
-        
+
         data=cursor.fetchall()
 
         print(data)
 
         sql3 = "INSERT INTO attendance VALUES (%s, %s, %s, %s)"
 
+        for item in data:
+            cursor.execute(sql3, (None, item["employeeId"], 0, datetime.now().strftime('%Y-%m-%d')))
+            db_conn.commit()
+
+        sql4 = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName, A.present from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId INNER JOIN attendance A ON E.employeeId = A.employeeId"
+        cursor.execute(sql4)
+        data=cursor.fetchall()
+        print(data)
 
     return render_template('Attendance.html', data=data)
 
