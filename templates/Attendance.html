@@ -154,6 +154,16 @@
                 <th id="edit-delete-head" data-sorter="false"><input type="checkbox" id="checkAll"></th>
               </tr>
             </thead>
+
+            <script>
+              $(document).ready(function() { 
+                $('#checkAll').click(function () {    
+                 console.log(123)
+                 $('input:checkbox.checkItem').prop('checked', this.checked);    
+               });
+              });
+              
+            </script>
        
             <tfoot>
               <tr>
@@ -218,15 +228,6 @@
 </tbody>
 </table>
 
-        <script>
-          $(document).ready(function() { 
-            $('#checkAll').click(function () {    
-             console.log(123)
-             $('input:checkbox.checkItem').prop('checked', this.checked);    
-           });
-          });
-         
-        </script>
 
         </div>
        
