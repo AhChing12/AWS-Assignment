@@ -104,7 +104,7 @@ def attendance():
     # sql = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId"
 
     #executing query
-    cursor.execute(sql, date_string.strftime('%Y-%m-%d'))
+    cursor.execute(sql, date_string)
 
     #fetching all records from database
     data=cursor.fetchall()
