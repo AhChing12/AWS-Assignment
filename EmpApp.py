@@ -94,49 +94,52 @@ def getEmp():
 
 @app.route("/attendance", methods=['GET','POST'])
 def attendance():
-    #creating variable for connection
-    cursor=db_conn.cursor(pymysql.cursors.DictCursor)
+    if request.method == 'GET':
+        #creating variable for connection
+        cursor=db_conn.cursor(pymysql.cursors.DictCursor)
 
-    sql = "SELECT * from attendance WHERE date = %s"
+        sql = "SELECT * from attendance WHERE date = %s"
 
-    # sql = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId"
+        # sql = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId"
 
-    #executing query
-    cursor.execute(sql, datetime.now().strftime('%Y-%m-%d'))
-
-    #fetching all records from database
-    data=cursor.fetchall()
-
-    if data:
-        sql2 = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName, A.present from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId INNER JOIN attendance A ON E.employeeId = A.employeeId"
-
-        cursor.execute(sql2)
+        #executing query
+        cursor.execute(sql, datetime.now().strftime('%Y-%m-%d'))
 
         #fetching all records from database
         data=cursor.fetchall()
 
-        print(data)
+        if data:
+            sql2 = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName, A.present from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId INNER JOIN attendance A ON E.employeeId = A.employeeId"
+
+            cursor.execute(sql2)
+
+            #fetching all records from database
+            data=cursor.fetchall()
+
+        else:
+            sql2 = "SELECT employeeId from employee"
+
+            cursor.execute(sql2)
+
+            data=cursor.fetchall()
+
+            sql3 = "INSERT INTO attendance VALUES (%s, %s, %s, %s)"
+
+            for item in data:
+                cursor.execute(sql3, (None, item["employeeId"], 0, datetime.now().strftime('%Y-%m-%d')))
+                db_conn.commit()
+
+            sql4 = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName, A.present from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId INNER JOIN attendance A ON E.employeeId = A.employeeId"
+            cursor.execute(sql4)
+            data=cursor.fetchall()
+
+        return render_template('Attendance.html', data=data)
+
     else:
-        sql2 = "SELECT employeeId from employee"
+        checkBox = request.form.getlist('check')
+        print(checkBox)
 
-        cursor.execute(sql2)
-
-        data=cursor.fetchall()
-
-        print(data)
-
-        sql3 = "INSERT INTO attendance VALUES (%s, %s, %s, %s)"
-
-        for item in data:
-            cursor.execute(sql3, (None, item["employeeId"], 0, datetime.now().strftime('%Y-%m-%d')))
-            db_conn.commit()
-
-        sql4 = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName, A.present from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId INNER JOIN attendance A ON E.employeeId = A.employeeId"
-        cursor.execute(sql4)
-        data=cursor.fetchall()
-        print(data)
-
-    return render_template('Attendance.html', data=data)
+        
 
 @app.route("/manageEmp", methods=['GET', 'POST'])
 def manageEmp():
