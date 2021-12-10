@@ -134,9 +134,16 @@
 
          <div class="bootstrap_buttons">
           <button class="reset btn btn-primary shadow" id="submit-button" type="button" data-column="0" data-filter="">Reset search filters</button>
-          <label class="" for="date">Date</label>
-          <input id="date" class="form-control" type="date" name="date">
-          <button class="btn btn-primary justify-content-end" id="submit-button" style="float: right;" type="submit">Search</button>
+          <div class="input-group">
+            <label class="" for="date">Date</label>
+            <input id="date" type="date" class="form-control" name="date" placeholder="" aria-label="" aria-describedby="basic-addon1">
+            <div class="input-group-append">
+              <button class="btn btn-primary justify-content-end" id="submit-button" type="submit">Search</button>
+            </div>
+          </div>
+
+         <!--  <input id="date" class="form-control" type="date" name="date">
+          <button class="btn btn-primary justify-content-end" id="submit-button" style="float: right;" type="submit">Search</button> -->
           <br>
         </div>  
         <div class="custom-container" id="member-table">
