@@ -91,7 +91,7 @@
    </script>
 </head>
 <body>
-   <form id="form1" action="/editEmp" method = "POST" enctype="multipart/form-data">
+   <form id="form1" action="/attendance" method = "POST" enctype="multipart/form-data">
 
       <nav class="navbar sticky-top navbar-expand-md navbar-light bg-faded">
          <div class="container-fluid">
@@ -239,7 +239,7 @@
           {% endif %}
 
           <td id="checkItem">
-          <input type="checkbox" value="{{ item.employeeId }}" class="checkItem">
+          <input type="checkbox" name="check" value="{{ item.employeeId }}" class="checkItem">
           </td>
         </tr>
         {% endfor %}
