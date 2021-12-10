@@ -5,9 +5,11 @@ $(document).ready(function(){
 	});
 
 	/* Show confirmation dialog when delete button is clicked */
-	$(document).on("click","input.delete-btn",function(){
+	$(document).on("click","a.delete-btn",function(){
 		//get employee id
-		var employeeId = $(this).val();
+		var employeeId = $(this).data("value");
+
+		console.log(employeeId);
 
 		event.preventDefault()
 		//get delete confirmation from user
