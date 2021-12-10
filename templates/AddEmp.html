@@ -2,36 +2,357 @@
 <html>
 <head>
 	<title>Add Employee Information</title>
+
+	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/global.css">
+	<!-- <link rel="stylesheet" type="text/css" href="static/css/GetEmp.css"> -->
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+	<script type="text/javascript" src="{{ url_for('static',filename='js/jquery-3.3.1.js') }}"></script>
+   <script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.js') }}" defer></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+   <script type="text/javascript" src="{{ url_for('static',filename='js/table_script.js') }}" defer></script>
+   <script type="text/javascript" src="{{ url_for('static',filename='js/manage_emp.js') }}" defer></script>
+   <script type="text/javascript" src="{{ url_for('static',filename='js/popper.min.js') }}" defer></script>
+   <script type="text/javascript" src="{{ url_for('static',filename='js/jquery.tablesorter.js') }}" defer></script>
+   <script type="text/javascript" src="{{ url_for('static',filename='js/jquery.tablesorter.widgets.js') }}" defer></script>
+   <script type="text/javascript" src="{{ url_for('static',filename='js/jquery.tablesorter.pager.js') }}" defer></script>
+
+	<style>
+		h1 {
+			color: white; 
+			background: black; 
+			height: 55px; 
+			display:flex; 
+			justify-content: center; 
+			align-items: center; 
+			font-size: 24px; 
+			font-weight:500;
+		}
+/* 	h2{ 
+		font-size: 28px;
+		color: black;
+		font-weight: 600;
+		display: flex;
+		justify-content: center; 
+	}  */
+/* 	h5 { 
+		font-size: 14px;
+		color: black;
+		font-weight: 500;
+		display:flex;
+		align-self: flex-start;
+		margin-bottom: 2px;
+	} */
+
+/*   	input {
+		height:35px;
+		font-size:14px;
+		border-radius: 5px;
+		border-width: 1px;
+		border-color: #7E7E7E;
+		margin-bottom: 10px;
+
+	}  */
+	input {
+		height:40px;
+		font-size:16px;
+		border-radius: 5px;
+		border-width: 1px;
+		border-color: #7E7E7E;
+		margin-bottom: 10px;
+		/*width: 320px;*/
+	}
+	.gender {
+		display: flex;
+		align-content: center;
+	}
+/* 	.card {
+		width:708px;
+		border-style: none;
+	} */
+	.card {
+		width:781px;
+	}
+	.custom-label {
+		display: flex;
+		align-items: center;
+		font-size:18px;
+		color: #353535;
+	}
+		
+/* 	.card-body {
+		border-style: solid;
+		border-color: #CDCDCD;
+		border-width:2px;
+	}
+	label {
+		display: flex;
+		align-items: center;
+		font-size:14px;
+		color: #353535; 
+	}*/
+	.container > .row {
+		display: flex;
+		justify-content: center;
+	}
+	.shortInput {
+/* 		width:173px; */
+		width:193px
+	}
+	.longInput {
+/* 		width: 374px; */
+		width: 300px;
+	}
+/* 	img{
+		min-width:120px;
+		max-width:140px; 
+		min-height:140px;
+		max-height:160px;
+	} */
+/* 	button {
+		
+		font-weight: 500; 
+		font-size: 16px; 
+		border-width: 0px; 
+		border-radius: 5px; 
+		height: 40px; 
+		width: 280px; 
+		color: white;
+	} */
+	button {
+		
+		font-weight: 500; 
+		font-size: 20px; 
+		border-width: 0px; 
+		border-radius: 5px; 
+		height: 50px; 
+		width: 320px; 
+		color: white;
+	}
+	.btnGroup {
+		display: flex;
+		justify-content: center;
+	}
+	.cancelButton{
+		margin-right: 70px;
+	}
+/* 	.addButton {
+		background: #5F27CD;
+	} */
+	.editEmp-section{
+		margin: auto;
+		margin-top: 30px;
+		width: 500px;
+		text-align: center;
+	}
+	/* image container */
+	.image-container {
+		position: relative;
+		width: 250px;
+	}
+</style>
+
 </head>
-<center>
-	<font color="black" size="4" style="font-family: avenir">
 
-		<h1 style="color: DodgerBlue">Employee Database</h1>
 
-		<body bgcolor="lightgrey">
 
-			<form action="/addemp" autocomplete="on" method = "POST" enctype="multipart/form-data">
+	<body>
 
-				<button type="submit" formaction="/getemp" style="background: grey; height: 45px; width: 200px; color:white; font:oblique;">GET EMPLOYEE INFORMATION</button><br><br>
+		<form action="/addempbackup" autocomplete="on" method = "POST" enctype="multipart/form-data">
 
-		  		Employee ID:<br> <input style="height:25px;font-size:14pt; color:grey;" type="number" name="emp_id" autofocus size="40"><br><br>
+			<nav class="navbar sticky-top navbar-expand-md navbar-light bg-faded">
+				<div class="container-fluid">
 
-		  		First Name:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="first_name" ><br><br>
+					<!-- Brand -->
+					<asp:HyperLink ID="brandLink" runat="server" class="navbar-brand" NavigateUrl="~/art_gallery.aspx">
+					<asp:Image ID="logo" runat="server" src="image/palette.svg" alt="" class="mr-2" Width="50" ClientIDMode="Static" />
+					EMS
+				</asp:HyperLink>
 
-		  		Last Name:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="last_name"><br><br>
+				<!-- Toggler/collapsibe Button -->
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" runat="server" clientidmode="Static">
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
-		  		Primary Skills:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="pri_skill"><br><br>
+				<div class="collapse navbar-collapse" id="collapsibleNavbar">
+					<ul class="nav navbar-nav mx-auto">
+						<!-- menu -->
+						<li class="nav-item">
+							<a class="nav-link" href="/manageEmp">Manage Employee</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Attendance</a>
+						</li>
 
-		  		Location:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="location"><br><br>
+					</ul>
 
-		  		Image: <input type=file name="emp_image_file" style="height:25px;font-size:14pt;color:grey;"> <br><br>
 
-		  		<button type="submit" style="background: grey; height: 45px; width: 200px; color: white; size: 5; font:oblique;">UPDATE DATABASE</button>
+				</div>
+			</div>
+		</nav>
 
-			</form>
-<a href="/about">About Us</a>
-		</body>
+			<h1 class="mb-4">Employee Management System (EMS)</h1>
 
-	</font>
-</center>
+			<section class="editEmp-section mb-3">
+				<h3 class="list-label">Employee Information</h3>
+			</section>
+			<!-- <button type="submit" formaction="/getemp" style="background: grey; height: 45px; width: 200px; color:white; font:oblique;">Add Employee</button>   -->
+
+			<!-- Employee ID:  <input style="height:25px;font-size:14pt; color:grey;" type="number" name="emp_id" autofocus size="40">   -->
+
+			<div class="container">
+				<div class="row col-md-12">
+					<div class="card align-items-center mb-5" style="box-shadow: 1px 1px 1px 1px #CDCDCD;">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-md-8">
+									<div class="row col-md-12 mt-1 mb-3">
+										<div class="col-md-6">
+											<!-- <h5>First Name</h5> -->
+											<label class="" for="first_name">First Name</label>
+											<input class="shortInput form-control" type="text" name="first_name" >
+										</div>
+										<div class="col-md-6">
+											<!-- <h5>Last Name</h5> -->
+											<label class="" for="last_name">Last Name</label>
+											<input class="shortInput form-control" type="text" name="last_name">
+										</div>
+									</div>  
+
+									<div class="row col-md-12 mb-3">
+										<div class="col-md-6">
+											<!-- <h5>Age</h5> -->
+											<label class="" for="age">Age</label>
+											<input class="shortInput form-control" type="number" name="age">    
+										</div>
+										<div class="col-md-6">
+											<!-- <h5>Phone Number</h5> -->
+											<label class="" for="phone_no">Phone Number</label>
+											<input class="shortInput form-control" type="tel" name="phone_number"> 
+										</div>
+									</div>
+
+									<div class="row col-md-12">
+										<div class="col-md-5">
+											<!-- <h5>Gender</h5> -->
+											<label class="" for="gender">Gender</label>
+											<div class="gender">
+												<input class="mr-2" type="radio" id="male" name="gender_choice" checked="true" value="Male">
+												<label class="mr-5 custom-label" for="male">Male</label>
+												<input class="mr-2" type="radio" id="female" name="gender_choice" value="Female">
+												<label class="custom-label" for="female">Female</label>
+											</div>
+										</div>
+									</div>
+								</div>	
+
+								<div class="col-md-4">
+									<!-- <h5>Employee Image</h5> -->
+									<label class="" for="employee_image">Employee Image</label>
+									<div id="uploaded_image">
+										<img id="output" class="img-thumbnail img-fluid" src="../static/images/default-profile-img.png"  alt="Employee Image">
+									</div>
+									
+									<div class="custom-file">
+										<input class="custom-file-input" type="file" name="upload_image" id="upload_image" accept="image/*"onchange="loadFile(event)"> 
+										<label class="custom-file-label" for="upload_image">Choose file</label>
+									</div>
+									<input id="imageSrc" name="img_src" type="hidden">
+									<script>
+  									var loadFile = function(event) {
+    									var output = document.getElementById('output');
+    									output.src = URL.createObjectURL(event.target.files[0]);
+    									document.getElementById('imageSrc').value = output.src
+    									// output.onload = function() {
+      							// 		URL.revokeObjectURL(output.src) // free memory
+    									// }
+  									};
+									</script>
+								</div>
+							</div>
+							
+							<div class="row col-md-12">
+								<div class="col-md-8">
+									<!-- <h5>Email</h5> -->
+									<label class="" for="email">Email</label>
+									<input class="longInput form-control"  type="email" name="email">  
+								</div>
+							</div>
+
+							
+
+							<div class="row col-md-12  mb-3">
+								<div class="col-md-8">
+									<!-- <h5>Address</h5> -->
+									<label class="" for="address">Address</label>
+									<textarea class="form-control" id="address" name="address" style="width: 300px;" rows="3" maxlength="255" value='<%#Eval("address") %>'></textarea> 
+								</div>
+							</div>
+
+							<div class="row col-md-12">
+								<div class="col-md-8">
+									<!-- <h5>Primary Skill</h5> -->
+									<label class="" for="primary_skill">Primary Skill</label>
+									<input class="longInput form-control"  type="text" name="pri_skill">  
+								</div>
+							</div>
+
+							<div class="row col-md-12">
+								<div class="col-md-8">
+									<!-- <h5>Department</h5> -->
+									<label class="" for="department">Department</label>
+									<input class="longInput form-control" type="text" name="department">   
+								</div>
+							</div>
+
+							<div class="row col-md-12">
+								<div class="col-md-8">
+									<!-- <h5>Position</h5> -->
+									<label class="" for="position">Position</label>
+									<input class="longInput form-control" type="text" name="position">   
+								</div>
+							</div>
+
+							<div class="row col-md-12">
+								<div class="col-md-4">
+									<!-- <h5>Date Hired</h5> -->
+									<label class="" for="date_hired">Date Hired</label>
+									<input class="shortInput form-control" style="font-size:16px;" type="date" name="date_hired"> 
+								</div> 
+
+								<div class="col-md-4">
+									<!-- <h5>Salary</h5> -->
+									<label class="" for="salary">Salary</label>
+									<input class="shortInput form-control"  type="number" name="salary">  
+								</div>
+							</div>
+							
+							<script>
+								$(".custom-file-input").on("change", function () {
+									var fileName = $(this).val().split("\\").pop();
+									$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+								});
+							</script>
+
+									<!-- 							<h5>Employee Image</h5>
+									<input type=file name="emp_image_file" style="">   --> 
+							<div class="btnGroup mt-4">
+								<button id="cancel-button" class="cancelButton btn btn-outline-primary" type="button" onclick="history.go(-1);" >Cancel</button>
+
+								<button id="submit-button" class="addButton btn btn-primary" type="submit" >Add</button>
+							</div>
+						</div>
+	</div>
+						</div>
+					</div>
+				</div>
+			</div>
+</form>
+<!-- <a href="/about">About Us</a> -->
+</body>
+
 </html>
