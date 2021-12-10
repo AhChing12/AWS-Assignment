@@ -151,7 +151,7 @@
                 <th>Address</th>
                 <th>Date Hired</th>
                 <th>Present</th>
-                <th id="edit-delete-head" data-sorter="false">Select All</th>
+                <th id="edit-delete-head" data-sorter="false"><input type="checkbox" id="checkAll">Select All</th>
               </tr>
             </thead>
        
@@ -211,7 +211,7 @@
           {% endif %}
           <td></td>
           <td id="checkItem">
-          <input type="checkbox" value="" class="checkItem">
+          <input type="checkbox" value="{{ item.employeeId }}" class="checkItem">
           </td>
         </tr>
         {% endfor %}
@@ -219,9 +219,11 @@
 </table>
 
         <script>
+          $('#checkAll').click(function () {    
+           $('input:checkbox.checkItem').prop('checked', this.checked);    
+         });
 
-
-          // $("#tableSorter").tablesorter({ widgets: ['zebra'], headers:{0:{sorter:false}} });
+         
         </script>
 
         </div>
