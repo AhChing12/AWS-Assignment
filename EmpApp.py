@@ -380,9 +380,37 @@ def AddEmp():
 
         if(department == "IT"):
             departmentId = 1
+        elif (department == "HR"):
+            departmentId = 2
+        elif (department == "Finance"):
+            departmentId = 3
+        elif (department == "Marketing"):
+            departmentId = 4
 
         if(position == "Programmer"):
             positionId = 1
+        elif (position == "SE"):
+            positionId = 2
+        elif (position == "Technician"):
+            positionId = 3
+        elif (position == "HR Coordinator"):
+            positionId = 4
+        elif (position == "HR Specialist"):
+            positionId = 5
+        elif (position == "Recruiter"):
+            positionId = 6
+        elif (position == "Accountants"):
+            positionId = 7
+        elif (position == "Auditor"):
+            positionId = 8
+        elif (position == "Treasurer"):
+            positionId = 9
+        elif (position == "Marketing Analyst"):
+            positionId = 10
+        elif (position == "Marketing Coordinator"):
+            positionId = 11
+        elif (position == "Content Strategist"):
+            positionId = 12
 
         try:
             emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file.jpg"
