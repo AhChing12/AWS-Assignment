@@ -229,8 +229,14 @@
          $('input:checkbox.checkItem').prop('checked', this.checked);    
        });
 
+        $('#check_all').bind('click',function() {
+          console.log(1234)
+          var checked = $(this).attr('checked');
+          $('input:checkbox.checkItem').attr('checked', checked);
+        });
 
-         $('#check_all').live('click',function() {    
+
+         $('#check_all').click(function() {    
            console.log(123)
            $('input:checkbox.checkItem').prop('checked', this.checked);    
          });
