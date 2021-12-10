@@ -134,9 +134,12 @@ def attendance():
         return render_template('Attendance.html', data=data)
 
     else:
+        print(request.form['date']) 
+        # date = request.form['date']
+
         #creating variable for connection
         cursor=db_conn.cursor(pymysql.cursors.DictCursor)
-        
+
         checkBox = request.form.getlist('check')
 
         sql2 = "UPDATE attendance SET present = %s WHERE employeeId = %s"
