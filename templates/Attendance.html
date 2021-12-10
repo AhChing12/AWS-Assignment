@@ -230,7 +230,7 @@
        });
 
 
-         $('#check_all').click(function () {    
+         $('#check_all').bind('click',function() {    
            console.log(123)
            $('input:checkbox.checkItem').prop('checked', this.checked);    
          });
