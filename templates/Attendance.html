@@ -2,7 +2,7 @@
 
 <html>
 <head>
-   <title></title>
+   <title>Attendance</title>
 
    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap.css') }}">
    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/theme.bootstrap_4.css') }}">
@@ -127,15 +127,14 @@
 
       <div class="container body-content" style="max-width: 80%;">
         <section class="search-section">
-          <h3 class="list-label">Employee Management</h3>
+          <h3 class="list-label">Employee Attendance</h3>
         </section>
 
         <hr />
 
          <div class="bootstrap_buttons">
           <button class="reset btn btn-primary shadow" id="submit-button" type="button" data-column="0" data-filter="">Reset search filters</button>
-          <div class="input-group">
-            <label class="" for="date">Date</label>
+          <div class="input-group" style="width: 250px; float: right;">
             <input id="date" type="date" class="form-control" name="date" placeholder="" aria-label="" aria-describedby="basic-addon1">
             <div class="input-group-append">
               <button class="btn btn-primary justify-content-end" id="submit-button" type="submit">Search</button>
