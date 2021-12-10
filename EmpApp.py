@@ -70,7 +70,7 @@ def deleteEmp():
 
 @app.route("/userProfile", methods=['GET', 'POST'])
 def userProfile():
-    if request.args.get("employee_id") is not None:
+    if request.args.get("employee_id") is not None or request.form['emp_id'] is not None:
         #creating variable for connection
         cursor=db_conn.cursor(pymysql.cursors.DictCursor)
 
@@ -83,10 +83,6 @@ def userProfile():
         data=cursor.fetchall()
 
     return render_template('GetEmpOutput.html', data=data)
-
-@app.route("/about", methods=['POST'])
-def about():
-    return render_template('www.intellipaat.com')
 
 @app.route("/getemp", methods=['GET', 'POST'])
 def getEmp():
@@ -321,32 +317,6 @@ def editEmp():
 
     return redirect("/manageEmp")
 
-@app.route("/deleteImg", methods=['GET','POST'])
-def deleteImg():
-    #creating variable for connection
-    cursor=db_conn.cursor(pymysql.cursors.DictCursor)
-
-    sql = "SELECT imageUrl from employee WHERE employeeId = %s"
-
-    #executing query
-    cursor.execute(sql, 4)
-
-    #fetching all records from database
-    data=cursor.fetchall()
-
-    imageUrl = ""
-
-    for item in data:
-        imageUrl = item["imageUrl"]
-
-    imageUrl = imageUrl.split("/")
-    print(imageUrl)
-    print(imageUrl[3])
-    s3 = boto3.client('s3')
-    s3.delete_object(Bucket=custombucket, Key=imageUrl[3])
-
-    return render_template('ManageEmp.html')
-
 @app.route("/fetchdata", methods=['POST'])
 def getEmpInfo():
     emp_id = request.form['emp_id']
@@ -365,60 +335,6 @@ def getEmpInfo():
         location = row[4]
         
     return render_template('GetEmpOutput.html', id=emp_id, fname=first_name, lname=last_name, interest=0, location=location)    
-
-# @app.route("/addemp", methods=['GET', 'POST'])
-# def AddEmp():
-#     if request.method == 'POST':
-#         emp_id = request.form['emp_id']
-#         first_name = request.form['first_name']
-#         last_name = request.form['last_name']
-#         pri_skill = request.form['pri_skill']
-#         location = request.form['location']
-#         emp_image_file = request.files['emp_image_file']
-#         value = None
-
-#         insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-#         cursor = db_conn.cursor()
-
-#         if emp_image_file.filename == "":
-#             return "Please select a file"
-
-#         try:
-#             emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file.jpg"
-#             emp_name = "" + first_name + " " + last_name
-#             # Uplaod image file in S3 #
-#             s3 = boto3.resource('s3')
-
-#             try:
-#                 print("Data inserted in MySQL RDS... uploading image to S3...")
-#                 s3.Bucket(custombucket).put_object(Key=emp_image_file_name_in_s3, Body=emp_image_file)
-#                 bucket_location = boto3.client('s3').get_bucket_location(Bucket=custombucket)
-#                 s3_location = (bucket_location['LocationConstraint'])
-
-#                 if s3_location is None:
-#                     s3_location = ''
-#                 else:
-#                     s3_location = '-' + s3_location
-
-#                 object_url = "https://{1}.s3{0}.amazonaws.com/{2}".format(
-#                     s3_location,
-#                     custombucket,
-#                     emp_image_file_name_in_s3)
-
-#                 print(object_url)
-#                 cursor.execute(insert_sql, (emp_id, 1, 1, first_name, last_name, value, value, value, value, pri_skill, location, object_url, value, value))
-#                 db_conn.commit()
-
-#             except Exception as e:
-#                 return str(e)
-
-#         finally:
-#             cursor.close()
-
-#         print("all modification done...")
-#         return render_template('AddEmpOutput.html', name=emp_name)
- 
-#     return render_template('AddEmp.html')
 
 
 #            BELOW IS Ching ADDED CODE
