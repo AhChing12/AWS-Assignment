@@ -216,7 +216,7 @@
             </tfoot>
 
       <tbody>
-        {% set ns = namespace(count=false) %}
+        {% set vars = {'count': false} %}
 
         {% for item in data %}
         <tr id="{{ item.employeeId }}">
@@ -249,13 +249,13 @@
 
         </tr>
 
-        {% if count is sameas false %}
-        {{ count }}
+        {% if vars.count is sameas false %}
+        {{ vars.count }}
         <input type="hidden" name="attendance_date" value="{{ item.date }}">
         {% endif %}
 
-        {% set ns.count = true %}
-        {{ count }}
+        {% vars.update({'count': true}) %}
+        {{ vars.count }}
 
         {% endfor %}
       </tbody>
