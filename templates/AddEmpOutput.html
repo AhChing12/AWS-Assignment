@@ -137,7 +137,7 @@
 					<ul class="nav navbar-nav mx-auto">
 						<!-- menu -->
 						<li class="nav-item">
-							<a class="nav-link" href="#">Manage Employee</a>
+							<a class="nav-link" href="/manageEmp">Manage Employee</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#">Attendance</a>
@@ -258,7 +258,7 @@
 									<div class="col-md-4">
 										<!-- <h5>Salary</h5> -->
 										<label class="" for="salary">Salary</label>
-										<p> {{salary}} </p> 
+										<p> {{"RM " ~ "%.2f"|format(salary)}} </p> 
 									</div>
 								</div>
 
@@ -267,12 +267,12 @@
 		<div class="btnGroup mt-4">
 <!-- 			<button class="editButton" type="button" onclick="" >Edit</button>
 			<button id="cancel-button" class="cancelButton btn btn-outline-primary" type="button" onclick="history.go(-1);" >Cancel</button> -->
-			<button id="cancel-button" class="editButton btn btn-outline-primary" type="button" onclick="" >Edit</button>
+			<button id="cancel-button" class="editButton btn btn-outline-primary" type="button" onclick="location.href = '/editEmp?employee_id={{ employeeId }}';" >Edit</button>
 <!-- 			cancel-button is used to align to global.css probly -->
 			
 <!-- 			<button class="confirmButton" type="submit" >Confirm</button>
 			<button id="submit-button" class="addButton btn btn-primary" type="submit" >Add</button> -->
-			<button id="submit-button" class="confirmButton btn btn-primary" type="submit" >Confirm</button>
+			<button id="submit-button" class="confirmButton btn btn-primary" type="button" onclick="location.href = '/manageEmp';">Confirm</button>
 <!-- 			submit-button is used to align to global.css probly -->
 		</div>
 		</div>
