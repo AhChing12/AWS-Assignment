@@ -216,8 +216,8 @@
             </tfoot>
 
       <tbody>
-        {% set count = 0 %}
-        {{ count }}
+        {% set ns = namespace(count=0) %}
+        {{ ns.count }}
         {% for item in data %}
         <tr id="{{ item.employeeId }}">
           <td id="emp_id">{{ item.employeeId }}</td>
@@ -249,12 +249,12 @@
 
         </tr>
 
-        {% if count == 0 %}
+        {% if ns.count == 0 %}
         <input type="hidden" name="attendance_date" value="{{ item.date }}">
-        {% set count = 1 %}
+        {% set ns.count = 1 %}
         {% endif %}
 
-        {{ count }}
+        {{ ns.count }}
         {% endfor %}
       </tbody>
 </table>
