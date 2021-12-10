@@ -114,7 +114,7 @@
                 <a class="nav-link" href="/manageEmp">Manage Employee</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Attendance</a>
+                <a class="nav-link" href="/attendance">Attendance</a>
               </li>
 
                </ul>
@@ -217,7 +217,7 @@
 
       <tbody>
         {% set ns = namespace(count=0) %}
-        {{ ns.count }}
+
         {% for item in data %}
         <tr id="{{ item.employeeId }}">
           <td id="emp_id">{{ item.employeeId }}</td>
@@ -254,7 +254,6 @@
         {% set ns.count = 1 %}
         {% endif %}
 
-        {{ ns.count }}
         {% endfor %}
       </tbody>
 </table>
