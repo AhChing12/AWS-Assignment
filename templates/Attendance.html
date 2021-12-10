@@ -217,7 +217,7 @@
 
       <tbody>
         {% set count = 0 %}
-        {{ 123 }}
+        {{ count }}
         {% for item in data %}
         <tr id="{{ item.employeeId }}">
           <td id="emp_id">{{ item.employeeId }}</td>
@@ -249,7 +249,6 @@
 
         </tr>
 
-        {{ count }}
         {% if count == 0 %}
         <input type="hidden" name="attendance_date" value="{{ item.date }}">
         {% set count = 1 %}
