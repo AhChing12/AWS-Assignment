@@ -233,11 +233,11 @@
           {% endif %}
 
           {% if item.present == 0 %}
-          <td>Present</td>
-          {% else %}
           <td>Absent</td>
+          {% else %}
+          <td>Present</td>
           {% endif %}
-          
+
           <td id="checkItem">
           <input type="checkbox" value="{{ item.employeeId }}" class="checkItem">
           </td>
