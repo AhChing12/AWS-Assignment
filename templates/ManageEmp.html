@@ -33,7 +33,6 @@
     /* style for edit & delete buttons */
     tbody>tr>td:last-child{
       width: 7%;
-      display: flex;
     }
     tbody>tr>td:last-child a{
       display: inline;
@@ -207,8 +206,8 @@
           {% else %}
           <td id="date_join">00-00-0000</td>
           {% endif %}
-          <td>
-            <a id="profile-icon" class="edit-btn" href="/userProfile?employee_id={{ item.employeeId }}"><img src="{{ url_for('static',filename='images/profile-icon.png') }}" alt="edit button" data-toggle="popover" style="display: flex;" data-placement="top" data-trigger="hover" data-content="Member Profile"></a>
+          <td style="display: flex">
+            <a id="profile-icon" class="edit-btn" href="/userProfile?employee_id={{ item.employeeId }}"><img src="{{ url_for('static',filename='images/profile-icon.png') }}" alt="edit button" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Member Profile"></a>
             <a class="edit-btn" href="/editEmp?employee_id={{ item.employeeId }}"><img src="{{ url_for('static',filename='images/edit-btn.png') }}" alt="edit button" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Edit Member\'s Information"></a>
             <input type="image" src="{{ url_for('static',filename='images/delete-btn.png') }}" class="delete-btn" alt="delete" name="delete" value="{{ item.employeeId }}" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Delete Member">
           </td>
