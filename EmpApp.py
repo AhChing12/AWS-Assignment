@@ -117,7 +117,14 @@ def attendance():
 
         print(data)
     else:
-        print("No exist")
+        sql2 = "SELECT employeeId from employee"
+
+        data=cursor.fetchall()
+
+        print(data)
+
+        sql3 = "INSERT INTO attendance VALUES (%s, %s, %s, %s)"
+
 
     return render_template('Attendance.html', data=data)
 
