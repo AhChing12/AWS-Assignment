@@ -219,7 +219,19 @@
 </table>
 
         <script>
-          $("#tableSorter").tablesorter({ widgets: ['zebra'], headers:{0:{sorter:false}} });
+          $(document).ready(function() { 
+            $("#tableSorter").tablesorter({ 
+            // pass the headers argument and assing a object 
+            headers: { 
+               10: { 
+                   // disable it by setting the property sorter to false 
+                   sorter: false 
+                 } 
+            } 
+            }); 
+          });
+
+          // $("#tableSorter").tablesorter({ widgets: ['zebra'], headers:{0:{sorter:false}} });
         </script>
 
         </div>
