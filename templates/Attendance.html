@@ -231,7 +231,13 @@
           {% else %}
           <td id="date_join">00-00-0000</td>
           {% endif %}
-          <td></td>
+
+          {% if item.present == 0 %}
+          <td>Present</td>
+          {% else %}
+          <td>Absent</td>
+          {% endif %}
+          
           <td id="checkItem">
           <input type="checkbox" value="{{ item.employeeId }}" class="checkItem">
           </td>
