@@ -117,7 +117,7 @@ def attendance():
 
         print(data)
     else:
-        sql2 = "SELECT employeeId from employee"
+        sql2 = "SELECT * from employee"
 
         data=cursor.fetchall()
 
