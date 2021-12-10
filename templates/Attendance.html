@@ -152,7 +152,7 @@
                 <th>Address</th>
                 <th>Date Hired</th>
                 <th>Present</th>
-                <th id="edit-delete-head" data-sorter="false"><input type="checkbox" id="checkAll"></th>
+                <th id="edit-delete-head" data-sorter="false"><input type="checkbox" id="check_all"></th>
               </tr>
             </thead>
        
@@ -221,7 +221,7 @@
       <script type="text/javascript">
        $(document).ready(function() { 
         console.log(456)
-         $('#checkAll').click(function () {    
+         $('#check_all').onclick(function () {    
            console.log(123)
            $('input:checkbox.checkItem').prop('checked', this.checked);    
          });
