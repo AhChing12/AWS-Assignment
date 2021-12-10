@@ -1,9 +1,9 @@
 $(document).ready(function(){
 
-	var loadFile = function() {
-		console.log("abc")
+	function loadFile() {
+		console.log(123)
 		$('input:checkbox.checkItem').prop('checked', this.checked);
-	};
+	}
 	
 
 });
