@@ -216,7 +216,7 @@
             </tfoot>
 
       <tbody>
-        {% set count = false %}
+        {% set count = true %}
 
         {% for item in data %}
         <tr id="{{ item.employeeId }}">
@@ -250,9 +250,9 @@
         </tr>
 
         {{ count }}
-        {% if count is sameas false %}
+        {% if count %}
         <input type="hidden" name="attendance_date" value="{{ item.date }}">
-        {% set count = true %}
+        {% set count = false %}
         {% endif %}
 
         {{ count }}
