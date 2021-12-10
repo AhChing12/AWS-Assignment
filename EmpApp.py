@@ -137,7 +137,20 @@ def attendance():
 
     else:
         checkBox = request.form.getlist('check')
-        print(checkBox)
+
+        sql2 = "UPDATE attendance SET present = %s WHERE employeeId = %s"
+
+        for x in checkBox:
+            cursor.execute(sql2, (1, x))
+            db_conn.commit()
+
+        sql3 = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName, A.present from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId INNER JOIN attendance A ON E.employeeId = A.employeeId"
+        cursor.execute(sql3)
+        data=cursor.fetchall()
+        
+        return render_template('Attendance.html', data=data)
+
+
 
         
 
