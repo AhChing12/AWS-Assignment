@@ -151,7 +151,7 @@
                 <th>Address</th>
                 <th>Date Hired</th>
                 <th>Present</th>
-                <th id="edit-delete-head" data-sorter="false"><input type="checkbox" id="checkAll">Select All</th>
+                <th id="edit-delete-head" data-sorter="false"><input type="checkbox" id="checkAll"></th>
               </tr>
             </thead>
        
@@ -219,10 +219,11 @@
 </table>
 
         <script>
-          $('#checkAll').click(function () {    
-           $('input:checkbox.checkItem').prop('checked', this.checked);    
-         });
-
+          $(document).ready(function() { 
+            $('#checkAll').click(function () {    
+             $('input:checkbox.checkItem').prop('checked', this.checked);    
+           });
+          });
          
         </script>
 
