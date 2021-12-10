@@ -77,7 +77,10 @@ def userProfile():
         sql = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, E.salary, E.primarySkill, E.imageUrl, P.positionName, D.departmentName from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId WHERE E.employeeId = %s"
 
         #executing query
-        cursor.execute(sql, (request.args.get("employee_id")))
+        if request.args.get("employee_id") is not None:
+        	cursor.execute(sql, (request.args.get("employee_id")))
+        else:
+        	cursor.execute(sql, (request.form['emp_id']))
 
         #fetching all records from database
         data=cursor.fetchall()
