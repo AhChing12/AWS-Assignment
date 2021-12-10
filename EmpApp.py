@@ -110,9 +110,12 @@ def attendance():
         data=cursor.fetchall()
 
         if data:
-            sql2 = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName, A.present from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId INNER JOIN attendance A ON E.employeeId = A.employeeId"
+            sql2 = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName, A.present, A.date from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId INNER JOIN attendance A ON E.employeeId = A.employeeId WHERE A.date = %s"
 
-            cursor.execute(sql2)
+            if request.args.get("date") != None and request.args.get("date") != "":
+                cursor.execute(sql2, request.args.get("date"))
+            else:
+                cursor.execute(sql2, datetime.now().strftime('%Y-%m-%d'))
 
             #fetching all records from database
             data=cursor.fetchall()
@@ -127,11 +130,20 @@ def attendance():
             sql3 = "INSERT INTO attendance VALUES (%s, %s, %s, %s)"
 
             for item in data:
-                cursor.execute(sql3, (None, item["employeeId"], 0, datetime.now().strftime('%Y-%m-%d')))
+                if request.args.get("date") != None and request.args.get("date") != "":
+                    cursor.execute(sql3, (None, item["employeeId"], 0, request.args.get("date")))
+                else:
+                    cursor.execute(sql3, (None, item["employeeId"], 0, datetime.now().strftime('%Y-%m-%d')))
+
                 db_conn.commit()
 
-            sql4 = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName, A.present from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId INNER JOIN attendance A ON E.employeeId = A.employeeId"
-            cursor.execute(sql4)
+            sql4 = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName, A.present, A.date from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId INNER JOIN attendance A ON E.employeeId = A.employeeId WHERE A.date = %s"
+
+            if request.args.get("date") != None and request.args.get("date") != "":
+                cursor.execute(sql4, request.args.get("date"))
+            else:
+                cursor.execute(sql4, datetime.now().strftime('%Y-%m-%d'))
+                    
             data=cursor.fetchall()
 
         return render_template('Attendance.html', data=data)
@@ -144,19 +156,21 @@ def attendance():
             return redirect(url)
 
         else:
+            attendanceDate = request.form['attendance_date']
+
             #creating variable for connection
             cursor=db_conn.cursor(pymysql.cursors.DictCursor)
 
             checkBox = request.form.getlist('check')
 
-            sql2 = "UPDATE attendance SET present = %s WHERE employeeId = %s"
+            sql2 = "UPDATE attendance SET present = %s WHERE employeeId = %s AND date = %s"
 
             for x in checkBox:
-                cursor.execute(sql2, (1, x))
+                cursor.execute(sql2, (1, x, attendanceDate))
                 db_conn.commit()
 
-            sql3 = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName, A.present from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId INNER JOIN attendance A ON E.employeeId = A.employeeId"
-            cursor.execute(sql3)
+            sql3 = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName, A.present from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId INNER JOIN attendance A ON E.employeeId = A.employeeId WHERE A.date = %s"
+            cursor.execute(sql3, attendanceDate)
             data=cursor.fetchall()
 
             return render_template('Attendance.html', data=data)
