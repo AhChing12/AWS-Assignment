@@ -100,8 +100,11 @@ def attendance():
 
         sql = "SELECT * from attendance WHERE date = %s"
 
-        #executing query
-        cursor.execute(sql, datetime.now().strftime('%Y-%m-%d'))
+        if request.args.get("date") != None:
+            cursor.execute(sql, request.args.get("date"))
+        else:   
+            #executing query
+            cursor.execute(sql, datetime.now().strftime('%Y-%m-%d'))
 
         #fetching all records from database
         data=cursor.fetchall()
@@ -134,25 +137,30 @@ def attendance():
         return render_template('Attendance.html', data=data)
 
     else:
-        print(request.form['date']) 
-        # date = request.form['date']
+        if request.form['date'] != None:
+            date = request.form['date']
+            url = "/attendance?date=" + date
+            print(url)
 
-        #creating variable for connection
-        cursor=db_conn.cursor(pymysql.cursors.DictCursor)
+            return redirect(url)
 
-        checkBox = request.form.getlist('check')
+        else:
+            #creating variable for connection
+            cursor=db_conn.cursor(pymysql.cursors.DictCursor)
 
-        sql2 = "UPDATE attendance SET present = %s WHERE employeeId = %s"
+            checkBox = request.form.getlist('check')
 
-        for x in checkBox:
-            cursor.execute(sql2, (1, x))
-            db_conn.commit()
+            sql2 = "UPDATE attendance SET present = %s WHERE employeeId = %s"
 
-        sql3 = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName, A.present from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId INNER JOIN attendance A ON E.employeeId = A.employeeId"
-        cursor.execute(sql3)
-        data=cursor.fetchall()
+            for x in checkBox:
+                cursor.execute(sql2, (1, x))
+                db_conn.commit()
 
-        return render_template('Attendance.html', data=data)
+            sql3 = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName, A.present from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId INNER JOIN attendance A ON E.employeeId = A.employeeId"
+            cursor.execute(sql3)
+            data=cursor.fetchall()
+
+            return render_template('Attendance.html', data=data)
 
 
 
