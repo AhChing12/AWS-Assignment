@@ -151,7 +151,7 @@
                 <th>Address</th>
                 <th>Date Hired</th>
                 <th>Present</th>
-                <th id="edit-delete-head">Select All</th>
+                <th id="edit-delete-head" data-sorter="false">Select All</th>
               </tr>
             </thead>
        
@@ -219,18 +219,7 @@
 </table>
 
         <script>
-          $(document).ready(function() { 
-            $("#tableSorter").tablesorter({ 
-            // pass the headers argument and assing a object
-            widgets: ['zebra'], 
-            headers: { 
-               10: { 
-                   // disable it by setting the property sorter to false 
-                   sorter: false 
-                 } 
-            } 
-            }); 
-          });
+
 
           // $("#tableSorter").tablesorter({ widgets: ['zebra'], headers:{0:{sorter:false}} });
         </script>
