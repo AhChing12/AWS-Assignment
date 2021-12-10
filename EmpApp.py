@@ -149,7 +149,7 @@ def attendance():
         return render_template('Attendance.html', data=data)
 
     else:
-        if request.form['date'] != None:
+        if request.form['date'] != None and request.form['date'] != "":
             date = request.form['date']
             url = "/attendance?date=" + date
 
