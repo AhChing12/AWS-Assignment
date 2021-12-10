@@ -162,6 +162,8 @@ def attendance():
             cursor=db_conn.cursor(pymysql.cursors.DictCursor)
 
             checkBox = request.form.getlist('check')
+            print(attendanceDate)
+            print(checkBox)
 
             sql2 = "UPDATE attendance SET present = %s WHERE employeeId = %s AND date = %s"
 
