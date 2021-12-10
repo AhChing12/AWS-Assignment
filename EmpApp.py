@@ -107,9 +107,10 @@ def attendance():
     #fetching all records from database
     data=cursor.fetchall()
 
-    print(data)
-
-    print(datetime.now().strftime('%Y-%m-%d'))
+    if data:
+        print("exist")
+    else:
+        print("No exist")
 
     return render_template('Attendance.html', data=data)
 
