@@ -94,7 +94,7 @@ def getEmp():
 
 @app.route("/attendance", methods=['GET','POST'])
 def attendance():
-    date_string = '2021-12-09'
+    date_string = '2021-12-10'
 
     #creating variable for connection
     cursor=db_conn.cursor(pymysql.cursors.DictCursor)
