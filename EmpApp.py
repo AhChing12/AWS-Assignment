@@ -162,8 +162,6 @@ def attendance():
             cursor=db_conn.cursor(pymysql.cursors.DictCursor)
 
             checkBox = request.form.getlist('check')
-            print(attendanceDate)
-            print(checkBox)
 
             sql2 = "UPDATE attendance SET present = %s WHERE employeeId = %s AND date = %s"
 
@@ -171,7 +169,7 @@ def attendance():
                 cursor.execute(sql2, (1, x, attendanceDate))
                 db_conn.commit()
 
-            sql3 = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName, A.present from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId INNER JOIN attendance A ON E.employeeId = A.employeeId WHERE A.date = %s"
+            sql3 = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName, A.present, A.date from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId INNER JOIN attendance A ON E.employeeId = A.employeeId WHERE A.date = %s"
             cursor.execute(sql3, attendanceDate)
             data=cursor.fetchall()
 
