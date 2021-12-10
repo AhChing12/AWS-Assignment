@@ -101,8 +101,7 @@ def attendance():
         sql = "SELECT * from attendance WHERE date = %s"
 
         if request.args.get("date") != None and request.args.get("date") != "":
-            print(123)
-            # cursor.execute(sql, request.args.get("date"))
+            cursor.execute(sql, request.args.get("date"))
         else:   
             #executing query
             cursor.execute(sql, datetime.now().strftime('%Y-%m-%d'))
@@ -141,7 +140,6 @@ def attendance():
         if request.form['date'] != None:
             date = request.form['date']
             url = "/attendance?date=" + date
-            print(url)
 
             return redirect(url)
 
