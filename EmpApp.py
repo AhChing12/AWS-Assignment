@@ -320,26 +320,7 @@ def editEmp():
 
     return redirect("/manageEmp")
 
-@app.route("/fetchdata", methods=['POST'])
-def getEmpInfo():
-    emp_id = request.form['emp_id']
-    first_name = ""
-    last_name = ""
-    location = ""
-
-    cursor = db_conn.cursor()
-    read_sql = "SELECT * FROM employee WHERE emp_id = %s"
-    cursor.execute(read_sql, (emp_id))
-    results = cursor.fetchall()
-
-    for row in results:
-        first_name = row[1]
-        last_name = row[2]
-        location = row[4]
-        
-    return render_template('GetEmpOutput.html', id=emp_id, fname=first_name, lname=last_name, interest=0, location=location)    
-
-
+    
 #            BELOW IS Ching ADDED CODE
 
 @app.route("/addempoutput", methods=['GET', 'POST'])
