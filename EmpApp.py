@@ -101,7 +101,8 @@ def attendance():
         sql = "SELECT * from attendance WHERE date = %s"
 
         if request.args.get("date") != None:
-            cursor.execute(sql, request.args.get("date"))
+            print(request.args.get("date"))
+            # cursor.execute(sql, request.args.get("date"))
         else:   
             #executing query
             cursor.execute(sql, datetime.now().strftime('%Y-%m-%d'))
