@@ -216,8 +216,6 @@
             </tfoot>
 
       <tbody>
-        {% set vars = {'count': false} %}
-
         {% for item in data %}
         <tr id="{{ item.employeeId }}">
           <td id="emp_id">{{ item.employeeId }}</td>
@@ -249,13 +247,7 @@
 
         </tr>
 
-        {% if vars.count is sameas false %}
-        {{ vars.count }}
         <input type="hidden" name="attendance_date" value="{{ item.date }}">
-        {% endif %}
-
-        {% vars.update({'count': true}) %}
-        {{ vars.count }}
 
         {% endfor %}
       </tbody>
