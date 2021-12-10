@@ -158,7 +158,7 @@
                 <th>Email</th>
                 <th>Phone Number</th>
                 <th>Address</th>
-                <th>Date Hired</th>
+                <th>Date</th>
                 <th>Present</th>
                 <th id="edit-delete-head" data-sorter="false">
                   <div>
@@ -187,7 +187,7 @@
                 <th>Email</th>
                 <th>Phone Number</th>
                 <th>Address</th>
-                <th>Date Hired</th>
+                <th>Date</th>
                 <th>Present</th>
                 <th>Select All</th>
               </tr>
@@ -216,6 +216,8 @@
             </tfoot>
 
       <tbody>
+        {% set count = false %}
+
         {% for item in data %}
         <tr id="{{ item.employeeId }}">
           <td id="emp_id">{{ item.employeeId }}</td>
@@ -226,8 +228,9 @@
           <td id="email">{{ item.email }}</td>
           <td id="mobile_num">{{ item.phoneNo }}</td>
           <td id="address">{{ item.location }}</td>
-          {% if item.hireDate != None %}
-          <td id="date_join">{{ item.hireDate.strftime('%d-%m-%Y') }}</td>
+
+          {% if item.date != None %}
+          <td id="date_join">{{ item.date.strftime('%d-%m-%Y') }}</td>
           {% else %}
           <td id="date_join">00-00-0000</td>
           {% endif %}
@@ -245,7 +248,13 @@
           </td>
 
         </tr>
+
+        {% if count == false %}
         <input type="hidden" name="attendance_date" value="{{ item.date }}">
+        {% endif %}
+        
+        {% set count = true %}
+
         {% endfor %}
       </tbody>
 </table>
