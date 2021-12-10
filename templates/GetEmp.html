@@ -11,6 +11,16 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
 
+		<script type="text/javascript" src="{{ url_for('static',filename='js/jquery-3.3.1.js') }}"></script>
+   <script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.js') }}" defer></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+   <script type="text/javascript" src="{{ url_for('static',filename='js/table_script.js') }}" defer></script>
+   <script type="text/javascript" src="{{ url_for('static',filename='js/manage_emp.js') }}" defer></script>
+   <script type="text/javascript" src="{{ url_for('static',filename='js/popper.min.js') }}" defer></script>
+   <script type="text/javascript" src="{{ url_for('static',filename='js/jquery.tablesorter.js') }}" defer></script>
+   <script type="text/javascript" src="{{ url_for('static',filename='js/jquery.tablesorter.widgets.js') }}" defer></script>
+   <script type="text/javascript" src="{{ url_for('static',filename='js/jquery.tablesorter.pager.js') }}" defer></script>
+
 		<style>
 			h1 {
 			color: white; 
@@ -22,20 +32,20 @@
 			font-size: 24px; 
 			font-weight:500;
 		}
-			h2{ /*"Search Employee"*/
+/*			h2{ 
 				font-size: 36px;
 				color: black;
-				font-weight: 600;/* Semi-bold*/
+				font-weight: 600;
 				display: flex;
 				justify-content: center;
 			} 
-			h5 { /*Input Titles*/
+			h5 { 
 				font-size: 18px;
 				color: black;
-				font-weight: 500;/* Medium*/
+				font-weight: 500;
 				display:flex;
 				align-self: flex-start;
-			}
+			}*/
 
 			.row, .container {
 				display: flex;
@@ -55,6 +65,7 @@
 				justify-content: center; 
 				align-items:center;
 				width: 400px;
+				border-style: none;
 			}
 			input {
 				height:40px;
@@ -62,6 +73,9 @@
 				border-radius: 5px;
 				border-width: 1px;
 				border-color: #7E7E7E;
+				width: 320px;
+			}
+			.empInput {
 				width: 320px;
 			}
 			button {
@@ -74,12 +88,15 @@
 				width: 320px; 
 				color: white;
 			}
+			.editEmp-section{
+		margin: auto;
+		margin-top: 30px;
+		width: 500px;
+		text-align: center;
+	}
 		</style>
 	</head>
 
-	<font color="black" size="5" style="font-family: Montserrat">
-
-		
 
 		<body>
 
@@ -106,7 +123,7 @@
 					<ul class="nav navbar-nav mx-auto">
 						<!-- menu -->
 						<li class="nav-item">
-							<a class="nav-link" href="#">Manage Employee</a>
+							<a class="nav-link" href="/manageEmp">Manage Employee</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#">Attendance</a>
@@ -120,16 +137,20 @@
 		</nav>
 		<h1 class="mb-4">Employee Management System (EMS)</h1>
 
-				<h2>Search Employee</h2>
+				<section class="editEmp-section mb-3">
+					<h3 class="list-label">Employee Information</h3>
+				</section>
+
 				<div class="container">
 					<div class="row col-md-12">
-						<div class="card align-items-center">
+						<div class="card align-items-center mb-5" style="box-shadow: 1px 1px 1px 1px #CDCDCD;">
 							<div class="card-body">
 
-							<h5 class="mt-4 ml-3">Employee ID</h5>
-							<input class="mb-4" type="number" name="emp_id" autofocus size="40">
+							<!-- <h5 class="mt-4 ml-3">Employee ID</h5> -->
+							<label class="" for="emp_id">Employee ID</label>
+							<input class="mb-4 form-control empInput" type="number" name="emp_id">
 
-							<button class="mb-3" type="submit" style=" ">Search</button>
+							<button id="cancel-button" class="searchButton btn btn-outline-primary" class="mb-3" type="submit" style=" ">Search</button>
 
 							<!-- 		  		<button type="submit" formaction="http://3.134.115.108:80/" style="background: white	; height: 45px; width: 200px; color: black; size: 5; font:oblique;" method="GET">GO TO UPDATE DATABASE PAGE</button> -->
 
@@ -141,6 +162,5 @@
 			</form>
 
 		</body>
-	</font>
 
 	</html>
