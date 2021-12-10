@@ -132,6 +132,8 @@
 
         <hr />
 
+        <input type="checkbox" id="check_all2">
+
          <div class="bootstrap_buttons">
           <button class="reset btn btn-primary shadow" id="submit-button" type="button" data-column="0" data-filter="">Reset search filters</button>
           <button class="btn btn-primary justify-content-end" id="submit-button" onclick="location.href = '/addemp';" style="float: right;" type="button">New Employee</button>
@@ -221,6 +223,13 @@
       <script type="text/javascript">
        $(document).ready(function() { 
         console.log(456)
+
+        $('#check_all2').click(function () {    
+         console.log(123)
+         $('input:checkbox.checkItem').prop('checked', this.checked);    
+       });
+
+
          $('#check_all').click(function () {    
            console.log(123)
            $('input:checkbox.checkItem').prop('checked', this.checked);    
