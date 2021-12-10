@@ -216,6 +216,8 @@
             </tfoot>
 
       <tbody>
+        {% set count = false %}
+        {{ count }}
         {% for item in data %}
         <tr id="{{ item.employeeId }}">
           <td id="emp_id">{{ item.employeeId }}</td>
