@@ -5,7 +5,6 @@
 
 	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="../static/css/global.css">
-	<!-- <link rel="stylesheet" type="text/css" href="static/css/GetEmp.css"> -->
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,25 +20,6 @@
 			font-size: 24px; 
 			font-weight:500;
 		}
-/* 	h2{ 
-		font-size: 28px;
-		color: black;
-		font-weight: 600;
-		display: flex;
-		justify-content: center;
-	}  */
-/* 	h5 {
-		font-size: 14px;
-		color: black;
-		font-weight: 500;
-		display:flex;
-		align-self: flex-start;
-		margin-bottom: 2px;
-	} */
-/* 	.card {
-		width:708px;
-		border-style: none;
-	} */
 	.card {
 		width:781px;
 	}
@@ -49,31 +29,10 @@
 		font-size:18px;
 		color: #353535;
 	}
-/* 	.card-body {
-		border-style: solid;
-		border-color: #CDCDCD;
-		border-width:2px;
-	} */
 	.container > .row {
 		display: flex;
 		justify-content: center;
 	}
-/* 	img{
-		min-width:120px;
-		max-width:140px; 
-		min-height:140px;
-		max-height:160px;
-	} */
-/* 	button {
-		
-		font-weight: 500; 
-		font-size: 16px;
-		border-width: 0px; 
-		border-radius: 5px; 
-		height: 40px; 
-		width: 280px;
-		color: white;
-	} */
 	button {
 		
 		font-weight: 500; 
@@ -96,16 +55,10 @@
 	}
 	.editButton{
  		margin-left: 20px;
-/*		margin-right: 30px;
-		background: black; */
 		margin-right: 30px;
 	}
-/* 	.confirmButton {
-		background: #5F27CD;
-		margin-right: 20px;
-	} */
 	p {
-		font-size: 16px; /*from 20px*/
+		font-size: 16px; 
 		color: #848484;
 	}
 </style>
@@ -114,9 +67,6 @@
 
 
 	<body>
-			<!-- <h1>SAVE SUCCESSFUL</h1> 
-			<h2>Following Employee has been added to the database</h2> 
-			<h2>{{ name }}</h2>  -->
 			<form action="http://3.134.115.108:80/" autocomplete="on" method = "GET">
 
 				<nav class="navbar sticky-top navbar-expand-md navbar-light bg-faded">
@@ -126,10 +76,7 @@
 					<a class="nav-link" style="padding-bottom: 0px; padding-top: 0px;" href="/manageEmp">
 						<img style="width: 100px; height: 40px; " src="../static/images/emsLogo.png" alt="EMS Logo">
 					</a>
-					<!-- <asp:HyperLink ID="brandLink" runat="server" class="navbar-brand" NavigateUrl="~/art_gallery.aspx">
-					<asp:Image ID="logo" runat="server" src="image/palette.svg" alt="" class="mr-2" Width="50" ClientIDMode="Static" />
-					EMS
-				</asp:HyperLink> -->
+
 
 				<!-- Toggler/collapsibe Button -->
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" runat="server" clientidmode="Static">
@@ -158,13 +105,10 @@
 
 				<h1 class="mb-4">Employee Management System (EMS)</h1>
 
-<!-- 				<h2>Employee Added Successfully</h2> -->
 				<section class="editEmp-section mb-3">
 					<h3 class="list-label">Employee Information</h3>
 				</section>
-				<!-- <button type="submit" formaction="/getemp" style="background: grey; height: 45px; width: 200px; color:white; font:oblique;">Add Employee</button>   -->
 
-				<!-- Employee ID:  <input style="height:25px;font-size:14pt; color:grey;" type="number" name="emp_id" autofocus size="40">   -->
 				<div class="container">
 					<div class="row col-md-12">
 						<div class="card align-items-center mb-5" style="box-shadow: 1px 1px 1px 1px #CDCDCD;">
@@ -173,12 +117,12 @@
 									<div class="col-md-8">
 										<div class="row col-md-12 mt-1 mb-3">
 											<div class="col-md-6">
-												<!-- <h5>First Name</h5> -->
+												
 												<label class="" for="first_name">First Name</label>
 												<p> {{ first_name }} </p> 
 											</div>
 											<div class="col-md-6">
-												<!-- <h5>Last Name</h5> -->
+												
 												<label class="" for="last_name">Last Name</label>
 												<p> {{last_name}} </p>  
 											</div>
@@ -186,12 +130,12 @@
 
 										<div class="row col-md-12">
 											<div class="col-md-6">
-												<!-- <h5>Age</h5> -->
+												
 												<label class="" for="age">Age</label>
 												<p> {{age}} </p> 
 											</div>
 											<div class="col-md-6">
-												<!-- <h5>Phone Number</h5> -->
+												
 												<label class="" for="phone_no">Phone Number</label>
 												<p> {{phone_no}} </p>  
 											</div>
@@ -199,7 +143,7 @@
 
 										<div class="row col-md-12">
 											<div class="col-md-5">
-												<!-- <h5>Gender</h5> -->
+												
 												<label class="" for="gender">Gender</label>
 												<p> {{gender}} </p> 
 											</div>
@@ -207,7 +151,7 @@
 									</div>
 
 									<div class="col-md-4">
-										<!-- <h5>Employee Image</h5> -->
+										
 										<label class="" for="employee_image">Employee Image</label>
 										<img id="output" class="img-thumbnail img-fluid" src="{{img_src}}"  alt="Employee Image">
 
@@ -216,7 +160,7 @@
 
 								<div class="row col-md-12">
 									<div class="col-md-8">
-										<!-- <h5>Email</h5> -->
+										
 										<label class="" for="email">Email</label>
 										<p> {{email}} </p>    
 									</div>
@@ -224,7 +168,7 @@
 
 								<div class="row col-md-12">
 									<div class="col-md-8">
-										<!-- <h5>Address</h5> -->
+										
 										<label class="" for="address">Address</label>
 										<p> {{address}} </p> 
 									</div>
@@ -232,7 +176,7 @@
 
 								<div class="row col-md-12">
 									<div class="col-md-8">
-										<!-- <h5>Primary Skill</h5> -->
+										
 										<label class="" for="primary_skill">Primary Skill</label>
 										<p> {{pri_skill}} </p> 
 									</div>
@@ -240,7 +184,7 @@
 
 								<div class="row col-md-12">
 									<div class="col-md-8">
-										<!-- <h5>Department</h5> -->
+										
 										<label class="" for="department">Department</label>
 										<p> {{department}} </p> 
 									</div>
@@ -248,7 +192,7 @@
 
 								<div class="row col-md-12">
 									<div class="col-md-8">
-										<!-- <h5>Position</h5> -->
+										
 										<label class="" for="position">Position</label>
 										<p> {{position}} </p> 
 									</div>
@@ -256,31 +200,28 @@
 
 								<div class="row col-md-12">
 									<div class="col-md-4">
-										<!-- <h5>Date Hired</h5> -->
+										
 										<label class="" for="date_hired">Date Hired</label>
 										<p> {{date_hired}} </p> 
 									</div> 
 
 									<div class="col-md-4">
-										<!-- <h5>Salary</h5> -->
+										
 										<label class="" for="salary">Salary</label>
 										<p> {{"RM " ~ "%.2f"|format(salary)}} </p> 
-										<!-- <p> RM{{salary}} </p> -->  
+										
 									</div>
 								</div>
 
-<!-- 							<h5>Employee Image</h5>
-	<input type=file name="emp_image_file" style="">   --> 
+
 		<div class="btnGroup mt-4">
-<!-- 			<button class="editButton" type="button" onclick="" >Edit</button>
-			<button id="cancel-button" class="cancelButton btn btn-outline-primary" type="button" onclick="history.go(-1);" >Cancel</button> -->
+
 			<button id="cancel-button" class="editButton btn btn-outline-primary" type="button" onclick="location.href = '/editEmp?employee_id={{ employeeId }}';" >Edit</button>
-<!-- 			cancel-button is used to align to global.css probly -->
+<!-- 			cancel-button is used to align to global.css styling -->
 			
-<!-- 			<button class="confirmButton" type="submit" >Confirm</button>
-			<button id="submit-button" class="addButton btn btn-primary" type="submit" >Add</button> -->
+
 			<button id="submit-button" class="confirmButton btn btn-primary" type="button" onclick="location.href = '/manageEmp';">Confirm</button>
-<!-- 			submit-button is used to align to global.css probly -->
+<!-- 			submit-button is used to align to global.cs styling -->
 		</div>
 		</div>
 	</div>
