@@ -37,13 +37,11 @@
     }
     tbody>tr>td:last-child a{
       display: inline;
-      /*float: left;*/
       text-decoration: none;
       margin: 0px;
     }
     tbody>tr>td:last-child a:last-child{
       margin:0px 7px 0px 8px;
-      /*float: right;*/
     }
     tbody>tr>td:last-child>a img{
       max-width: 20px;
@@ -65,24 +63,14 @@
   </style>
 
    <script type="text/javascript">
-      //Disable the default MouseOver functionality of ASP.Net Menu control.
-      //Sys.WebForms.Menu._elementObjectMapper.getMappedObject = function () {
-      //    return false;
-      //};
-      $(document).ready(function () {
 
-         //    //Remove the style attributes.
-         //    $(".navbar-nav li, .navbar-nav a, .navbar-nav ul").removeAttr('style');
+      $(document).ready(function () {
 
          //Apply the Bootstrap class to the Submenu.
          $(".dropdown-menu").parent().removeClass().addClass('dropdown');
 
          //Apply the Bootstrap properties to the Submenu.
          $(".dropdown>a").removeClass().addClass('dropdown-toggle').append('<b class="caret"></b>').attr('data-toggle', 'dropdown');
-
-         //    //Apply the Bootstrap "active" class to the selected Menu item.
-         //    $("a.selected").closest("li").addClass("active");
-         //    $("a.selected").closest(".dropdown-toggle").addClass("active");
 
          //    remove default click redirect effect           
          $('dropdown-toggle').attr('onclick', '').off('click');
@@ -100,10 +88,6 @@
 					<a class="nav-link" style="padding-bottom: 0px; padding-top: 0px;" href="/manageEmp">
 						<img style="width: 100px; height: 40px; " src="../static/images/emsLogo.png" alt="EMS Logo">
 					</a>
-					<!-- <asp:HyperLink ID="brandLink" runat="server" class="navbar-brand" NavigateUrl="~/art_gallery.aspx">
-					<asp:Image ID="logo" runat="server" src="image/palette.svg" alt="" class="mr-2" Width="50" ClientIDMode="Static" />
-					EMS
-				</asp:HyperLink> -->
 
             <!-- Toggler/collapsibe Button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" runat="server" clientidmode="Static">
@@ -147,8 +131,7 @@
             </div>
           </div>
 
-         <!--  <input id="date" class="form-control" type="date" name="date">
-          <button class="btn btn-primary justify-content-end" id="submit-button" style="float: right;" type="submit">Search</button> -->
+
           <br>
         </div>  
         <div class="custom-container" id="member-table">
@@ -263,15 +246,7 @@
         {% endfor %}
       </tbody>
 </table>
-      <script type="text/javascript">
-       $(document).ready(function() { 
-       //  $('#check_all2').click(function () {    
-       //   console.log(123)
-       //   $('input:checkbox.checkItem').prop('checked', this.checked);    
-       // });
 
-       });     
-      </script>
         </div>
        <button id="submit-button" class="btn btn-primary" style="float: right;" type="submit" >Mark as Present</button>
       </div>
