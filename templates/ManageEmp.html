@@ -2,7 +2,7 @@
 
 <html>
 <head>
-   <title></title>
+   <title>Homepage</title>
 
    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap.css') }}">
    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/theme.bootstrap_4.css') }}">
@@ -65,24 +65,14 @@
   </style>
 
    <script type="text/javascript">
-      //Disable the default MouseOver functionality of ASP.Net Menu control.
-      //Sys.WebForms.Menu._elementObjectMapper.getMappedObject = function () {
-      //    return false;
-      //};
-      $(document).ready(function () {
 
-         //    //Remove the style attributes.
-         //    $(".navbar-nav li, .navbar-nav a, .navbar-nav ul").removeAttr('style');
+      $(document).ready(function () {
 
          //Apply the Bootstrap class to the Submenu.
          $(".dropdown-menu").parent().removeClass().addClass('dropdown');
 
          //Apply the Bootstrap properties to the Submenu.
          $(".dropdown>a").removeClass().addClass('dropdown-toggle').append('<b class="caret"></b>').attr('data-toggle', 'dropdown');
-
-         //    //Apply the Bootstrap "active" class to the selected Menu item.
-         //    $("a.selected").closest("li").addClass("active");
-         //    $("a.selected").closest(".dropdown-toggle").addClass("active");
 
          //    remove default click redirect effect           
          $('dropdown-toggle').attr('onclick', '').off('click');
@@ -99,10 +89,6 @@
           <a class="nav-link" style="padding-bottom: 0px; padding-top: 0px;" href="/manageEmp">
             <img style="width: 100px; height: 40px; " src="../static/images/emsLogo.png" alt="EMS Logo">
           </a>
-          <!-- <asp:HyperLink ID="brandLink" runat="server" class="navbar-brand" NavigateUrl="~/art_gallery.aspx">
-          <asp:Image ID="logo" runat="server" src="image/palette.svg" alt="" class="mr-2" Width="50" ClientIDMode="Static" />
-          EMS
-        </asp:HyperLink> -->
 
             <!-- Toggler/collapsibe Button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" runat="server" clientidmode="Static">
@@ -218,8 +204,6 @@
             <a class="edit-btn" href="/editEmp?employee_id={{ item.employeeId }}"><img src="{{ url_for('static',filename='images/edit-btn.png') }}" alt="edit button" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Edit Member\'s Information"></a>
 
             <a class="delete-btn" href="#" data-value="{{ item.employeeId }}"><img src="{{ url_for('static',filename='images/delete-btn.png') }}" alt="delete button" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Delete Member"></a>
-
-<!--             <input type="image" src="{{ url_for('static',filename='images/delete-btn.png') }}" class="delete-btn" alt="delete" name="delete" value="{{ item.employeeId }}" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Delete Member"> -->
 
           </td>
         </tr>
