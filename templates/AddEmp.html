@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Add Employee Information</title>
+	<title>Add Employee</title>
 
 	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="../static/css/global.css">
-	<!-- <link rel="stylesheet" type="text/css" href="static/css/GetEmp.css"> -->
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,31 +31,7 @@
 			font-size: 24px; 
 			font-weight:500;
 		}
-/* 	h2{ 
-		font-size: 28px;
-		color: black;
-		font-weight: 600;
-		display: flex;
-		justify-content: center; 
-	}  */
-/* 	h5 { 
-		font-size: 14px;
-		color: black;
-		font-weight: 500;
-		display:flex;
-		align-self: flex-start;
-		margin-bottom: 2px;
-	} */
 
-/*   	input {
-		height:35px;
-		font-size:14px;
-		border-radius: 5px;
-		border-width: 1px;
-		border-color: #7E7E7E;
-		margin-bottom: 10px;
-
-	}  */
 	input {
 		height:40px;
 		font-size:16px;
@@ -64,16 +39,11 @@
 		border-width: 1px;
 		border-color: #7E7E7E;
 		margin-bottom: 10px;
-		/*width: 320px;*/
 	}
 	.gender {
 		display: flex;
 		align-content: center;
 	}
-/* 	.card {
-		width:708px;
-		border-style: none;
-	} */
 	.card {
 		width:781px;
 	}
@@ -83,46 +53,16 @@
 		font-size:18px;
 		color: #353535;
 	}
-		
-/* 	.card-body {
-		border-style: solid;
-		border-color: #CDCDCD;
-		border-width:2px;
-	}
-	label {
-		display: flex;
-		align-items: center;
-		font-size:14px;
-		color: #353535; 
-	}*/
 	.container > .row {
 		display: flex;
 		justify-content: center;
 	}
 	.shortInput {
-/* 		width:173px; */
 		width:193px
 	}
 	.longInput {
-/* 		width: 374px; */
 		width: 300px;
 	}
-/* 	img{
-		min-width:120px;
-		max-width:140px; 
-		min-height:140px;
-		max-height:160px;
-	} */
-/* 	button {
-		
-		font-weight: 500; 
-		font-size: 16px; 
-		border-width: 0px; 
-		border-radius: 5px; 
-		height: 40px; 
-		width: 280px; 
-		color: white;
-	} */
 	button {
 		
 		font-weight: 500; 
@@ -139,10 +79,6 @@
 	}
 	.cancelButton{
 		margin-right: 70px;
-	}
-/* 	.addButton {
-		background: #5F27CD;
-	} */
 	.editEmp-section{
 		margin: auto;
 		margin-top: 30px;
@@ -171,10 +107,6 @@
 					<a class="nav-link" style="padding-bottom: 0px; padding-top: 0px;" href="/manageEmp">
 						<img style="width: 100px; height: 40px; " src="../static/images/emsLogo.png" alt="EMS Logo">
 					</a>
-					<!-- <asp:HyperLink ID="brandLink" runat="server" class="navbar-brand" NavigateUrl="~/art_gallery.aspx">
-					<asp:Image ID="logo" runat="server" src="image/palette.svg" alt="" class="mr-2" Width="50" ClientIDMode="Static" />
-					EMS
-				</asp:HyperLink> -->
 
 				<!-- Toggler/collapsibe Button -->
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" runat="server" clientidmode="Static">
@@ -206,9 +138,6 @@
 			<section class="editEmp-section mb-3">
 				<h3 class="list-label">Employee Information</h3>
 			</section>
-			<!-- <button type="submit" formaction="/getemp" style="background: grey; height: 45px; width: 200px; color:white; font:oblique;">Add Employee</button>   -->
-
-			<!-- Employee ID:  <input style="height:25px;font-size:14pt; color:grey;" type="number" name="emp_id" autofocus size="40">   -->
 
 			<div class="container">
 				<div class="row col-md-12">
@@ -218,12 +147,12 @@
 								<div class="col-md-8">
 									<div class="row col-md-12 mt-1 mb-3">
 										<div class="col-md-6">
-											<!-- <h5>First Name</h5> -->
+											
 											<label class="" for="first_name">First Name</label>
 											<input class="shortInput form-control" type="text" name="first_name" >
 										</div>
 										<div class="col-md-6">
-											<!-- <h5>Last Name</h5> -->
+											
 											<label class="" for="last_name">Last Name</label>
 											<input class="shortInput form-control" type="text" name="last_name">
 										</div>
@@ -231,12 +160,12 @@
 
 									<div class="row col-md-12 mb-3">
 										<div class="col-md-6">
-											<!-- <h5>Age</h5> -->
+											
 											<label class="" for="age">Age</label>
 											<input class="shortInput form-control" type="number" name="age">    
 										</div>
 										<div class="col-md-6">
-											<!-- <h5>Phone Number</h5> -->
+											
 											<label class="" for="phone_no">Phone Number</label>
 											<input class="shortInput form-control" type="tel" name="phone_number"> 
 										</div>
@@ -244,7 +173,7 @@
 
 									<div class="row col-md-12">
 										<div class="col-md-5">
-											<!-- <h5>Gender</h5> -->
+											
 											<label class="" for="gender">Gender</label>
 											<div class="gender">
 												<input class="mr-2" type="radio" id="male" name="gender_choice" checked="true" value="Male">
@@ -257,7 +186,7 @@
 								</div>	
 
 								<div class="col-md-4">
-									<!-- <h5>Employee Image</h5> -->
+									
 									<label class="" for="employee_image">Employee Image</label>
 									<div id="uploaded_image">
 										<img id="output" class="img-thumbnail img-fluid" src="../static/images/default-profile-img.png"  alt="Employee Image">
@@ -273,9 +202,7 @@
     									var output = document.getElementById('output');
     									output.src = URL.createObjectURL(event.target.files[0]);
     									document.getElementById('imageSrc').value = output.src
-    									// output.onload = function() {
-      							// 		URL.revokeObjectURL(output.src) // free memory
-    									// }
+    									
   									};
 									</script>
 								</div>
@@ -283,7 +210,7 @@
 							
 							<div class="row col-md-12">
 								<div class="col-md-8">
-									<!-- <h5>Email</h5> -->
+									
 									<label class="" for="email">Email</label>
 									<input class="longInput form-control"  type="email" name="email">  
 								</div>
@@ -293,7 +220,7 @@
 
 							<div class="row col-md-12  mb-3">
 								<div class="col-md-8">
-									<!-- <h5>Address</h5> -->
+									
 									<label class="" for="address">Address</label>
 									<textarea class="form-control" id="address" name="address" style="width: 300px;" rows="3" maxlength="255" value='<%#Eval("address") %>'></textarea> 
 								</div>
@@ -301,7 +228,7 @@
 
 							<div class="row col-md-12">
 								<div class="col-md-8">
-									<!-- <h5>Primary Skill</h5> -->
+									
 									<label class="" for="primary_skill">Primary Skill</label>
 									<input class="longInput form-control"  type="text" name="pri_skill">  
 								</div>
@@ -309,7 +236,7 @@
 
 							<div class="row col-md-12">
 								<div class="col-md-8">
-									<!-- <h5>Department</h5> -->
+									
 									<label class="" for="department">Department</label>
 									<input class="longInput form-control" type="text" name="department">   
 								</div>
@@ -317,7 +244,7 @@
 
 							<div class="row col-md-12">
 								<div class="col-md-8">
-									<!-- <h5>Position</h5> -->
+									
 									<label class="" for="position">Position</label>
 									<input class="longInput form-control" type="text" name="position">   
 								</div>
@@ -325,13 +252,13 @@
 
 							<div class="row col-md-12">
 								<div class="col-md-4">
-									<!-- <h5>Date Hired</h5> -->
+									
 									<label class="" for="date_hired">Date Hired</label>
 									<input class="shortInput form-control" style="font-size:16px;" type="date" name="date_hired"> 
 								</div> 
 
 								<div class="col-md-4">
-									<!-- <h5>Salary</h5> -->
+									
 									<label class="" for="salary">Salary</label>
 									<input class="shortInput form-control"  type="number" name="salary">  
 								</div>
@@ -344,8 +271,7 @@
 								});
 							</script>
 
-									<!-- 							<h5>Employee Image</h5>
-									<input type=file name="emp_image_file" style="">   --> 
+									
 							<div class="btnGroup mt-4">
 								<button id="cancel-button" class="cancelButton btn btn-outline-primary" type="button" onclick="history.go(-1);" >Cancel</button>
 
@@ -358,7 +284,7 @@
 				</div>
 			</div>
 </form>
-<!-- <a href="/about">About Us</a> -->
+
 </body>
 
 </html>
