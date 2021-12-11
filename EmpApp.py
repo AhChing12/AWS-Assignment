@@ -28,6 +28,7 @@ def home():
     #creating variable for connection
     cursor=db_conn.cursor(pymysql.cursors.DictCursor)
 
+    #retrieve all employees information
     sql = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId"
 
     #executing query
@@ -43,8 +44,10 @@ def deleteEmp():
     if request.form['delete']:
         employeeId = request.form['employee_id']
 
+        #creating variable for connection
         cursor = db_conn.cursor(pymysql.cursors.DictCursor)
 
+        #retrieve employee's image url
         cursor.execute("SELECT imageUrl from employee WHERE employeeId = %s", employeeId)
 
         #fetching all records from database
@@ -61,6 +64,7 @@ def deleteEmp():
             s3 = boto3.client('s3')
             s3.delete_object(Bucket=custombucket, Key=imageUrl[3])
 
+        #delete employee's record from database
         cursor.execute("DELETE FROM employee WHERE employeeId = %s", employeeId)
         db_conn.commit()
 
@@ -74,6 +78,7 @@ def userProfile():
         #creating variable for connection
         cursor=db_conn.cursor(pymysql.cursors.DictCursor)
 
+        #retrieve employee information based on given employeeId
         sql = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, E.salary, E.primarySkill, E.imageUrl, P.positionName, D.departmentName from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId WHERE E.employeeId = %s"
 
         #executing query
@@ -97,8 +102,10 @@ def attendance():
         #creating variable for connection
         cursor=db_conn.cursor(pymysql.cursors.DictCursor)
 
+        #retrieve attendance information based on given date
         sql = "SELECT * from attendance WHERE date = %s"
 
+        #Check if date is given
         if request.args.get("date") != None and request.args.get("date") != "":
             cursor.execute(sql, request.args.get("date"))
         else:   
@@ -109,8 +116,10 @@ def attendance():
         data=cursor.fetchall()
 
         if data:
+        	#retrieve all employee's attendance information
             sql2 = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName, A.present, A.date from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId INNER JOIN attendance A ON E.employeeId = A.employeeId WHERE A.date = %s"
 
+            #Check if date is given
             if request.args.get("date") != None and request.args.get("date") != "":
                 cursor.execute(sql2, request.args.get("date"))
             else:
@@ -120,12 +129,14 @@ def attendance():
             data=cursor.fetchall()
 
         else:
+        	#retrieve all employees' id
             sql2 = "SELECT employeeId from employee"
 
             cursor.execute(sql2)
 
             data=cursor.fetchall()
 
+            #Insert employee's attendance information
             sql3 = "INSERT INTO attendance VALUES (%s, %s, %s, %s)"
 
             for item in data:
@@ -136,8 +147,10 @@ def attendance():
 
                 db_conn.commit()
 
+            #retrieve employees' attendance information based on given date
             sql4 = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName, A.present, A.date from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId INNER JOIN attendance A ON E.employeeId = A.employeeId WHERE A.date = %s"
 
+            #Check if date is given
             if request.args.get("date") != None and request.args.get("date") != "":
                 cursor.execute(sql4, request.args.get("date"))
             else:
@@ -148,6 +161,7 @@ def attendance():
         return render_template('Attendance.html', data=data)
 
     else:
+    	#check if filter by date is pressed
         if request.form['date'] != None and request.form['date'] != "":
             date = request.form['date']
             url = "/attendance?date=" + date
@@ -162,12 +176,14 @@ def attendance():
 
             checkBox = request.form.getlist('check')
 
+            #Update selected employee's attendance status
             sql2 = "UPDATE attendance SET present = %s WHERE employeeId = %s AND date = %s"
 
             for x in checkBox:
                 cursor.execute(sql2, (1, x, attendanceDate))
                 db_conn.commit()
 
+            #retrieve employees' attendance information based on given date
             sql3 = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName, A.present, A.date from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId INNER JOIN attendance A ON E.employeeId = A.employeeId WHERE A.date = %s"
             cursor.execute(sql3, attendanceDate)
             data=cursor.fetchall()
@@ -183,6 +199,7 @@ def manageEmp():
     #creating variable for connection
     cursor=db_conn.cursor(pymysql.cursors.DictCursor)
 
+    #retrieve all employees information
     sql = "SELECT E.employeeId, E.firstName, E.lastName, E.gender, E.email, E.phoneNo, E.location, E.hireDate, P.positionName, D.departmentName from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId"
 
     #executing query
@@ -200,6 +217,7 @@ def editEmp():
             #creating variable for connection
             cursor=db_conn.cursor(pymysql.cursors.DictCursor)
 
+            #retrieve selected employee's information
             sql = "SELECT E.employeeId, E.firstName, E.lastName, E.age, E.gender, E.email, E.phoneNo, E.location, E.hireDate, E.salary, E.primarySkill, E.imageUrl, P.positionName, P.positionId, D.departmentName, D.departmentId from employee E INNER JOIN position P ON E.positionId = P.positionId INNER JOIN department D ON E.departmentId = D.departmentId WHERE E.employeeId = %s"
 
             #executing query
@@ -210,6 +228,7 @@ def editEmp():
 
             return render_template('EditEmp.html', data=data)
     else:
+    	#check if employee has changed the profile image
         if request.files['upload_image'].filename != '':
             employeeId = request.form['employee_id']
             firstName = request.form['first_name']
@@ -228,16 +247,20 @@ def editEmp():
             departmentId = request.form['department_id']
             positionId = request.form['position_id']
 
+            #change date format
             dateHired = datetime.strptime(dateHired, '%Y-%m-%d') 
+
             #creating variable for connection
             cursor=db_conn.cursor(pymysql.cursors.DictCursor)
 
+            #check if the profile image is stored at S3
             if request.form['profile_image'] == 'yes_profile_image':
                 #delete old profile image from S3 bucket
                 imageUrl = request.form['old_image'].split("/")
                 s3 = boto3.client('s3')
                 s3.delete_object(Bucket=custombucket, Key=imageUrl[3])
 
+            #update employee's information
             sql = "UPDATE employee SET firstName = %s, lastName = %s, age = %s, gender = %s, email = %s, phoneNo = %s, location = %s, hireDate = %s, salary = %s, primarySkill = %s, imageUrl = %s WHERE employeeId = %s"
 
             try:
@@ -272,10 +295,12 @@ def editEmp():
             except Exception as e:
                 return str(e)        
 
+            #update employee's department information
             sql2 = "UPDATE department SET departmentName = %s WHERE departmentId = %s"
             cursor.execute(sql2, (department, departmentId))
             db_conn.commit()
 
+            #update employee's position information
             sql3 = "UPDATE position SET positionName = %s WHERE positionId = %s"
             cursor.execute(sql3, (position, positionId))
             db_conn.commit()
@@ -299,19 +324,24 @@ def editEmp():
             departmentId = request.form['department_id']
             positionId = request.form['position_id']
 
+            #change date format
             dateHired = datetime.strptime(dateHired, '%Y-%m-%d') 
+
             #creating variable for connection
             cursor=db_conn.cursor(pymysql.cursors.DictCursor)
 
+            #update employee's information
             sql = "UPDATE employee SET firstName = %s, lastName = %s, age = %s, gender = %s, email = %s, phoneNo = %s, location = %s, hireDate = %s, salary = %s, primarySkill = %s WHERE employeeId = %s"
 
             cursor.execute(sql, (firstName, lastName, age, gender, email, phoneNo, address, dateHired, salary, primarySkill, employeeId))
             db_conn.commit()
 
+            #update employee's department information
             sql2 = "UPDATE department SET departmentName = %s WHERE departmentId = %s"
             cursor.execute(sql2, (department, departmentId))
             db_conn.commit()
 
+            #update employee's position information
             sql3 = "UPDATE position SET positionName = %s WHERE positionId = %s"
             cursor.execute(sql3, (position, positionId))
             db_conn.commit()
