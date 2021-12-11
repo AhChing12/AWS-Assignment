@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Edit Employee Information</title>
+	<title>Edit Employee</title>
 
 	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="../static/css/global.css">
-	<!-- <link rel="stylesheet" type="text/css" href="static/css/GetEmp.css"> -->
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,17 +23,17 @@
 			font-size: 24px; 
 			font-weight:500;
 		}
-		h2{ /*"Search Employee"*/
+		h2{ 
 		font-size: 36px;
 		color: black;
-		font-weight: 600;/* Semi-bold*/
+		font-weight: 600;
 		display: flex;
 		justify-content: center;
 	} 
-	h5 { /*Input Titles*/
+	h5 { 
 		font-size: 18px;
 		color: black;
-		font-weight: 500;/* Medium*/
+		font-weight: 500;
 		display:flex;
 		align-self: flex-start;
 	}
@@ -112,10 +111,6 @@
 					<a class="nav-link" style="padding-bottom: 0px; padding-top: 0px;" href="/manageEmp">
 						<img style="width: 100px; height: 40px; " src="../static/images/emsLogo.png" alt="EMS Logo">
 					</a>
-					<!-- <asp:HyperLink ID="brandLink" runat="server" class="navbar-brand" NavigateUrl="~/art_gallery.aspx">
-					<asp:Image ID="logo" runat="server" src="image/palette.svg" alt="" class="mr-2" Width="50" ClientIDMode="Static" />
-					EMS
-				</asp:HyperLink> -->
 
 				<!-- Toggler/collapsibe Button -->
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" runat="server" clientidmode="Static">
@@ -147,9 +142,7 @@
 			<section class="editEmp-section mb-3">
 				<h3 class="list-label">Employee Information</h3>
 			</section>
-			<!-- <button type="submit" formaction="/getemp" style="background: grey; height: 45px; width: 200px; color:white; font:oblique;">Add Employee</button>   -->
 
-			<!-- Employee ID:  <input style="height:25px;font-size:14pt; color:grey;" type="number" name="emp_id" autofocus size="40">   -->
 			<form action="/editEmp" autocomplete="on" method = "POST" enctype="multipart/form-data">
 			{% for item in data %}
 			<div class="container">
@@ -160,13 +153,13 @@
 								<div class="col-md-8">
 									<div class="row col-md-12 mt-1 mb-3">
 										<div class="col-md-6">
-											<!-- <h5>First Name</h5> -->
+											
 											<label class="" for="first_name">First Name</label>
 											<input id="firstName" class="shortInput form-control" type="text" value="{{ item.firstName }}" name="first_name" >
 											<input type="hidden" name="employee_id" value="{{ item.employeeId }}">
 										</div>
 										<div class="col-md-6">
-											<!-- <h5>Last Name</h5> -->
+											
 											<label class="" for="last_name">Last Name</label>
 											<input id="lastName" class="shortInput form-control" type="text" value="{{ item.lastName }}" name="last_name">
 										</div>
@@ -174,12 +167,12 @@
 
 									<div class="row col-md-12 mb-3">
 										<div class="col-md-6">
-											<!-- <h5>Age</h5> -->
+											
 											<label class="" for="age">Age</label>
 											<input id="age" class="shortInput form-control" type="number" value="{{ item.age }}" name="age">  
 										</div>
 										<div class="col-md-6">
-											<!-- <h5>Phone Number</h5> -->
+											
 											<label class="" for="phone_no">Phone Number</label>
 											<input id="phoneNo" class="shortInput form-control" type="tel" value="{{ item.phoneNo }}" name="phone_number">  
 										</div>
@@ -187,7 +180,7 @@
 
 									<div class="row col-md-12">
 										<div class="col-md-5">
-											<!-- <h5>Gender</h5> -->
+											
 											<label class="" for="gender">Gender</label>
 											<div class="gender">
 											{% if item.gender == 'Male' %}
@@ -207,7 +200,7 @@
 								</div>
 
 								<div class="col-md-4">
-									<!-- <h5>Employee Image</h5> -->
+									
 									<label class="" for="employee_image">Employee Image</label>
 									<div id="uploaded_image">
 										{% if item.imageUrl != None %}
@@ -236,7 +229,7 @@
 
 							<div class="row col-md-12">
 								<div class="col-md-8">
-									<!-- <h5>Email</h5> -->
+									
 									<label class="" for="email">Email</label>
 									<input id="email" class="longInput form-control" value="{{ item.email }}" type="email" name="email">  
 								</div>
@@ -244,7 +237,7 @@
 
 							<div class="row col-md-12 mb-3">
 								<div class="col-md-8">
-									<!-- <h5>Address</h5> -->
+									
 									<label class="" for="address">Address</label>
 									<textarea class="form-control" id="address" name="address" style="width: 300px;" rows="3" maxlength="255">{{ item.location }}</textarea>  
 								</div>
@@ -252,7 +245,7 @@
 
 							<div class="row col-md-12">
 								<div class="col-md-8">
-									<!-- <h5>Primary Skill</h5> -->
+									
 									<label class="" for="primary_skill">Primary Skill</label>
 									<input id="primarySkill" class="longInput form-control" value="{{ item.primarySkill }}" type="text" name="pri_skill">  
 								</div>
@@ -260,7 +253,7 @@
 
 							<div class="row col-md-12">
 								<div class="col-md-8">
-									<!-- <h5>Department</h5> -->
+									
 									<label class="" for="department">Department</label>
 									<input id="department" class="longInput form-control" value="{{ item.departmentName }}" type="text" name="department">
 									<input type="hidden" name="department_id" value="{{ item.departmentId }}">  
@@ -269,7 +262,7 @@
 
 							<div class="row col-md-12">
 								<div class="col-md-8">
-									<!-- <h5>Position</h5> -->
+									
 									<label class="" for="position">Position</label>
 									<input id="position" class="longInput form-control" value="{{ item.positionName }}" type="text" name="position">
 									<input type="hidden" name="position_id" value="{{ item.positionId }}">  
@@ -278,7 +271,7 @@
 
 							<div class="row col-md-12">
 								<div class="col-md-4">
-									<!-- <h5>Date Hired</h5> -->
+									
 									<label class="" for="date_hired">Date Hired</label>
 									{% if item.hireDate != None %}
 									<input id="dateHired" class="shortInput form-control" style="font-size:16px;" value="{{ item.hireDate.strftime('%Y-%m-%d') }}" type="date" name="date_hired">
@@ -288,7 +281,7 @@
 								</div> 
 
 								<div class="col-md-4">
-									<!-- <h5>Salary</h5> -->
+									
 									<label class="" for="salary">Salary</label>
 									<input id="salary" class="shortInput form-control" value="{{ item.salary }}"  type="number" name="salary">  
 								</div>
@@ -301,13 +294,12 @@
 								});
 							</script>
 
-<!-- 							<h5>Employee Image</h5>
-	<input type=file name="emp_image_file" style="">   --> 
+
 	<div class="btnGroup mt-4">
 		<button id="cancel-button" class="cancelButton btn btn-outline-primary" type="button" onclick="history.go(-1);" >Cancel</button>
 
 		<button id="submit-button" class="editButton btn btn-primary" type="submit" >Edit</button>
-		<div>
+		</div>
 		</div>
 	</div>
 	{% endfor %}
@@ -316,7 +308,7 @@
 </div>
 </form>
 
-<!-- <a href="/about">About Us</a> -->
+
 </body>
 
 </html>
